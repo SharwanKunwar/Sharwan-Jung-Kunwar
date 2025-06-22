@@ -1,51 +1,62 @@
 "use client";
 import React from "react";
 import { AnimatedTooltip } from "../ui/AnimatedTooltip";
+import {
+  FaJs,
+  FaReact,
+  FaJava,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiFramer,
+  SiSpringboot,
+  SiPostgresql,
+} from "react-icons/si";
+
 const people = [
   {
     id: 1,
-    name: "React js",
-    designation: "Frontend Framework",
-    image: "/tackStack/atom.png",
+    name: "JavaScript",
+    designation: "Language",
+    icon: <FaJs className="text-yellow-400 w-8" />,
   },
   {
     id: 2,
-    name: "JavaScript",
-    designation: "Language",
-    image: "/tackStack/js.png",
+    name: "React JS",
+    designation: "Frontend Framework",
+    icon: <FaReact className="text-sky-400 w-10" />,
   },
   {
     id: 3,
     name: "Java",
     designation: "Language",
-    image: "/tackStack/java.png",
+    icon: <FaJava className="text-red-500 w-7" />,
   },
   {
     id: 4,
-    name: "Tailwindcss",
+    name: "Tailwind CSS",
     designation: "Styling",
-    image: "/tackStack/Tailwindcss.png",
+    icon: <SiTailwindcss className="text-blue-400 w-10" />,
   },
   {
     id: 5,
-    name: "Motion",
+    name: "Framer Motion",
     designation: "Animation",
-    image: "/tackStack/motion.png", // framer motion logo
+    icon: <SiFramer className="text-pink-500 w-9" />,
   },
   {
     id: 6,
     name: "Spring Boot",
     designation: "Backend Framework",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+    icon: <SiSpringboot className="text-green-600 w-10" />,
   },
   {
     id: 7,
-    name: "Postgresql",
+    name: "PostgreSQL",
     designation: "Database",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    icon: <SiPostgresql className="text-blue-600 w-9" />,
   },
 ];
-
 
 export function AnimatedTooltipPreview() {
   return (
