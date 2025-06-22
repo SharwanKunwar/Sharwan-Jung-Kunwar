@@ -6,52 +6,46 @@ const people = [
     id: 1,
     name: "React js",
     designation: "Frontend Framework",
-    image:
-      "https://www.flaticon.com/free-icons/physics",
+    image: "/tackStack/atom.png",
   },
   {
     id: 2,
     name: "JavaScript",
     designation: "Language",
-    image:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+    image: "/tackStack/js.png",
   },
   {
     id: 3,
     name: "Java",
     designation: "Language",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+    image: "/tackStack/java.png",
   },
   {
     id: 4,
     name: "Tailwindcss",
     designation: "Styling",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    image: "/tackStack/Tailwindcss.png",
   },
   {
     id: 5,
     name: "Motion",
     designation: "Animation",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
+    image: "/tackStack/motion.png", // framer motion logo
   },
   {
     id: 6,
     name: "Spring Boot",
     designation: "Backend Framework",
-    image:
-      "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
   },
   {
     id: 7,
     name: "Postgresql",
     designation: "Database",
-    image:
-      "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
   },
 ];
+
 
 export function AnimatedTooltipPreview() {
   return (

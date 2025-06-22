@@ -1,5 +1,5 @@
 
-import { Home, Menu, X } from 'lucide-react';
+import { Home, List, Menu, X } from 'lucide-react';
 import { useRef, useState,useEffect } from 'react';
 import { FaFacebookF, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { SpotlightPreview } from './components/ui/SpotlightPreview';
@@ -116,22 +116,22 @@ function App() {
                 </section>
                 {/* phone */}
                 <section className='mr-5 md:hidden'>
-                  <Menu onClick={(e)=>setIsOpen(!isOpen)} size={40}/>
+                  {!isOpen? <Menu onClick={(e)=>setIsOpen(!isOpen)} size={40}/>: <List size={40}/>}
                 </section>
                 {isOpen&&(
-                  <div className='bg-gray-50 backdrop-blur-2xl absolute top-0 right-0 w-screen h-screen flex justify-center items-center z-50'>
-                    <div id='phone-menu-box' className='bg-white/30 border border-white w-[85%] h-[60%] rounded-2xl backdrop-blur-4xl'>
+                  <div className='bg-gray-50/30 backdrop-blur-2xl absolute top-0 right-0 w-screen h-screen flex justify-center items-center z-50'>
+                    <div id='phone-menu-box' className='bg-gray-50 border border-white w-[85%] h-[60%] rounded-2xl backdrop-blur-4xl'>
                       <div className=' w-full h-[15%] flex justify-between items-center px-5'>
                         <h1 className='text-2xl'>Menu</h1>
                         <X onClick={()=>setIsOpen(!isOpen)} size={30}/>
                       </div>
                       <div className=' w-full h-[70%]'>
                         <ul className='flex flex-col w-full h-full justify-start items-center gap-10 py-5'>
-                        <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-white border-b border-black text-[18px]' : 'text-[18px]'}>Home</a>
-                        <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-white border-b border-black text-[18px]' : 'text-[18px]'}>About</a>
-                        <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-white border-b border-black text-[18px]' : 'text-[18px]'}>Resume</a>
+                        <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Home</a>
+                        <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>About</a>
+                        <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Resume</a>
                         <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-white border-b border-black text-[18px]' : 'text-[18px]'}>Work</a>
-                        <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-white border-b border-black text-[18px]' : 'text-[18px]'}>Contact</a>
+                        <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Contact</a>
                       </ul>
                       </div>
                       <div className=' w-full h-[15%] flex justify-center items-center gap-10'>
