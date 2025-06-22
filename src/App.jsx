@@ -75,7 +75,7 @@ function App() {
     <>
 
       {/* Home page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='home' ref={homePageRef} className='bg-red-100 w-full h-screen'>
+      <section id='home' ref={homePageRef} className='bg-white w-full h-full'>
         {/* top content  */}
         <header className='bg-gray-400 w-full md:h-[100px] h-[90px] flex justify-center md:items-center'>  {/* //you can set backimg in here in feture */}
           <div className='bg-gray-50/30 md:backdrop-blur-2xl w-full md:mr-4 md:h-[100px] h-[90px] flex justify-center md:items-center absolute z-50'> 
@@ -159,8 +159,9 @@ function App() {
         </header>
 
         {/* bottom content */}
-        <main className='bg-yellow-400 w-full h-full'>
+        <main className=' w-full'>
           <SpotlightPreview/>
+          {/* <section className='bg-yellow-400 h-[20%] md:hidden lg:block'>love</section> */}
         </main>
       </section>
       {/* Home page  end ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}

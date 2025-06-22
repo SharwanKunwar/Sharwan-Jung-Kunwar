@@ -5,7 +5,7 @@ import { AnimatedTooltipPreview } from "./AnimatedTooltipPreview";
 export function CoverDemo() {
   return (
     <div>
-        <section className="flex justify-center items-end gap-5  w-full md:h-[100px] h-[30px]"></section>
+        <section className="flex justify-center items-end gap-5  w-full md:h-[20px] h-[30px]"></section>
       <h1
         className="text-[75%] text-white md:text-3xl lg:text-5xl font-semibold max-w-7xl mx-auto text-center mt-0 relative z-20 py-2 bg-clip-text bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
             <span className="text-5xl">Hi I'm</span><br /> <span><Cover>Sharwan jung kunwar</Cover></span>
