@@ -119,7 +119,7 @@ function App() {
                   <Menu onClick={(e)=>setIsOpen(!isOpen)} size={40}/>
                 </section>
                 {isOpen&&(
-                  <div className='bg-gray-400/80 backdrop-blur-2xl absolute top-0 right-0 w-screen h-screen flex justify-center items-center z-50'>
+                  <div className='bg-gray-50 backdrop-blur-2xl absolute top-0 right-0 w-screen h-screen flex justify-center items-center z-50'>
                     <div id='phone-menu-box' className='bg-white/30 border border-white w-[85%] h-[60%] rounded-2xl backdrop-blur-4xl'>
                       <div className=' w-full h-[15%] flex justify-between items-center px-5'>
                         <h1 className='text-2xl'>Menu</h1>
