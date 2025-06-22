@@ -130,7 +130,7 @@ function App() {
                         <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Home</a>
                         <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>About</a>
                         <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Resume</a>
-                        <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-white border-b border-black text-[18px]' : 'text-[18px]'}>Work</a>
+                        <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Work</a>
                         <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Contact</a>
                       </ul>
                       </div>
