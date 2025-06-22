@@ -1,5 +1,5 @@
 import React from "react";
-import { Cover } from "@/components/ui/cover";
+import { Cover } from "@/components/ui/Cover";
 import { AnimatedTooltipPreview } from "./AnimatedTooltipPreview";
 
 export function CoverDemo() {
