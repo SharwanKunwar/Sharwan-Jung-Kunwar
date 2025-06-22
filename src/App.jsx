@@ -83,7 +83,7 @@ function App() {
             <nav className='bg-white/30 md:w-[90%] w-full md:h-[70%] h-full md:rounded-full border border-white/30 backdrop-blur-2xl flex justify-between items-center gap-5'>
               {/* nav-left-box */}
               <div className='w-[20%] h-full flex justify-start items-center pl-3'>
-                <img className='w-[50px]' src="/aliens-line.svg" alt="logo" />
+                <a href="/"><img className='w-[50px]' src="/aliens-line.svg" alt="logo" /></a>
                 <h1 className='md:flex hidden ml-1'>Sharwan jung kunwar</h1>
               </div>
                 {/* nav-middle-box */}
@@ -120,18 +120,18 @@ function App() {
                 </section>
                 {isOpen&&(
                   <div className='bg-gray-50/30 backdrop-blur-2xl absolute top-0 right-0 w-screen h-screen flex justify-center items-center z-50'>
-                    <div id='phone-menu-box' className='bg-gray-50 border border-white w-[85%] h-[60%] rounded-2xl backdrop-blur-4xl'>
+                    <div id='phone-menu-box' className='bg-gray-50 border border-white w-[85%] h-[65%] rounded-2xl backdrop-blur-4xl shadow-sm'>
                       <div className=' w-full h-[15%] flex justify-between items-center px-5'>
                         <h1 className='text-2xl'>Menu</h1>
                         <X onClick={()=>setIsOpen(!isOpen)} size={30}/>
                       </div>
                       <div className=' w-full h-[70%]'>
-                        <ul className='flex flex-col w-full h-full justify-start items-center gap-10 py-5'>
-                        <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Home</a>
-                        <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>About</a>
-                        <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Resume</a>
-                        <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Work</a>
-                        <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-sky-400 border-b border-black text-[18px]' : 'text-[18px]'}>Contact</a>
+                        <ul className='flex flex-col w-full h-full justify-start items-center gap-7 py-5 '>
+                        <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-sky-400 border-b border-black text-[20px]' : 'text-[20px] text-neutral-600'}>Home</a>
+                        <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-sky-400 border-b border-black text-[20px]' : 'text-[20px] text-neutral-600'}>About</a>
+                        <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-sky-400 border-b border-black text-[20px]' : 'text-[20px] text-neutral-600'}>Resume</a>
+                        <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-sky-400 border-b border-black text-[20px]' : 'text-[20px] text-neutral-600'}>Work</a>
+                        <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-sky-400 border-b border-black text-[20px]' : 'text-[20px] text-neutral-600'}>Contact</a>
                       </ul>
                       </div>
                       <div className=' w-full h-[15%] flex justify-center items-center gap-10'>
