@@ -1,4 +1,4 @@
-import './app.css';
+import './App.css';
 import { List, Menu, X } from 'lucide-react';
 import { useRef, useState,useEffect } from 'react';
 import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
