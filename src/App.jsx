@@ -1,9 +1,9 @@
-
-import { Home, List, Menu, X } from 'lucide-react';
+import './app.css';
+import { List, Menu, X } from 'lucide-react';
 import { useRef, useState,useEffect } from 'react';
-import { FaFacebookF, FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
 import { SpotlightPreview } from './components/ui/SpotlightPreview';
-
+import {motion} from 'motion/react';
 
 
 function App() {
@@ -77,23 +77,28 @@ function App() {
       {/* Home page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <section id='home' ref={homePageRef} className='bg-white w-full h-full'>
         {/* top content  */}
-        <header className='bg-gray-400 w-full md:h-[100px] h-[90px] flex justify-center md:items-center'>  {/* //you can set backimg in here in feture */}
+        <header id='header' className=' w-full md:h-[100px] h-[90px] flex justify-center md:items-center'>  {/* //you can set backimg in here in feture */}
           <div className='bg-gray-50/30 md:backdrop-blur-2xl w-full md:mr-4 md:h-[100px] h-[90px] flex justify-center md:items-center absolute z-50'> 
             
             <nav className='bg-white/30 md:w-[90%] w-full md:h-[70%] h-full md:rounded-full border border-white/30 backdrop-blur-2xl flex justify-between items-center gap-5'>
               {/* nav-left-box */}
               <div className='w-[20%] h-full flex justify-start items-center pl-3'>
-                <a href="/"><img className='w-[50px]' src="/aliens-line.svg" alt="logo" /></a>
+                <a href="/"><motion.img 
+                initial={{ rotateZ: 1080, opacity: 0,scale:0}}
+                animate={{ rotateZ: 0, opacity: 1 ,scale:1}}
+                transition={{ duration: 0.3 }}
+                whileHover={{rotate:720, scale:1.1}}
+                className='w-[50px]' src="/aliens-line.svg" alt="logo" /></a>
                 <h1 className='md:flex hidden ml-1'>Sharwan jung kunwar</h1>
               </div>
                 {/* nav-middle-box */}
               <div className=' w-[60%] h-full flex justify-center items-center'>
                 <ul className='md:flex w-full h-full justify-end items-center gap-10 hidden'>
-                  <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-white border-b border-black' : ''}>Home</a>
-                  <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-white border-b border-black' : ''}>About</a>
-                  <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-white border-b border-black' : ''}>Resume</a>
-                  <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-white border-b border-black' : ''}>Work</a>
-                  <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-white border-b border-black' : ''}>Contact</a>
+                  <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-white border-b border-black ' : ''}>Home</a>
+                  <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-white border-b border-black ' : ''}>About</a>
+                  <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-white border-b border-black ' : ''}>Resume</a>
+                  <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-white border-b border-black ' : ''}>Work</a>
+                  <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-white border-b border-black ' : ''}>Contact</a>
                 </ul>
               </div>
 
@@ -101,18 +106,9 @@ function App() {
               <div className=' w-[20%] h-full flex justify-center items-center'>
                 {/* laptop */}
                 <section className=' w-full h-full md:flex justify-center items-center gap-5 hidden'>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-                    className="bg-neutral-500 text-white p-1 rounded-full hover:bg-blue-700 transition">
-                    <FaFacebookF />
-                  </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
-                    className="bg-neutral-500 text-white p-1 rounded-full hover:bg-gray-900 transition">
-                    <FaGithub />
-                  </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
-                    className="bg-neutral-500 text-white p-1 rounded-full hover:bg-blue-600 transition">
-                    <FaLinkedinIn />
-                  </a>
+                  <a href="#facebook"><FaFacebook size={22} color="#1877F2" /></a>
+                  <a href="#instagram"><FaInstagram size={22} color="#E1306C" /></a>
+                 <a href="https://github.com/SharwanKunwar"><FaGithub size={22} color="#333" /></a>
                 </section>
                 {/* phone */}
                 <section className='mr-5 md:hidden'>
@@ -135,18 +131,9 @@ function App() {
                       </ul>
                       </div>
                       <div className=' w-full h-[15%] flex justify-center items-center gap-10'>
-                          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-                            className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition">
-                            <FaFacebookF />
-                          </a>
-                          <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
-                            className="bg-gray-800 text-white p-2 rounded-full hover:bg-gray-900 transition">
-                            <FaGithub />
-                          </a>
-                          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
-                            className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition">
-                            <FaLinkedinIn />
-                          </a>
+                        <a href="#facebook"><FaFacebook size={25} color="#1877F2" /></a>
+                        <a href="#instagram"><FaInstagram size={25} color="#E1306C" /></a>
+                        <a href="https://github.com/SharwanKunwar"><FaGithub size={25} color="#333" /></a>
                       </div>
                     </div>
                   </div>
