@@ -31,13 +31,13 @@ export function CoverDemo() {
         animate={{x:0,opacity:1,filter:'blur(0px)'}}
         transition={{ duration: 0.5, delay:0.4 }}
         onTap={{scale:1.1}}
-        className="md:text-[14px] text-[16px] md:w-[200px] w-[300px] border border-white/30 md:h-[45px] h-[50px] bg-sky-400 text-white md:rounded-full rounded-sm">Let's connect</motion.button>
+        className="btns md:text-[15px] font-normal text-[16px] md:w-[250px] w-[350px] border border-white/30 md:h-[45px] h-[50px] text-white md:rounded-full rounded-full">Let's connect</motion.button>
         <motion.button 
         initial={{x:500,opacity:0,filter:'blur(10px)'}}
         animate={{x:0,opacity:1,filter:'blur(0px)'}}
         transition={{ duration: 0.5, delay:0.4 }}
         onTap={{scale:1.1}}
-        className="md:text-[14px] text-[16px] md:w-[200px] w-[300px] border border-white/30 md:h-[45px] h-[50px] bg-sky-400 text-white md:rounded-full rounded-sm">View my work</motion.button>
+        className="btns md:text-[15px] font-normal text-[15px] md:w-[250px] w-[350px] border border-white/30 md:h-[45px] h-[50px] text-white md:rounded-full rounded-full">View my work</motion.button>
       </section>
       <motion.section 
       initial={{opacity:0, y:100, scale:0.90,filter:'blur(10px)'}}
