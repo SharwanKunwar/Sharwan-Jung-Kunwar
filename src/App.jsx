@@ -178,7 +178,7 @@ function App() {
       {/* About page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <section id='about' ref={aboutPageRef} className='bg-black w-full flex flex-col relative md:mt-10 mt-20 rounded-t-2xl'>
 
-        <div className='w-full text-white pt-30 pb-10 flex flex-col justify-center items-center'>
+        <div className='w-full text-white pt-30 md:pb-20 pb-10 flex flex-col justify-center items-center'>
           <h2 className='text-2xl'>About</h2>
           <section className=' w-6/12'>
             <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
@@ -188,17 +188,17 @@ function App() {
           <p className='mt-2 text-center'>"Passionate about coding, learning, and creating impactful solutions."</p>
         </div>
         {/* content */}
-        <div className='bg-yellow-400 w-full md:p-5 md:flex'>
-          <div className='bg-purple-400 md:w-6/12  flex justify-center items-center p-2'>
+        <div className=' w-full md:p-5 md:flex'>
+          <div className=' md:w-6/12  flex justify-center items-center p-2'>
           <img className='w-[430px] rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
           </div>
-          <div className='bg-red-400 md:w-6/12  p-2 flex flex-col gap-2 md:pr-20'>
+          <div className='text-gray-50 md:w-6/12  p-2 flex flex-col gap-2 md:pr-20'>
           <span className='text-sky-400'>About Me</span>
           <h1 className='text-3xl'>Full-Stack Developer</h1>
           <p className='text-start pt-2'>Hi, I'm Sharwan Jung Kunwar, a full-stack developer skilled in React, Spring Boot, Tailwind CSS, Three.js, and PostgreSQL. I enjoy building seamless and responsive web applications from frontend to backend. With a strong foundation in Java and experience in tools like Android Studio, I bring both creativity and structure to my projects. I'm passionate about continuous learning, exploring emerging technologies, and sharing knowledge with others. Beyond coding, I enjoy playing guitar and gaming. Let’s connect and build something amazing!</p>
-          <p className='text-start pt-2'>"From interactive frontends to robust backends—crafting full-stack experiences that inspire." 🚀</p>
-          <div className="bg-white w-full h-[300px] rounded-xl shadow-md p-6 mt-5 flex flex-col justify-center">
-              <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-4 gap-y-3   md:gap-x-12 gap-x-1 md:overflow-hidden overflow-y-auto">
+          <p className='text-start pt-3 pb-3 text-neutral-300'>"From interactive frontends to robust backends—crafting full-stack experiences that inspire." 🚀</p>
+          <div className="bg-gray-50 text-black w-full md:h-[250px] h-[450px] rounded-xl shadow-md p-6 mt-5 flex flex-col justify-center">
+              <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-4 gap-y-3   md:gap-x-4 gap-x-1 md:overflow-hidden overflow-auto">
                 <div>
                   <p className="text-gray-500">Full Name</p>
                   <p className="font-semibold text-lg">Sharwan jung kunwar</p>
