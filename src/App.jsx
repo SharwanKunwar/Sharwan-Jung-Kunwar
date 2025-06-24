@@ -4,7 +4,9 @@ import { useRef, useState,useEffect } from 'react';
 import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
 import { SpotlightPreview } from './components/ui/SpotlightPreview';
 import {motion} from 'motion/react';
-import { BackgroundGradientAnimationDemo } from './components/ui/BackgroundGradientAnimationDemo';
+import { ShootingStars } from "@/components/ui/ShootingStars";
+import { StarsBackground } from "@/components/ui/StarsBackground";
+
 
 
 function App() {
@@ -76,7 +78,8 @@ function App() {
     <>
 
       {/* Home page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='home' ref={homePageRef} className='bg-white w-full h-full'>
+      <section id='home' ref={homePageRef} className='w-full h-full'>
+        
         {/* top content  */}
         <header id='header' className=' w-full md:h-[100px] h-[90px] flex justify-center md:items-center'>  {/* //you can set backimg in here in feture */}
           <div className='bg-gray-50/30 md:backdrop-blur-2xl w-full md:mr-4 md:h-[100px] h-[90px] flex justify-center md:items-center absolute z-50'> 
@@ -147,9 +150,11 @@ function App() {
         </header>
 
         {/* bottom content */}
-        <main className=' w-full'>
+        <main className=' w-full relative'>
           <SpotlightPreview/>
           {/* <section className='bg-yellow-400 h-[20%] md:hidden lg:block'>love</section> */}
+          <ShootingStars />
+        <StarsBackground />
         </main>
       </section>
       {/* Home page  end ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
@@ -170,11 +175,77 @@ function App() {
 
 
 
-
       {/* About page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='about' ref={aboutPageRef} className='bg-red-200 w-full h-screen flex justify-center items-center'>
-        <BackgroundGradientAnimationDemo/>
+      <section id='about' ref={aboutPageRef} className='bg-black w-full flex flex-col relative md:mt-10 mt-20 rounded-t-2xl'>
+
+        <div className='w-full text-white pt-30 pb-10 flex flex-col justify-center items-center'>
+          <h2 className='text-2xl'>About</h2>
+          <section className=' w-6/12'>
+            <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
+          </svg>
+          </section>
+          <p className='mt-2 text-center'>"Passionate about coding, learning, and creating impactful solutions."</p>
+        </div>
+        {/* content */}
+        <div className='bg-yellow-400 w-full md:p-5 md:flex'>
+          <div className='bg-purple-400 md:w-6/12  flex justify-center items-center p-2'>
+          <img className='w-[430px] rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
+          </div>
+          <div className='bg-red-400 md:w-6/12  p-2 flex flex-col gap-2 md:pr-20'>
+          <span className='text-sky-400'>About Me</span>
+          <h1 className='text-3xl'>Full-Stack Developer</h1>
+          <p className='text-start pt-2'>Hi, I'm Sharwan Jung Kunwar, a full-stack developer skilled in React, Spring Boot, Tailwind CSS, Three.js, and PostgreSQL. I enjoy building seamless and responsive web applications from frontend to backend. With a strong foundation in Java and experience in tools like Android Studio, I bring both creativity and structure to my projects. I'm passionate about continuous learning, exploring emerging technologies, and sharing knowledge with others. Beyond coding, I enjoy playing guitar and gaming. Let’s connect and build something amazing!</p>
+          <p className='text-start pt-2'>"From interactive frontends to robust backends—crafting full-stack experiences that inspire." 🚀</p>
+          <div className="bg-white w-full h-[300px] rounded-xl shadow-md p-6 mt-5 flex flex-col justify-center">
+              <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-4 gap-y-3   md:gap-x-12 gap-x-1 md:overflow-hidden overflow-y-auto">
+                <div>
+                  <p className="text-gray-500">Full Name</p>
+                  <p className="font-semibold text-lg">Sharwan jung kunwar</p>
+                </div>
+                <div>
+                  <p className="text-gray-500">Phone</p>
+                  <p className="font-semibold text-lg text-blue-800">+9779763290022</p>
+                </div>
+                <div>
+                  <p className="text-gray-500">Age</p>
+                  <p className="font-semibold text-lg">21 Years</p>
+                </div>
+                <div>
+                  <p className="text-gray-500">Email</p>
+                  <p className="font-semibold text-lg">sharwankunwar07@gmail.com</p>
+                </div>
+                <div>
+                  <p className="text-gray-500">Occupation</p>
+                  <p className="font-semibold text-lg">Software Developer</p>
+                </div>
+                <div>
+                  <p className="text-gray-500">Nationality</p>
+                  <p className="font-semibold text-lg">Nepali</p>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      
+        <ShootingStars />
+        <StarsBackground />
       </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       {/* Resume page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
@@ -192,7 +263,8 @@ function App() {
 
       {/* Contact page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <section id='contact' ref={contactPageRef} className='bg-red-400 w-full h-screen'>contact</section>
-
+                
+        
     </>
   );
 }
