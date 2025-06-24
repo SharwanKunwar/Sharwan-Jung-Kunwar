@@ -4,6 +4,7 @@ import { useRef, useState,useEffect } from 'react';
 import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa';
 import { SpotlightPreview } from './components/ui/SpotlightPreview';
 import {motion} from 'motion/react';
+import { BackgroundGradientAnimationDemo } from './components/ui/BackgroundGradientAnimationDemo';
 
 
 function App() {
@@ -171,7 +172,9 @@ function App() {
 
 
       {/* About page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='about' ref={aboutPageRef} className='bg-red-200 w-full h-screen'>about</section>
+      <section id='about' ref={aboutPageRef} className='bg-red-200 w-full h-screen flex justify-center items-center'>
+        <BackgroundGradientAnimationDemo/>
+      </section>
 
 
       {/* Resume page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
