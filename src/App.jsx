@@ -190,9 +190,9 @@ function App() {
         {/* content */}
         <div className=' w-full md:p-5 md:flex'>
           <div className=' md:w-6/12  flex justify-center items-center p-2'>
-          <img className='w-[430px] rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
+          <img className='w-[430px] z-20 rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
           </div>
-          <div className='text-gray-50 md:w-6/12  p-2 flex flex-col gap-2 md:pr-20'>
+          <div className='text-gray-50 md:w-6/12  md:p-2 p-6 flex flex-col gap-3 md:pr-20'>
           <span className='text-sky-400'>About Me</span>
           <h1 className='text-3xl'>Full-Stack Developer</h1>
           <p className='text-start pt-2'>Hi, I'm Sharwan Jung Kunwar, a full-stack developer skilled in React, Spring Boot, Tailwind CSS, Three.js, and PostgreSQL. I enjoy building seamless and responsive web applications from frontend to backend. With a strong foundation in Java and experience in tools like Android Studio, I bring both creativity and structure to my projects. I'm passionate about continuous learning, exploring emerging technologies, and sharing knowledge with others. Beyond coding, I enjoy playing guitar and gaming. Let’s connect and build something amazing!</p>
