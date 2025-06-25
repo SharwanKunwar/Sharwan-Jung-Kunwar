@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useInView from '../Hook/UseInView';
+import useInView from '../Hook/useInView';
 
 function SkillCard({ title, description, value }) {
   const [ref, isInView] = useInView({ threshold: 0.3 });

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import useInView from '../Hook/UseInView';
+import useInView from '../Hook/useInView';
 
 function AnimatedRange({ targetValue }) {
   const [ref, isInView] = useInView({ threshold: 0.5 });
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
+   if (!isInView) {
+        setValue(0); // Reset when out of view
+        return;
+    }
+
 
     let animationFrameId;
     let start;
