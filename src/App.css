@@ -20,3 +20,33 @@ html {
 .btns{
    background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
 }
+.card {
+  background: rgba(255, 255, 255, 0.1); /* translucent background */
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); /* main glass effect */
+  -webkit-backdrop-filter: blur(10px); /* for Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* this is for removing the circle default form the range tag */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+  cursor: default;
+  box-shadow: none;
+  border: none;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+}

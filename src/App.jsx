@@ -6,6 +6,7 @@ import { SpotlightPreview } from './components/ui/SpotlightPreview';
 import {motion} from 'motion/react';
 import { ShootingStars } from "@/components/ui/ShootingStars";
 import { StarsBackground } from "@/components/ui/StarsBackground";
+import SkillCard from './components/SkillsCard';
 
 
 
@@ -236,8 +237,17 @@ function App() {
               </div>    
             </div>
           </motion.div>
-
         </div>
+
+        <section className='text-white  p-5 md:pl-40 md:flex md:flex-wrap md:flex-row flex flex-col gap-5 py-20'>
+          <SkillCard title='Java' description='Experienced in Java programming with strong expertise in backend development using Spring Boot and building robust Android applications. Skilled in object-oriented design, RESTful APIs, and creating scalable, maintainable software solutions.' value={87}/>
+          <SkillCard title="JavaScript" description="Comfortable with JavaScript fundamentals, including variables, functions, arrays, and DOM manipulation. Actively learning ES6+, asynchronous programming, and integrating JavaScript with modern frontend frameworks like React." value={50}/>
+          <SkillCard title="React js" description="Comfortable building dynamic UIs using components, hooks, and props. Familiar with state management and integrating APIs. Continuously exploring React ecosystem including React Router and context." value={70} />
+          <SkillCard  title="Tailwindcss" description="Skilled in using utility-first classes to build responsive, modern layouts quickly. Confident with customizing themes and combining Tailwind with frameworks like React." value={75} />
+          <SkillCard title="Motion" description="Basic understanding of framer-motion for animations in React apps. Able to implement simple transitions, hover effects, and scroll animations, with room to deepen motion control." value={50}/>
+          <SkillCard title="Spring Boot" description="Currently learning Spring Boot for backend development. Exploring concepts like REST APIs, dependency injection, and project structuring in Java-based applications." value={0}/>
+          <SkillCard title="PostgreSQL" description="Familiar with database fundamentals and PostgreSQL syntax. Able to write basic queries, joins, and manage schemas. Still gaining hands-on experience with real-world use cases." value={30}/>          
+        </section>
         
           
       
