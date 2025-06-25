@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useInView from '../Hook/UseInView';
 
 function AnimatedRange({ targetValue }) {
   const [ref, isInView] = useInView({ threshold: 0.5 });
