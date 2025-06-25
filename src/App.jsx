@@ -190,9 +190,19 @@ function App() {
         {/* content */}
         <div className=' w-full md:p-5 md:flex'>
           <div className=' md:w-6/12  flex justify-center items-center p-2'>
-          <img className='w-[430px] z-20 rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
+          <motion.img 
+          initial={{ x: -200, opacity: 0, filter: 'blur(10px)' }}
+          whileInView={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.3 }}
+          className='w-[430px] z-20 rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
           </div>
-          <div className='text-gray-50 md:w-6/12  md:p-2 p-6 flex flex-col gap-3 md:pr-20'>
+          <motion.div 
+          initial={{ x: 200, opacity: 0, filter: 'blur(10px)' }}
+          whileInView={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.3 }}
+          className='text-gray-50 md:w-6/12  md:p-2 p-6 flex flex-col gap-3 md:pr-20'>
           <span className='text-sky-400'>About Me</span>
           <h1 className='text-3xl'>Full-Stack Developer</h1>
           <p className='text-start pt-2'>Hi, I'm Sharwan Jung Kunwar, a Full-stack developer from Nepal skilled in React, Spring Boot, Tailwind CSS, and PostgreSQL. Passionate about building seamless apps, exploring new tech, and sharing knowledge. Guitar player and gamer at heart. Let’s build something awesome!</p>
@@ -223,13 +233,13 @@ function App() {
                   <p className="text-gray-400">Nationality</p>
                   <p className="font-semibold text-lg">Nepali</p>
                 </div>
-              </div>
-              
+              </div>    
             </div>
+          </motion.div>
 
-          </div>
         </div>
-          <div className='bg-yellow-400 h-[200px]'>skdfjk</div>
+        
+          
       
         <ShootingStars />
         <StarsBackground />
