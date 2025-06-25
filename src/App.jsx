@@ -111,7 +111,7 @@ function App() {
               <div className=' w-[20%] h-full flex justify-center items-center'>
                 {/* laptop */}
                 <section className=' w-full h-full md:flex justify-center items-center gap-5 hidden'>
-                  <a href="#facebook"><FaFacebook size={22} color="#1877F2" /></a>
+                  <a target='_blank' href="https://www.facebook.com/sravana.kumvara/"><FaFacebook size={22} color="#1877F2" /></a>
                   <a href="#instagram"><FaInstagram size={22} color="#E1306C" /></a>
                  <a href="https://github.com/SharwanKunwar"><FaGithub size={22} color="#333" /></a>
                 </section>
@@ -163,31 +163,23 @@ function App() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
       {/* About page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <section id='about' ref={aboutPageRef} className='bg-black w-full flex flex-col relative md:mt-10 mt-20 rounded-t-md'>
 
-        <div className='w-full text-white pt-30 md:pb-20 pb-10 flex flex-col justify-center items-center'>
+        <motion.div 
+        initial={{scale:0.80, opacity:0, filter:'blur(10px)'}}
+          whileInView={{scale:1, x: 0, opacity: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.3 }}
+        className='w-full text-white pt-30 md:pb-20 pb-10 flex flex-col justify-center items-center'>
           <h2 className='text-2xl'>About</h2>
           <section className=' w-6/12'>
             <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
           </svg>
           </section>
-          <p className='mt-2 text-center'>"Passionate about coding, learning, and creating impactful solutions."</p>
-        </div>
+          <p className='mt-2 text-center p-1'>"Passionate about coding, learning, and creating impactful solutions."</p>
+        </motion.div>
         {/* content */}
         <div className=' w-full md:p-5 md:flex'>
           <div className=' md:w-6/12  flex justify-center items-center p-2'>
@@ -208,8 +200,13 @@ function App() {
           <h1 className='text-3xl'>Full-Stack Developer</h1>
           <p className='text-start pt-2'>Hi, I'm Sharwan Jung Kunwar, a Full-stack developer from Nepal skilled in React, Spring Boot, Tailwind CSS, and PostgreSQL. Passionate about building seamless apps, exploring new tech, and sharing knowledge. Guitar player and gamer at heart. Let’s build something awesome!</p>
           <p className='text-start pt-3 pb-3 text-neutral-300'>"From interactive frontends to robust backends—crafting full-stack experiences that inspire." 🚀</p>
-          <div className="bg-gray-50/30 text-gray-50 w-full md:h-[250px] h-[450px] rounded-xl border border-white/90 backdrop-blur-2xl p-6 mt-5 flex flex-col justify-center">
-              <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-4 gap-y-3   md:gap-x-4 gap-x-1 md:overflow-hidden overflow-auto">
+          <motion.div 
+          initial={{x:-50,scale:1, opacity:0, filter:'blur(5px)'}}
+          whileInView={{scale:1, x: 0, opacity: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.3, delay:0.3, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="bg-gray-50/30 text-gray-50 w-full md:h-[250px] h-[450px] rounded-xl border border-white/90 backdrop-blur-2xl p-6 mt-5 flex flex-col justify-center">
+              <div className=" grid md:grid-cols-2 grid-cols-1 md:gap-y-4 gap-y-3   md:gap-x-4 gap-x-1 md:overflow-hidden overflow-auto">
                 <div>
                   <p className="text-gray-400">Full Name</p>
                   <p className="font-semibold text-lg">Sharwan jung kunwar</p>
@@ -235,18 +232,51 @@ function App() {
                   <p className="font-semibold text-lg">Nepali</p>
                 </div>
               </div>    
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
         <section className='text-white  p-5 md:pl-40 md:flex md:flex-wrap md:flex-row flex flex-col gap-5 py-20'>
-          <SkillCard title='Java' description='Experienced in Java programming with strong expertise in backend development using Spring Boot and building robust Android applications. Skilled in object-oriented design, RESTful APIs, and creating scalable, maintainable software solutions.' value={87}/>
-          <SkillCard title="JavaScript" description="Comfortable with JavaScript fundamentals, including variables, functions, arrays, and DOM manipulation. Actively learning ES6+, asynchronous programming, and integrating JavaScript with modern frontend frameworks like React." value={50}/>
-          <SkillCard title="React js" description="Comfortable building dynamic UIs using components, hooks, and props. Familiar with state management and integrating APIs. Continuously exploring React ecosystem including React Router and context." value={70} />
-          <SkillCard  title="Tailwindcss" description="Skilled in using utility-first classes to build responsive, modern layouts quickly. Confident with customizing themes and combining Tailwind with frameworks like React." value={75} />
-          <SkillCard title="Motion" description="Basic understanding of framer-motion for animations in React apps. Able to implement simple transitions, hover effects, and scroll animations, with room to deepen motion control." value={50}/>
-          <SkillCard title="Spring Boot" description="Currently learning Spring Boot for backend development. Exploring concepts like REST APIs, dependency injection, and project structuring in Java-based applications." value={0}/>
-          <SkillCard title="PostgreSQL" description="Familiar with database fundamentals and PostgreSQL syntax. Able to write basic queries, joins, and manage schemas. Still gaining hands-on experience with real-world use cases." value={30}/>          
+          <SkillCard 
+            title='C Language' 
+            description='Strong foundation in C programming, including pointers, memory, data structures, and procedural logic. Built various small console apps.' 
+            value={95} 
+          />
+          <SkillCard 
+            title='Java' 
+            description='Skilled in Java with Spring Boot and Android development. Strong in OOP, RESTful APIs, and building scalable backend solutions.' 
+            value={87} 
+          />
+          <SkillCard 
+            title="JavaScript" 
+            description="Comfortable with JS basics, DOM, and ES6+. Exploring async programming and using JavaScript with React in frontend development." 
+            value={50} 
+          />
+          <SkillCard 
+            title="React js" 
+            description="Builds UIs using components, hooks, and props. Familiar with APIs, routing, and context. Exploring more of the React ecosystem." 
+            value={70} 
+          />
+          <SkillCard 
+            title="Tailwindcss" 
+            description="Uses utility classes to create modern, responsive layouts. Confident in custom themes and integration with frameworks like React." 
+            value={75} 
+          />
+          <SkillCard 
+            title="Motion" 
+            description="Understands basics of framer-motion for animations in React. Can create transitions and hover effects, still learning advanced control." 
+            value={50} 
+          />
+          <SkillCard 
+            title="Spring Boot" 
+            description="Learning Spring Boot for backend. Exploring REST APIs, dependency injection, and app structure in Java projects." 
+            value={0} 
+          />
+          <SkillCard 
+            title="PostgreSQL" 
+            description="Knows database basics, PostgreSQL syntax, and queries. Can handle joins and schema design. Still building hands-on experience." 
+            value={30} 
+          />
         </section>
         
           

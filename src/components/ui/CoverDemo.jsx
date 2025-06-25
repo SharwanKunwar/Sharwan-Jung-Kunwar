@@ -25,20 +25,26 @@ export function CoverDemo() {
       animate={{y:0, opacity: 1, scale:1, filter:"blur(0px)"}}
       transition={{ duration: 0.5, delay:0.3 }}
       className="text-[15px] mt-7 px-1 text-white">Full-stack dev | Java & React | Passionate coder | Guitarist | Dreamer chasing groth & goals.</motion.p>
-      <section className="md:flex md:flex-row justify-center items-center gap-5 flex flex-col  w-full md:h-[150px] h-[300px]">
+      <section className="md:flex md:flex-row justify-center items-center  flex flex-col  w-full md:h-[150px] h-[300px]">
+        <a  href="https://www.facebook.com/sravana.kumvara/">
         <motion.button 
         initial={{x:-500,opacity:0,filter:'blur(10px)'}}
         animate={{x:0,opacity:1,filter:'blur(0px)'}}
         transition={{ duration: 0.5, delay:0.4 }}
         onTap={{scale:1.1}}
-        className="btns md:text-[15px] font-normal text-[16px] md:w-[250px] w-[350px] border border-white/30 md:h-[45px] h-[50px] text-white md:rounded-full rounded-full">Let's connect</motion.button>
+        className="btn-grad md:text-[15px] font-normal text-[16px] md:w-[250px] w-[350px] border border-white/30 md:h-[45px] h-[50px] text-white md:rounded-full rounded-full">Let's connect</motion.button>
+        </a>
+        
+        <a  href="https://github.com/SharwanKunwar">
         <motion.button 
         initial={{x:500,opacity:0,filter:'blur(10px)'}}
         animate={{x:0,opacity:1,filter:'blur(0px)'}}
         transition={{ duration: 0.5, delay:0.4 }}
         onTap={{scale:1.1}}
-        className="btns md:text-[15px] font-normal text-[15px] md:w-[250px] w-[350px] border border-white/30 md:h-[45px] h-[50px] text-white md:rounded-full rounded-full">View my work</motion.button>
+        className="btn-grad md:text-[15px] font-normal text-[15px] md:w-[250px] w-[350px] border border-white/30 md:h-[45px] h-[50px] text-white md:rounded-full rounded-full">View my work</motion.button>
+        </a>
       </section>
+
       <motion.section 
       initial={{opacity:0, y:100, scale:0.90,filter:'blur(10px)'}}
       animate={{opacity:1, y:0, scale:1,filter:'blur(0px)'}}

@@ -5,6 +5,7 @@ html {
 }
 
 
+
 #phone-menu-box {
   background: rgba(255, 255, 255, 0,1); /* More opaque */
   backdrop-filter: blur(35px);
@@ -19,7 +20,35 @@ html {
 }
 .btns{
    background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+   &:hover{
+   background-image: linear-gradient(to right,#7ac5d8 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #eea2a2  100%); 
+   }
 }
+
+/* //connect and view my work design css */
+.btn-grad {background-image: linear-gradient(to right, #eea2a2 1%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);}
+.btn-grad {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 1px #eee;
+            border-radius: 100px;
+            display: block;
+          }
+
+.btn-grad:hover {
+            box-shadow: 0 0 10px #eee;
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+
+
+
 .card {
   background: rgba(255, 255, 255, 0.1); /* translucent background */
   border-radius: 10px;
