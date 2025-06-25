@@ -98,11 +98,11 @@ function App() {
                 {/* nav-middle-box */}
               <div className=' w-[60%] h-full flex justify-center items-center'>
                 <ul className='md:flex w-full h-full justify-end items-center gap-10 hidden'>
-                  <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-white border-b border-black ' : ''}>Home</a>
-                  <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-white border-b border-black ' : ''}>About</a>
-                  <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-white border-b border-black ' : ''}>Resume</a>
-                  <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-white border-b border-black ' : ''}>Work</a>
-                  <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-white border-b border-black ' : ''}>Contact</a>
+                  <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-sky-400 border-b border-black ' : ''}>Home</a>
+                  <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-sky-400 border-b border-black ' : ''}>About</a>
+                  <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-sky-400 border-b border-black ' : ''}>Resume</a>
+                  <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-sky-400 border-b border-black ' : ''}>Work</a>
+                  <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-sky-400 border-b border-black ' : ''}>Contact</a>
                 </ul>
               </div>
 
@@ -195,32 +195,32 @@ function App() {
           <div className='text-gray-50 md:w-6/12  md:p-2 p-6 flex flex-col gap-3 md:pr-20'>
           <span className='text-sky-400'>About Me</span>
           <h1 className='text-3xl'>Full-Stack Developer</h1>
-          <p className='text-start pt-2'>Hi, I'm Sharwan Jung Kunwar, a full-stack developer skilled in React, Spring Boot, Tailwind CSS, Three.js, and PostgreSQL. I enjoy building seamless and responsive web applications from frontend to backend. With a strong foundation in Java and experience in tools like Android Studio, I bring both creativity and structure to my projects. I'm passionate about continuous learning, exploring emerging technologies, and sharing knowledge with others. Beyond coding, I enjoy playing guitar and gaming. Let’s connect and build something amazing!</p>
+          <p className='text-start pt-2'>Hi, I'm Sharwan Jung Kunwar, a Full-stack developer from Nepal skilled in React, Spring Boot, Tailwind CSS, and PostgreSQL. Passionate about building seamless apps, exploring new tech, and sharing knowledge. Guitar player and gamer at heart. Let’s build something awesome!</p>
           <p className='text-start pt-3 pb-3 text-neutral-300'>"From interactive frontends to robust backends—crafting full-stack experiences that inspire." 🚀</p>
-          <div className="bg-gray-50 text-black w-full md:h-[250px] h-[450px] rounded-xl shadow-md p-6 mt-5 flex flex-col justify-center">
+          <div className="bg-gray-50/30 text-gray-50 w-full md:h-[250px] h-[450px] rounded-xl border border-white/90 backdrop-blur-2xl p-6 mt-5 flex flex-col justify-center">
               <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-4 gap-y-3   md:gap-x-4 gap-x-1 md:overflow-hidden overflow-auto">
                 <div>
-                  <p className="text-gray-500">Full Name</p>
+                  <p className="text-gray-400">Full Name</p>
                   <p className="font-semibold text-lg">Sharwan jung kunwar</p>
                 </div>
                 <div>
-                  <p className="text-gray-500">Phone</p>
+                  <p className="text-gray-400">Phone</p>
                   <p className="font-semibold text-lg text-blue-800">+9779763290022</p>
                 </div>
                 <div>
-                  <p className="text-gray-500">Age</p>
+                  <p className="text-gray-400">Age</p>
                   <p className="font-semibold text-lg">21 Years</p>
                 </div>
                 <div>
-                  <p className="text-gray-500">Email</p>
+                  <p className="text-gray-400">Email</p>
                   <p className="font-semibold text-lg">sharwankunwar07@gmail.com</p>
                 </div>
                 <div>
-                  <p className="text-gray-500">Occupation</p>
+                  <p className="text-gray-400">Occupation</p>
                   <p className="font-semibold text-lg">Software Developer</p>
                 </div>
                 <div>
-                  <p className="text-gray-500">Nationality</p>
+                  <p className="text-gray-400">Nationality</p>
                   <p className="font-semibold text-lg">Nepali</p>
                 </div>
               </div>
@@ -229,6 +229,7 @@ function App() {
 
           </div>
         </div>
+          <div className='bg-yellow-400 h-[200px]'>skdfjk</div>
       
         <ShootingStars />
         <StarsBackground />
