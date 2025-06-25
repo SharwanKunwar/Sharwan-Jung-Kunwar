@@ -177,7 +177,7 @@ function App() {
 
 
       {/* About page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='about' ref={aboutPageRef} className='bg-black w-full flex flex-col relative md:mt-10 mt-20 rounded-t-2xl'>
+      <section id='about' ref={aboutPageRef} className='bg-black w-full flex flex-col relative md:mt-10 mt-20 rounded-t-md'>
 
         <div className='w-full text-white pt-30 md:pb-20 pb-10 flex flex-col justify-center items-center'>
           <h2 className='text-2xl'>About</h2>
