@@ -303,18 +303,15 @@ function App() {
             <h1 className='text-3xl md:pl-30 pl-5 mb-2'>Work Experience</h1>
             <p className='md:pl-30 pl-5 text-neutral-400'>A summary of my professional roles, responsibilities, and contributions, showcasing my growth, skills, and expertise in the field.</p>
 
-            <div className='w-full md:h-[800px] h-[1500px] mt-20 pl-20 flex flex-col md:gap-15 gap-10'>
+            <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
               {/* one */}
-              <div className='bg-white w-[2px]  absolute md:left-6/17 rounded-full left-10 '> 
-              </div>
-              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400/30 backdrop-blur-2xl absolute md:top-48 top-60 md:left-132 left-8 z-10'></div>
-              <div className=' w-full md:h-[300px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5 '>
-                <div className=' md:w-[20%] md:h-[90%] md:ml-30'>
-                  <h1 className='md:text-[20px] text-2xl  mb-1 '>Frontend Development</h1>
-                  <p className='text-sky-400 md:text-[15px]'>July, 2025 - Current</p>
+              <div className=' w-full md:h-[300px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5'>
+                <div className=' md:w-[23.6%] md:h-[20%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
+                  <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Frontend Development</h1>
+                  <p className='text-sky-400 md:text-[15px] pl-5'>July, 2025 - Current</p>
                 </div>
-                <div className=' md:w-6/10 md:h-[90%] md:mr-10'>
-                  <h1 className='md:text-[20px] mb-2'> JavaScript / ReactJS </h1>
+                <div className=' md:w-6/10 md:h-[90%] md:mr-10 pl-10'>
+                  <h1 className='md:text-[20px] mb-2 '> JavaScript / ReactJS </h1>
                   <p className='text-neutral-400 md:pr-15'>I began my frontend journey with HTML, CSS, and JavaScript, building simple static pages. Later, I explored React.js, which transformed the way I build modern web interfaces.</p>
                   <p className='md:text-[14px] mt-3'>I’ve worked on several frontend projects where I focused on:</p>
                   <ul className='md:text-[13px] mt-2 text-neutral-400'>
@@ -328,15 +325,13 @@ function App() {
               </div>
 
               {/* two */}
-              <div className='bg-white w-[2px] h-full absolute md:left-6/17 rounded-full left-10'> 
-              </div>
-              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400/30 backdrop-blur-2xl absolute md:top-140 top-220 md:left-132 left-8 z-10'></div>
-              <div className=' w-full h-[180px] p-0 md:flex md:flex-row justify-between flex flex-col gap-5'>
-                <div className=' md:w-[20%] md:h-[90%] md:ml-30'>
-                  <h1 className='md:text-[20px] text-2xl  mb-1'>Exploring Programming</h1>
-                  <p className='text-sky-400'>Before 2025</p>
+              <div className='bg-white w-[2px] h-full absolute md:left-6/17  rounded-full left-5'> </div>
+              <div className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
+                <div className=' md:w-[23.7%] md:h-[30%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
+                  <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Exploring Programming</h1>
+                  <p className='text-sky-400 pl-5'>Before 2025</p>
                 </div>
-                <div className=' md:w-6/10 md:h-[90%] md:mr-10'>
+                <div className=' md:w-6/10 md:h-[90%] md:mr-10 pl-10'>
                   <h1 className='md:text-[20px] mb-2'> C / Java and Other programming Practices</h1>
                   <p className='text-neutral-400 md:pr-15'>I focused mainly on programming fundamentals using C and Java. I practiced problem-solving, logic building, and core concepts like data structures and algorithms, without diving into frontend or backend frameworks.</p>
                   <p className='mt-3 text-gray-50'>I've worked on several projects:</p>
