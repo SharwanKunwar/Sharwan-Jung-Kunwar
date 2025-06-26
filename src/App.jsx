@@ -318,7 +318,7 @@ function App() {
             <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
               {/* one */}
               <motion.div 
-              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              initial={{y:100,opacity:0,filter:'blur(0px)'}}
               whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
               transition={{duration:0.5,delay:0.4}}
               className=' w-full md:h-[300px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5'>
@@ -343,7 +343,7 @@ function App() {
               {/* two */}
               <div className='bg-white w-[2px] h-[75%] absolute md:left-6/17  rounded-full left-5'> </div>
               <motion.div 
-              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              initial={{y:100,opacity:0,filter:'blur(0px)'}}
               whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
               transition={{duration:0.5,delay:0.3}}
               className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
@@ -385,7 +385,7 @@ function App() {
 
         <div className='relative text-white py-0'>
             <motion.h1 
-            initial={{y:100,opacity:0,filter:'blur(10px)'}}
+            initial={{y:100,opacity:0,filter:'blur(0px)'}}
               whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
               transition={{duration:0.3}}
             className='text-3xl md:pl-30 pl-5 mb-2'>Education</motion.h1>
@@ -398,7 +398,7 @@ function App() {
             <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
               {/* one */}
               <motion.div 
-              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              initial={{y:100,opacity:0,filter:'blur(0px)'}}
               whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
               transition={{duration:0.5,delay:0.4}}
               className=' w-full md:h-[150px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5 '>
@@ -415,7 +415,7 @@ function App() {
               {/* two */}
               <div className='bg-white w-[2px] md:h-[50%] h-[35%] absolute md:left-6/17  rounded-full left-5'> </div>
               <motion.div 
-              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              initial={{y:100,opacity:0,filter:'blur(0px)'}}
               whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
               transition={{duration:0.5,delay:0.4}}
               className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
