@@ -289,7 +289,11 @@ function App() {
       <section id='resume' ref={resumePageRef} className=' w-full flex flex-col gap-10 relative py-20'>
 
         {/* title */}
-        <div className=' w-full flex justify-center flex-col items-center text-white text-center'>
+        <motion.div 
+        initial={{y:100,opacity:0,scale:0.98,filter:'blur(10px)'}}
+        whileInView={{y:0,opacity:1,scale:1,filter:'blur(0px)'}}
+        transition={{duration:0.5}}
+        className=' w-full flex justify-center flex-col items-center text-white text-center'>
           <h1 className='text-4xl'>Resume</h1>
           <section className=' md:w-6/40 w-6/12 '>
             <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
@@ -297,15 +301,27 @@ function App() {
           </svg>
           </section>
           <p className='md:w-6/11 pt-5 p-3 text-neutral-400'>Experienced in backend development with Java, C, Android, and Spring Boot. Pursuing a Bachelor’s in Computer Applications, constantly exploring full-stack development and new technologies. 🚀</p>
-        </div>
+        </motion.div>
         {/* work experience */}
         <div className='relative text-white py-15'>
-            <h1 className='text-3xl md:pl-30 pl-5 mb-2'>Work Experience</h1>
-            <p className='md:pl-30 pl-5 text-neutral-400'>A summary of my professional roles, responsibilities, and contributions, showcasing my growth, skills, and expertise in the field.</p>
+            <motion.h1 
+            initial={{y:100,opacity:0,scale:1,filter:'blur(10px)'}}
+        whileInView={{y:0,opacity:1,scale:1,filter:'blur(0px)'}}
+        transition={{duration:0.5}}
+            className='text-3xl md:pl-30 pl-5 mb-2'>Work Experience</motion.h1>
+            <motion.p 
+            initial={{y:100,opacity:0,scale:1,filter:'blur(10px)'}}
+        whileInView={{y:0,opacity:1,scale:1,filter:'blur(0px)'}}
+        transition={{duration:0.5}}
+            className='md:pl-30 pl-5 text-neutral-400'>A summary of my professional roles, responsibilities, and contributions, showcasing my growth, skills, and expertise in the field.</motion.p>
 
             <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
               {/* one */}
-              <div className=' w-full md:h-[300px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5'>
+              <motion.div 
+              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
+              transition={{duration:0.5,delay:0.4}}
+              className=' w-full md:h-[300px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5'>
                 <div className=' md:w-[23.6%] md:h-[20%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
                   <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Frontend Development</h1>
                   <p className='text-sky-400 md:text-[15px] pl-5'>July, 2025 - Current</p>
@@ -322,11 +338,15 @@ function App() {
                     <li className='pt-3'><span className='text-red-500'>#</span> Implementing scroll-based navigation where the active nav item highlights based on the visible section</li>
                   </ul>
                 </div>
-              </div>
+              </motion.div>
 
               {/* two */}
               <div className='bg-white w-[2px] h-[75%] absolute md:left-6/17  rounded-full left-5'> </div>
-              <div className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
+              <motion.div 
+              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
+              transition={{duration:0.5,delay:0.3}}
+              className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
                 <div className=' md:w-[23.7%] md:h-[30%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
                   <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Exploring Programming</h1>
                   <p className='text-sky-400 pl-5'>Before 2025</p>
@@ -348,7 +368,7 @@ function App() {
                   </ul>
 
                 </div>
-              </div>
+              </motion.div>
               
             </div>
 
@@ -364,12 +384,24 @@ function App() {
 
 
         <div className='relative text-white py-0'>
-            <h1 className='text-3xl md:pl-30 pl-5 mb-2'>Education</h1>
-            <p className='md:pl-30 pl-5 text-neutral-400'>An overview of my academic journey, highlighting my qualifications, coursework, and skills gained to support my professional growth.</p>
+            <motion.h1 
+            initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
+              transition={{duration:0.3}}
+            className='text-3xl md:pl-30 pl-5 mb-2'>Education</motion.h1>
+            <motion.p 
+            initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
+              transition={{duration:0.3}}
+            className='md:pl-30 pl-5 text-neutral-400'>An overview of my academic journey, highlighting my qualifications, coursework, and skills gained to support my professional growth.</motion.p>
 
             <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
               {/* one */}
-              <div className=' w-full md:h-[150px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5 '>
+              <motion.div 
+              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
+              transition={{duration:0.5,delay:0.4}}
+              className=' w-full md:h-[150px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5 '>
                 <div className=' md:w-[23.6%] md:h-[80px] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400 '>
                   <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Durga Laxmi Model School, Kailali</h1>
                   <p className='text-sky-400 md:text-[15px] pl-5'>2076-2078</p>
@@ -378,11 +410,15 @@ function App() {
                   <h1 className='md:text-[20px] mb-2 '>High School Diploma, Passed +2</h1>
                   <p className='text-neutral-400 md:pr-15'>Graduated with a strong academic record. Engaged in extracurricular activities and clubs.</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* two */}
               <div className='bg-white w-[2px] md:h-[50%] h-[35%] absolute md:left-6/17  rounded-full left-5'> </div>
-              <div className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
+              <motion.div 
+              initial={{y:100,opacity:0,filter:'blur(10px)'}}
+              whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
+              transition={{duration:0.5,delay:0.4}}
+              className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
                 <div className=' md:w-[23.7%] md:h-[30%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
                   <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Ratna RajyaLaxmi campus (TU)</h1>
                   <p className='text-sky-400 pl-5'>2081-2084</p>
@@ -392,7 +428,7 @@ function App() {
                   <p className='text-neutral-400 md:pr-15'>Currently pursuing a Bachelor's degree, I focus on academic growth and skill development through hands-on projects, coding club events, and tech meetups, while also dedicating time to online courses and personal projects.</p>
                   
                 </div>
-              </div>
+              </motion.div>
               
             </div>
 
