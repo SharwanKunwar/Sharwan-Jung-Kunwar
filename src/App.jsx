@@ -459,12 +459,12 @@ function App() {
             <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" strokeWidth="1"></path>
           </svg>
           </section>
-            <p className='pt-5 pb-5 text-neutral-400'>I have built diverse projects, including an Online Casino Platform with secure transactions, a Library Management System and more. 🚀</p>
+            <p className='pt-5 md:pb-0 pb-5 text-neutral-400'>I have built diverse projects, including an Online Casino Platform with secure transactions, a Library Management System and more. 🚀</p>
           </div>
 
             <div className='w-full md:w-6/12'>
                  {/* Navigation */}
-              <div className='md:w-[100%] w-[100%] h-[150px] flex gap-3 justify-around items-center flex-wrap md:py-0 py-5 relative '>
+              <div className='md:w-[100%] w-[100%] h-[100px] flex gap-3 justify-around items-center flex-wrap md:py-0 py-0 relative '>
                 <Link to="/allWork">
                   <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>All Work</button>
                 </Link>
