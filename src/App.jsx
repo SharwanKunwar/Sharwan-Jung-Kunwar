@@ -185,14 +185,14 @@ function App() {
           <motion.img 
           initial={{ x: -200, opacity: 0, filter: 'blur(10px)' }}
           whileInView={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration:1, ease: 'easeOut' }}
+          transition={{ duration:0.3, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.3 }}
           className='w-[430px] z-20 rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
           </div>
           <motion.div 
           initial={{ x: 200, opacity: 0, filter: 'blur(10px)' }}
           whileInView={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 1, ease: 'easeOut' }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.3 }}
           className='text-gray-50 md:w-6/12  md:p-2 p-6 flex flex-col gap-3 md:pr-20'>
           <span className='text-sky-400'>About Me</span>
@@ -325,7 +325,7 @@ function App() {
               </div>
 
               {/* two */}
-              <div className='bg-white w-[2px] h-full absolute md:left-6/17  rounded-full left-5'> </div>
+              <div className='bg-white w-[2px] h-[75%] absolute md:left-6/17  rounded-full left-5'> </div>
               <div className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
                 <div className=' md:w-[23.7%] md:h-[30%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
                   <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Exploring Programming</h1>
@@ -360,6 +360,46 @@ function App() {
 
 
         {/* my education */}
+
+
+
+        <div className='relative text-white py-0'>
+            <h1 className='text-3xl md:pl-30 pl-5 mb-2'>Education</h1>
+            <p className='md:pl-30 pl-5 text-neutral-400'>An overview of my academic journey, highlighting my qualifications, coursework, and skills gained to support my professional growth.</p>
+
+            <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
+              {/* one */}
+              <div className=' w-full md:h-[150px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5 '>
+                <div className=' md:w-[23.6%] md:h-[80px] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400 '>
+                  <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Durga Laxmi Model School, Kailali</h1>
+                  <p className='text-sky-400 md:text-[15px] pl-5'>2076-2078</p>
+                </div>
+                <div className=' md:w-6/10 md:h-[90%] md:mr-10 pl-10'>
+                  <h1 className='md:text-[20px] mb-2 '>High School Diploma, Passed +2</h1>
+                  <p className='text-neutral-400 md:pr-15'>Graduated with a strong academic record. Engaged in extracurricular activities and clubs.</p>
+                </div>
+              </div>
+
+              {/* two */}
+              <div className='bg-white w-[2px] md:h-[50%] h-[35%] absolute md:left-6/17  rounded-full left-5'> </div>
+              <div className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
+                <div className=' md:w-[23.7%] md:h-[30%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
+                  <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Ratna RajyaLaxmi campus (TU)</h1>
+                  <p className='text-sky-400 pl-5'>2081-2084</p>
+                </div>
+                <div className=' md:w-6/10 md:h-[90%] md:mr-10 pl-10'>
+                  <h1 className='md:text-[20px] mb-2'>Bachelor's Student BCA</h1>
+                  <p className='text-neutral-400 md:pr-15'>Currently pursuing a Bachelor's degree, I focus on academic growth and skill development through hands-on projects, coding club events, and tech meetups, while also dedicating time to online courses and personal projects.</p>
+                  
+                </div>
+              </div>
+              
+            </div>
+
+            
+
+
+        </div>
 
 
         <ShootingStars />
