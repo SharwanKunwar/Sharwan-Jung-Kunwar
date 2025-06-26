@@ -14,6 +14,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
+
   //page refrences
   const homePageRef = useRef(null);
   const aboutPageRef = useRef(null);
@@ -99,8 +100,8 @@ function App() {
                 {/* nav-middle-box */}
               <div className=' w-[60%] h-full flex justify-center items-center'>
                 <ul className='md:flex w-full h-full justify-end items-center gap-10 hidden'>
-                  <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-sky-400 border-b border-black ' : ''}>Home</a>
-                  <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-sky-400 border-b border-black ' : ''}>About</a>
+                  <a id='home' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#home" className={activeSection === 'home' ? 'text-blue-400 border-b border-black' : ''}>Home</a>
+                  <a id='about' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#about" className={activeSection === 'about' ? 'text-blue-400 border-b border-black' : ''}>About</a>
                   <a id='resume' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#resume" className={activeSection === 'resume' ? 'text-sky-400 border-b border-black ' : ''}>Resume</a>
                   <a id='work' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#Work" className={activeSection === 'work' ? 'text-sky-400 border-b border-black ' : ''}>Work</a>
                   <a id='contact' onClick={(e) => { e.preventDefault(); scrollToPages(e); }} href="#contact" className={activeSection === 'contact' ? 'text-sky-400 border-b border-black ' : ''}>Contact</a>
@@ -161,19 +162,17 @@ function App() {
       {/* Home page  end ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
 
 
-
-
       {/* About page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='about' ref={aboutPageRef} className='bg-black w-full flex flex-col relative md:mt-10 mt-20 rounded-t-md'>
+      <section id='about' ref={aboutPageRef} className='bg-black w-full  flex flex-col relative md:mt-10 mt-20 rounded-t-md'>
 
         <motion.div 
         initial={{scale:0.80, opacity:0, filter:'blur(10px)'}}
-          whileInView={{scale:1, x: 0, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          viewport={{ once: true, amount: 0.3 }}
-        className='w-full text-white pt-30 md:pb-20 pb-10 flex flex-col justify-center items-center'>
+        whileInView={{scale:1, x: 0, opacity: 1, filter: 'blur(0px)' }}
+        transition={{ duration: 1, ease: 'easeOut' }}
+        viewport={{ once: true, amount: 0.3 }}
+        className='w-full  text-white pt-30 md:pb-20 pb-10 flex flex-col justify-center items-center'>
           <h2 className='text-2xl'>About</h2>
-          <section className=' w-6/12'>
+          <section className=' md:w-6/40 w-6/12 '>
             <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
           </svg>
@@ -181,19 +180,19 @@ function App() {
           <p className='mt-2 text-center p-1'>"Passionate about coding, learning, and creating impactful solutions."</p>
         </motion.div>
         {/* content */}
-        <div className=' w-full md:p-5 md:flex'>
+        <div id='about' ref={aboutPageRef} className=' w-full md:p-5 md:flex'>
           <div className=' md:w-6/12  flex justify-center items-center p-2'>
           <motion.img 
           initial={{ x: -200, opacity: 0, filter: 'blur(10px)' }}
           whileInView={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration:1, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.3 }}
           className='w-[430px] z-20 rounded-lg shadow-md' src="sharwanjungkunwar0007.jpg" alt="img" />
           </div>
           <motion.div 
           initial={{ x: 200, opacity: 0, filter: 'blur(10px)' }}
           whileInView={{ x: 0, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 1, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.3 }}
           className='text-gray-50 md:w-6/12  md:p-2 p-6 flex flex-col gap-3 md:pr-20'>
           <span className='text-sky-400'>About Me</span>
@@ -203,7 +202,7 @@ function App() {
           <motion.div 
           initial={{x:-50,scale:1, opacity:0, filter:'blur(5px)'}}
           whileInView={{scale:1, x: 0, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.3, delay:0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.3, delay:0.5, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.3 }}
           className="bg-gray-50/30 text-gray-50 w-full md:h-[250px] h-[450px] rounded-xl border border-white/90 backdrop-blur-2xl p-6 mt-5 flex flex-col justify-center">
               <div className=" grid md:grid-cols-2 grid-cols-1 md:gap-y-4 gap-y-3   md:gap-x-4 gap-x-1 md:overflow-hidden overflow-auto">
@@ -278,9 +277,96 @@ function App() {
             value={30} 
           />
         </section>
-        
+      
           
       
+        <ShootingStars />
+        <StarsBackground />
+      </section>
+
+
+      {/* Resume page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
+      <section id='resume' ref={resumePageRef} className=' w-full flex flex-col gap-10 relative py-20'>
+
+        {/* title */}
+        <div className=' w-full flex justify-center flex-col items-center text-white text-center'>
+          <h1 className='text-4xl'>Resume</h1>
+          <section className=' md:w-6/40 w-6/12 '>
+            <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
+          </svg>
+          </section>
+          <p className='md:w-6/11 pt-5 p-3 text-neutral-400'>Experienced in backend development with Java, C, Android, and Spring Boot. Pursuing a Bachelor’s in Computer Applications, constantly exploring full-stack development and new technologies. 🚀</p>
+        </div>
+        {/* work experience */}
+        <div className='relative text-white py-15'>
+            <h1 className='text-3xl md:pl-30 pl-5 mb-2'>Work Experience</h1>
+            <p className='md:pl-30 pl-5 text-neutral-400'>A summary of my professional roles, responsibilities, and contributions, showcasing my growth, skills, and expertise in the field.</p>
+
+            <div className='w-full md:h-[800px] h-[1500px] mt-20 pl-20 flex flex-col md:gap-15 gap-10'>
+              {/* one */}
+              <div className='bg-white w-[2px]  absolute md:left-6/17 rounded-full left-10 '> 
+              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400/30 backdrop-blur-2xl absolute md:-top-3 top-0 -right-[9px] z-10'></div>
+              </div>
+              <div className=' w-full md:h-[300px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5 '>
+                <div className=' md:w-[20%] md:h-[90%] md:ml-30'>
+                  <h1 className='md:text-[20px] text-2xl  mb-1 '>Frontend Development</h1>
+                  <p className='text-sky-400 md:text-[15px]'>July, 2025 - Current</p>
+                </div>
+                <div className=' md:w-6/10 md:h-[90%] md:mr-10'>
+                  <h1 className='md:text-[20px] mb-2'> JavaScript / ReactJS </h1>
+                  <p className='text-neutral-400 md:pr-15'>I began my frontend journey with HTML, CSS, and JavaScript, building simple static pages. Later, I explored React.js, which transformed the way I build modern web interfaces.</p>
+                  <p className='md:text-[14px] mt-3'>I’ve worked on several frontend projects where I focused on:</p>
+                  <ul className='md:text-[13px] mt-2 text-neutral-400'>
+                    <li className='pt-1'><span className='text-red-500'>#</span> <span>Component-based design using React</span></li>
+                    <li className='pt-3'><span className='text-red-500'>#</span> <span>Responsive UI using Tailwind CSS</span></li>
+                    <li className='pt-3'><span className='text-red-500'>#</span> <span>Smooth animations with Framer Motion</span></li>
+                    <li className='pt-3'><span className='text-red-500'>#</span> <span>Icon libraries like lucide-react and react-icons</span></li>
+                    <li className='pt-3'><span className='text-red-500'>#</span> Implementing scroll-based navigation where the active nav item highlights based on the visible section</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* two */}
+              <div className='bg-white w-[2px] h-full absolute md:left-6/17 rounded-full left-10'> 
+              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400 absolute md:top-86 top-162 -right-[9px] z-10'></div>
+              </div>
+              <div className=' w-full h-[180px] p-0 md:flex md:flex-row justify-between flex flex-col gap-5'>
+                <div className=' md:w-[20%] md:h-[90%] md:ml-30'>
+                  <h1 className='md:text-[20px] text-2xl  mb-1'>Exploring Programming</h1>
+                  <p className='text-sky-400'>Before 2025</p>
+                </div>
+                <div className=' md:w-6/10 md:h-[90%] md:mr-10'>
+                  <h1 className='md:text-[20px] mb-2'> C / Java and Other programming Practices</h1>
+                  <p className='text-neutral-400 md:pr-15'>I focused mainly on programming fundamentals using C and Java. I practiced problem-solving, logic building, and core concepts like data structures and algorithms, without diving into frontend or backend frameworks.</p>
+                  <p className='mt-3 text-gray-50'>I've worked on several projects:</p>
+                  <ul className='md:text-[13px] mt-2 text-neutral-400'>
+                    <li className='pt-3'><span className='text-red-500'># </span> Library management system in both languages</li>
+                    <li className='pt-3'><span className='text-red-500'># </span> Encryption and Decryption</li>
+                    <li className='pt-3'><span className='text-red-500'># </span> Lucifer AI but static</li>
+                    <li className='pt-3'><span className='text-red-500'># </span> Student management system</li>
+                    <li className='pt-3'><span className='text-red-500'># </span> Several games</li>
+                    <li className='pt-3'><span className='text-red-500'># </span> Menu based systems</li>
+                    <li className='pt-3'><span className='text-red-500'># </span> Password generator</li>
+                    <li className='pt-3'><span className='text-red-500'># </span> Units convertor</li>
+
+                  </ul>
+
+                </div>
+              </div>
+              
+            </div>
+
+            
+
+
+        </div>
+
+
+
+        {/* my education */}
+
+
         <ShootingStars />
         <StarsBackground />
       </section>
@@ -299,13 +385,10 @@ function App() {
 
 
 
-      {/* Resume page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='resume' ref={resumePageRef} className='bg-red-400 w-full h-screen'>resume</section>
-
 
       {/* Work  --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <section id='work' ref={workPageRef}  className='bg-red-300 w-full  flex flex-col gap-10'>
-        <div className='bg-yellow-400 w-[90%] h-screen'>box</div>
+        <div className='bg-yellow-200 w-[90%] h-screen'>box</div>
         <div className='bg-yellow-400 w-[90%] h-[400px]'>box</div>
         
         
