@@ -1,12 +1,48 @@
-# React + Vite
+# 💼 Sharwan Jung Kunwar – Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the personal portfolio of **Sharwan Jung Kunwar**, built to showcase skills in frontend development, UI/UX creativity, and modern web practices. It serves as a central hub to highlight projects, tech stacks, and professional journey.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Preview
 
-## Expanding the ESLint configuration
+🌐 [Visit Portfolio](https://sharwan-jung-kunwar.vercel.app/)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Features
+
+- Interactive & responsive design
+- Animated components with `motion`
+- Smooth section-based scrolling
+- Custom-built components with TailwindCSS
+- Icon support via Lucide, RemixIcon, and React Icons
+- Typing animations, particles background, and more!
+
+---
+
+## 🧠 Tech Stack
+
+### 🔧 Languages & Frameworks:
+- **React 19**
+- **JavaScript (ES6+)**
+- **Tailwind CSS**
+- **Vite (Fast bundler & dev server)**
+
+### 🎨 UI & Animations:
+- `tailwindcss`, `tailwind-merge`
+- `lucide-react`, `remixicon`, `react-icons`
+- `motion` for advanced animation
+- `react-intersection-observer` for section-aware highlighting
+- `tsparticles` (engine, slim, and react wrapper) for particle effects
+
+### 🧹 Code Quality:
+- **ESLint** (with custom rules and plugins)
+- `eslint-plugin-react-hooks`
+- `eslint-plugin-react-refresh`
+- `@eslint/js`, `globals`
+
+---
+
+## 🗂️ Project Structure
+

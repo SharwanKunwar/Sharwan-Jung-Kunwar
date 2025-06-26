@@ -7,6 +7,7 @@ import {motion} from 'motion/react';
 import { ShootingStars } from "@/components/ui/ShootingStars";
 import { StarsBackground } from "@/components/ui/StarsBackground";
 import SkillCard from './components/SkillsCard';
+import AllWork from './components/Work/AllWork';
 
 
 
@@ -315,7 +316,7 @@ function App() {
         transition={{duration:0.5}}
             className='md:pl-30 pl-5 text-neutral-400'>A summary of my professional roles, responsibilities, and contributions, showcasing my growth, skills, and expertise in the field.</motion.p>
 
-            <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
+            <div className='w-full md:h-[800px] h-[1300px] mt-15 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10 '>
               {/* one */}
               <motion.div 
               initial={{y:100,opacity:0,filter:'blur(0px)'}}
@@ -341,13 +342,13 @@ function App() {
               </motion.div>
 
               {/* two */}
-              <div className='bg-white w-[2px] h-[75%] absolute md:left-6/17  rounded-full left-5'> </div>
+              <div className='bg-white w-[2px] h-[75%] absolute md:left-6/17  rounded-full left-5 z-10'> </div>
               <motion.div 
               initial={{y:100,opacity:0,filter:'blur(0px)'}}
               whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
               transition={{duration:0.5,delay:0.3}}
               className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
-                <div className=' md:w-[23.7%] md:h-[30%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
+                <div className=' md:w-[23.5%] md:h-[30%] md:ml-31  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
                   <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Exploring Programming</h1>
                   <p className='text-sky-400 pl-5'>Before 2025</p>
                 </div>
@@ -364,25 +365,13 @@ function App() {
                     <li className='pt-3'><span className='text-red-500'># </span> Menu based systems</li>
                     <li className='pt-3'><span className='text-red-500'># </span> Password generator</li>
                     <li className='pt-3'><span className='text-red-500'># </span> Units convertor</li>
-
                   </ul>
-
                 </div>
               </motion.div>
-              
             </div>
-
-            
-
-
         </div>
 
-
-
         {/* my education */}
-
-
-
         <div className='relative text-white py-0'>
             <motion.h1 
             initial={{y:100,opacity:0,filter:'blur(0px)'}}
@@ -395,7 +384,7 @@ function App() {
               transition={{duration:0.3}}
             className='md:pl-30 pl-5 text-neutral-400'>An overview of my academic journey, highlighting my qualifications, coursework, and skills gained to support my professional growth.</motion.p>
 
-            <div className='w-full md:h-[800px] h-[1500px] mt-20 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10'>
+            <div className='w-full md:h-[400px] h-[600px] mt-15 md:pl-20 pl-3 flex flex-col md:gap-15 gap-10 '>
               {/* one */}
               <motion.div 
               initial={{y:100,opacity:0,filter:'blur(0px)'}}
@@ -413,13 +402,13 @@ function App() {
               </motion.div>
 
               {/* two */}
-              <div className='bg-white w-[2px] md:h-[50%] h-[35%] absolute md:left-6/17  rounded-full left-5'> </div>
+              <div className='bg-white w-[2px] md:h-[70%] h-[75%] absolute md:left-6/17  rounded-full left-5 z-10'> </div>
               <motion.div 
               initial={{y:100,opacity:0,filter:'blur(0px)'}}
               whileInView={{y:0,opacity:1,filter:'blur(0px)'}}
               transition={{duration:0.5,delay:0.4}}
               className=' w-full h-[180px] md:flex md:flex-row pl-1 md:pl-0 justify-between flex flex-col gap-5'>
-                <div className=' md:w-[23.7%] md:h-[30%] md:ml-30  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400'>
+                <div className=' md:w-[23.5%] md:h-[45%] md:ml-31  md:border-r-10 md:border-l-0 border-l-10 border-r-0 border-sky-400 md:border-sky-400 '>
                   <h1 className='md:text-[20px] text-2xl  mb-1 pl-5'>Ratna RajyaLaxmi campus (TU)</h1>
                   <p className='text-sky-400 pl-5'>2081-2084</p>
                 </div>
@@ -443,31 +432,58 @@ function App() {
       </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       {/* Work  --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='work' ref={workPageRef}  className='bg-red-300 w-full  flex flex-col gap-10'>
-        <div className='bg-yellow-200 w-[90%] h-screen'>box</div>
-        <div className='bg-yellow-400 w-[90%] h-[400px]'>box</div>
+      <section id='work' ref={workPageRef}  className=' w-full  flex flex-col gap-10 text-white'>
+        
+        {/* ///// */}
+        <div className=' w-full h-screen flex flex-col items-center'>
+          
+          {/* title */}
+          <div className=' md:w-[50%] w-[90%] flex flex-col justify-center items-center py-5 text-center'>
+            <h1 className='text-4xl'>My Work</h1>
+            <section className=' md:w-6/40 w-6/12 '>
+            <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
+          </svg>
+          </section>
+            <p className='pt-5 pb-5 text-neutral-400'>I have built diverse projects, including an Online Casino Platform with secure transactions, a Library Management System and more. 🚀</p>
+          </div>
+
+          {/* nav menu */}
+          <div className=' md:w-[50%] w-[90%] h-[250px] flex gap-5 justify-around items-center flex-wrap md:py-0 py-10'>
+              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>All Work</button>
+              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Web Design</button>
+              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Motion</button>
+              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Small Project</button>
+          </div>
+
+          <div className=' w-[90%] h-full overflow-y-auto overflow-x-hidden'>
+
+            <AllWork/>
+          </div>
+        </div>
+        {/* ///// */}
         
         
       </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* Contact page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='contact' ref={contactPageRef} className='bg-red-400 w-full h-screen'>contact</section>
+      <section id='contact' ref={contactPageRef} className='bg-gray-400 w-full h-screen'>contact</section>
                 
         
     </>
