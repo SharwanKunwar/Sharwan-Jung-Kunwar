@@ -48,6 +48,29 @@ html {
           }
 
 
+          /* Work card css */
+        .WorkBtn {background-image: linear-gradient(to right, #eea2a2 1%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);}
+        .WorkBtn {
+            margin: 10px;
+            padding: 0px 1px;
+            text-align: center;
+            /* text-transform: uppercase; */
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 5px #666565;
+            border-radius: 100px;
+            display: block;
+          }
+
+        .WorkBtn:hover {
+            box-shadow: 0 0 10px #eee;
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+
+
 
 .card {
   background: rgba(255, 255, 255, 0.1); /* translucent background */

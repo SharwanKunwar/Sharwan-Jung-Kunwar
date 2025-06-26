@@ -9,11 +9,22 @@ import { StarsBackground } from "@/components/ui/StarsBackground";
 import SkillCard from './components/SkillsCard';
 import AllWork from './components/Work/AllWork';
 
+import { Link } from 'react-router';
+import Layout from './components/Layout/Layout';
+import {Routes, Route } from 'react-router';
+import WebDesign from './components/Work/WebDesign';
+import ScrollToTop from './components/ScrollToTop';
+import Motion from './components/Work/Motion';
+import SmallProjects from './components/Work/SmallProjects';
+
+
+
 
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+    const scrollContainerRef = useRef(null);
 
 
   //page refrences
@@ -79,6 +90,8 @@ function App() {
 
   return (
     <>
+
+    
 
       {/* Home page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <section id='home' ref={homePageRef} className='w-full h-full'>
@@ -175,7 +188,7 @@ function App() {
           <h2 className='text-2xl'>About</h2>
           <section className=' md:w-6/40 w-6/12 '>
             <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" strokeWidth="1"></path>
           </svg>
           </section>
           <p className='mt-2 text-center p-1'>"Passionate about coding, learning, and creating impactful solutions."</p>
@@ -298,7 +311,7 @@ function App() {
           <h1 className='text-4xl'>Resume</h1>
           <section className=' md:w-6/40 w-6/12 '>
             <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" strokeWidth="1"></path>
           </svg>
           </section>
           <p className='md:w-6/11 pt-5 p-3 text-neutral-400'>Experienced in backend development with Java, C, Android, and Spring Boot. Pursuing a Bachelor’s in Computer Applications, constantly exploring full-stack development and new technologies. 🚀</p>
@@ -433,7 +446,7 @@ function App() {
 
 
       {/* Work  --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='work' ref={workPageRef}  className=' w-full  flex flex-col gap-10 text-white'>
+      <section id='work' ref={workPageRef}  className=' w-full  flex flex-col gap-10 text-white '>
         
         {/* ///// */}
         <div className=' w-full h-screen flex flex-col items-center'>
@@ -443,23 +456,45 @@ function App() {
             <h1 className='text-4xl'>My Work</h1>
             <section className=' md:w-6/40 w-6/12 '>
             <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="1"></path>
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" strokeWidth="1"></path>
           </svg>
           </section>
             <p className='pt-5 pb-5 text-neutral-400'>I have built diverse projects, including an Online Casino Platform with secure transactions, a Library Management System and more. 🚀</p>
           </div>
 
+            <div className='w-full md:w-6/12'>
+                 {/* Navigation */}
+              <div className='md:w-[100%] w-[100%] h-[150px] flex gap-3 justify-around items-center flex-wrap md:py-0 py-5 relative '>
+                <Link to="/allWork">
+                  <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>All Work</button>
+                </Link>
+                <Link to="/webDesign">
+                  <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Web Design</button>
+                </Link>
+                <Link to="/motion">
+                <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Motion</button>
+                </Link>
+                <Link to="/smallProjects">
+                <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Small Project</button>
+                </Link>
+                
+                
+              </div>
+            </div>
           {/* nav menu */}
-          <div className=' md:w-[50%] w-[90%] h-[250px] flex gap-5 justify-around items-center flex-wrap md:py-0 py-10'>
-              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>All Work</button>
-              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Web Design</button>
-              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Motion</button>
-              <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Small Project</button>
-          </div>
-
-          <div className=' w-[90%] h-full overflow-y-auto overflow-x-hidden'>
-
-            <AllWork/>
+          <div  ref={scrollContainerRef} className=' md:w-[70%] w-[90%] h-[550px] flex gap-5 justify-around items-center flex-wrap md:py-0 py-10 relative overflow-x-hidden overflow-y-auto'>
+            
+            <ScrollToTop scrollRef={scrollContainerRef} />
+              <Routes>
+                  <Route path="/" element={<Layout />}>
+                  <Route path="allWork" element={<AllWork />} />
+                  <Route path="webDesign" element={<WebDesign />} />
+                  <Route path="motion" element={<Motion/>}/>
+                  <Route path="smallProjects" element={<SmallProjects/>}/>
+                  </Route>
+                </Routes>
+            
+           
           </div>
         </div>
         {/* ///// */}
