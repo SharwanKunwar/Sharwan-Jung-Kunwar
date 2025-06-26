@@ -306,8 +306,8 @@ function App() {
             <div className='w-full md:h-[800px] h-[1500px] mt-20 pl-20 flex flex-col md:gap-15 gap-10'>
               {/* one */}
               <div className='bg-white w-[2px]  absolute md:left-6/17 rounded-full left-10 '> 
-              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400/30 backdrop-blur-2xl absolute md:-top-3 top-0 -right-[9px] z-10'></div>
               </div>
+              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400/30 backdrop-blur-2xl absolute md:top-48 top-60 md:left-132 left-8 z-10'></div>
               <div className=' w-full md:h-[300px] p-1 md:flex md:flex-row justify-between flex flex-col gap-5 '>
                 <div className=' md:w-[20%] md:h-[90%] md:ml-30'>
                   <h1 className='md:text-[20px] text-2xl  mb-1 '>Frontend Development</h1>
@@ -329,8 +329,8 @@ function App() {
 
               {/* two */}
               <div className='bg-white w-[2px] h-full absolute md:left-6/17 rounded-full left-10'> 
-              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400 absolute md:top-86 top-162 -right-[9px] z-10'></div>
               </div>
+              <div className='w-5 h-5 mt-5 rounded-full bg-blue-400/30 backdrop-blur-2xl absolute md:top-140 top-220 md:left-132 left-8 z-10'></div>
               <div className=' w-full h-[180px] p-0 md:flex md:flex-row justify-between flex flex-col gap-5'>
                 <div className=' md:w-[20%] md:h-[90%] md:ml-30'>
                   <h1 className='md:text-[20px] text-2xl  mb-1'>Exploring Programming</h1>
