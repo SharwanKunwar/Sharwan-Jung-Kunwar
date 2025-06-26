@@ -462,20 +462,20 @@ function App() {
             <p className='pt-5 md:pb-0 pb-5 text-neutral-400'>I have built diverse projects, including an Online Casino Platform with secure transactions, a Library Management System and more. 🚀</p>
           </div>
 
-            <div className='w-full md:w-6/12'>
+            <div className='w-full md:w-6/12 pb-5'>
                  {/* Navigation */}
               <div className='md:w-[100%] w-[100%] h-[100px] flex gap-3 justify-around items-center flex-wrap md:py-0 py-0 relative '>
                 <Link to="/allWork">
-                  <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>All Work</button>
+                  <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>All Work</button>
                 </Link>
                 <Link to="/webDesign">
-                  <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Web Design</button>
+                  <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>Web Design</button>
                 </Link>
                 <Link to="/motion">
-                <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Motion</button>
+                <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>Motion</button>
                 </Link>
                 <Link to="/smallProjects">
-                <button className='bg-purple-400 rounded-full py-2 text-[15px] px-10'>Small Project</button>
+                <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>Small Project</button>
                 </Link>
                 
                 
