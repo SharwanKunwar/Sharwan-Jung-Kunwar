@@ -1,6 +1,8 @@
-import { Eye, X } from 'lucide-react'
+import { Eye, EyeClosed, EyeOff, X } from 'lucide-react'
 import React, { useState } from 'react'
 import {motion} from 'motion/react';
+import { RxEyeOpen } from 'react-icons/rx';
+import { GiSemiClosedEye } from 'react-icons/gi';
 
 
 function WorkCard({id,title,imgPath}) {
@@ -30,7 +32,7 @@ function WorkCard({id,title,imgPath}) {
         transition={{duration:0.5,delay:0.3}}
         className='absolute w-full h-full flex justify-end items-end pr-3 pb-5'>
         <div className='w-[40px] h-[40px] flex justify-center items-center text-black '>
-            <Eye className='mb-10' onClick={()=>setPreview(!preview)} size={30}/>
+            {preview? <EyeOff className='mb-10' onClick={()=>setPreview(!preview)} size={30}/>: <Eye className='mb-10' onClick={()=>setPreview(!preview)} size={30}/>}
         </div>
         </motion.div>
     
