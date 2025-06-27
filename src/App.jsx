@@ -9,13 +9,14 @@ import { StarsBackground } from "@/components/ui/StarsBackground";
 import SkillCard from './components/SkillsCard';
 import AllWork from './components/Work/AllWork';
 
-import { Link } from 'react-router';
+import { NavLink} from 'react-router';
 import Layout from './components/Layout/Layout';
 import {Routes, Route } from 'react-router';
 import WebDesign from './components/Work/WebDesign';
 import ScrollToTop from './components/ScrollToTop';
 import Motion from './components/Work/Motion';
 import SmallProjects from './components/Work/SmallProjects';
+import TestimonialsCard from './components/TestimonialsCard';
 
 
 
@@ -465,24 +466,34 @@ function App() {
             <div className='w-full md:w-6/12 pb-5'>
                  {/* Navigation */}
               <div className='md:w-[100%] w-[100%] h-[100px] flex gap-3 justify-around items-center flex-wrap md:py-0 py-0 relative '>
-                <Link to="/allWork">
-                  <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>All Work</button>
-                </Link>
-                <Link to="/webDesign">
-                  <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>Web Design</button>
-                </Link>
-                <Link to="/motion">
-                <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>Motion</button>
-                </Link>
-                <Link to="/smallProjects">
-                <button className='bg-purple-400 rounded-full py-2 text-[15px] w-[150px]'>Small Project</button>
-                </Link>
-                
-                
+                <NavLink 
+                  to="/allWork" 
+                  className={({ isActive }) => `rounded-full py-2 text-[15px] w-[150px] text-center ${isActive ? 'bg-purple-700 text-white' : 'bg-purple-400'}`}>
+                    All Work
+                </NavLink>
+
+                <NavLink 
+                  to="/webDesign" 
+                  className={({ isActive }) => `rounded-full py-2 text-[15px] w-[150px] text-center ${isActive ? 'bg-purple-700 text-white' : 'bg-purple-400'}`}>
+                  Web Design
+                </NavLink>
+
+                <NavLink 
+                  to="/motion" 
+                  className={({ isActive }) => `rounded-full py-2 text-[15px] w-[150px] text-center ${isActive ? 'bg-purple-700 text-white' : 'bg-purple-400'}`}>
+                  Motion
+                </NavLink>
+
+                <NavLink 
+                  to="/smallProjects" 
+                  className={({ isActive }) => `rounded-full py-2 text-[15px] w-[150px] text-center ${isActive ? 'bg-purple-700 text-white' : 'bg-purple-400'}`}>
+                  Small Project
+                </NavLink>
+
               </div>
             </div>
           {/* nav menu */}
-          <div  ref={scrollContainerRef} className=' md:w-[70%] w-[90%] h-[550px] flex gap-5 justify-around items-center flex-wrap md:py-0 py-10 relative overflow-x-hidden overflow-y-auto'>
+          <div  ref={scrollContainerRef} className='workCard md:w-[70%] w-[90%] h-[550px] flex gap-5 justify-around items-center flex-wrap md:py-0 py-10 relative'>
             
             <ScrollToTop scrollRef={scrollContainerRef} />
               <Routes>
@@ -502,23 +513,53 @@ function App() {
         
       </section>
 
+      {/* textmonials */}
+      <div className='w-full py-20'>
+              {/* title */}
+               <motion.div 
+        initial={{y:100,opacity:0,scale:0.98,filter:'blur(10px)'}}
+        whileInView={{y:0,opacity:1,scale:1,filter:'blur(0px)'}}
+        transition={{duration:0.5}}
+        className=' w-full flex justify-center flex-col items-center text-white text-center'>
+          <h1 className='text-4xl'>Testimonials</h1>
+          <section className=' md:w-6/40 w-6/12 '>
+            <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" strokeWidth="1"></path>
+          </svg>
+          </section>
+          <p className='md:w-6/11 pt-5 p-3 text-neutral-400'>showcase my commitment to quality, user experience, and how my work drives value for clients. 🚀</p>
+        </motion.div>
+
+        <div className='workCard w-full h-[400px] flex justify-center items-center overflow-x-auto overflow-y-hidden'>
+          <motion.div 
+          initial={{x:1000}}
+          animate={ {x: -1000 }}
+          transition={{ 
+          duration: 50, 
+          repeat: Infinity,          // 🛠️ Needed for continuous loop
+          repeatType: "reverse",     // ↔️ Bounce effect
+          ease: "linear"             // 🔁 Smooth constant speed
+        }}
+          className='  flex gap-10 '>
+            <TestimonialsCard/>
+            <TestimonialsCard/>
+            <TestimonialsCard/>
+            <TestimonialsCard/>
+            <TestimonialsCard/>
+            <TestimonialsCard/>
+            
+          </motion.div>
+        </div>
+        
 
 
-
-
-
-
-
-
-
-
-
-
-
+      </div>
 
 
       {/* Contact page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-      <section id='contact' ref={contactPageRef} className='bg-gray-400 w-full h-screen'>contact</section>
+      <section id='contact' ref={contactPageRef} className='bg-gray-400 w-full h-screen'>
+        
+      </section>
                 
         
     </>

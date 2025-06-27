@@ -20,10 +20,11 @@ function WorkCard({id,title,imgPath}) {
   return (
     <>
     <motion.div 
+    exit={{opacity:0, scale:0.5}}
     initial={{y:10,opacity:0,filter:'blur(10px)',scale:0.5}}
     whileInView={{y:0,opacity:1,filter:'blur(0px)',scale:1}}
     transition={{duration:0.3}}
-    className='bg-gray-50 md:w-[300px] md:h-[300px] w-[330px] h-[360px] flex justify-center items-center flex-col rounded-lg '>
+    className='workCard bg-gray-50 md:w-[300px] md:h-[300px] w-[330px] h-[360px] flex justify-center items-center flex-col rounded-lg '>
       <div className='w-[100%] h-[80%]  flex justify-center items-center '>
         <img className=' w-[90%] h-[90%] object-contain rounded-sm ' src={imgPath} alt="Site img" />
         <motion.div 

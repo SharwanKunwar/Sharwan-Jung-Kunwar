@@ -80,6 +80,16 @@ html {
   -webkit-backdrop-filter: blur(10px); /* for Safari support */
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+.workCard {
+  overflow-y: scroll;        /* Enable vertical scrolling */
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.workCard::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari and Opera */
+}
+
 
 
 /* this is for removing the circle default form the range tag */
