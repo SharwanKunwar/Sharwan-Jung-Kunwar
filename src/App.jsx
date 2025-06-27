@@ -25,7 +25,7 @@ import TestimonialsCard from './components/TestimonialsCard';
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-    const scrollContainerRef = useRef(null);
+  const scrollContainerRef = useRef(null);
 
 
   //page refrences
@@ -530,15 +530,15 @@ function App() {
           <p className='md:w-6/11 pt-5 p-3 text-neutral-400'>showcase my commitment to quality, user experience, and how my work drives value for clients. 🚀</p>
         </motion.div>
 
-        <div className='workCard w-full h-[400px] flex justify-center items-center overflow-x-auto overflow-y-hidden'>
+        <div className=' w-full h-[400px] flex justify-center items-center'>
           <motion.div 
           initial={{x:1000}}
           animate={ {x: -1000 }}
           transition={{ 
           duration: 50, 
-          repeat: Infinity,          // 🛠️ Needed for continuous loop
-          repeatType: "reverse",     // ↔️ Bounce effect
-          ease: "linear"             // 🔁 Smooth constant speed
+          repeat: Infinity,          
+          repeatType: "reverse",     
+          ease: "linear"             
         }}
           className='  flex gap-10 '>
             <TestimonialsCard/>
