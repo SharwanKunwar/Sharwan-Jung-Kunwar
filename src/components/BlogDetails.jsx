@@ -12,7 +12,7 @@ function BlogDetails() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto mt-20 p-5 ">
+    <div className="h-screen max-w-6xl mx-auto mt-20 p-5 ">
       <div className="bg-yellow-400 h-130 rounded-md">
         <img
           src={blog.img}
@@ -21,8 +21,8 @@ function BlogDetails() {
         />
       </div>
 
-      <h1 className=" mt-4 text-2xl font-bold">{blog.title}</h1>
-      <p className=" text-gray-700">{blog.des}</p>
+      <h1 className=" mt-10 text-indigo-400 text-3xl font-bold text-shadow-sm">{blog.title}</h1>
+      <p className=" text-gray-200 whitespace-pre-line text-shadow-sm mt-5">{blog.des}</p>
     </div>
   );
 }
@@ -45,5 +45,3 @@ export default BlogDetails;
 // Displays the blog description/content (blog.des) below the title.
 
 // In short: It’s a dynamic blog page that shows the full blog details based on the ID in the URL.
-
-// If you want, I can explain how to link this from a blog list so that clicking “Read” takes you to this page. Do you want me to do that?

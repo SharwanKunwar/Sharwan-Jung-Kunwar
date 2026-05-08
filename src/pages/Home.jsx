@@ -162,7 +162,7 @@ function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
               onClick={haptic.tap}
-              className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "mastWhiteShadow" : ""}`}
+              className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "WhiteShadow" : ""}`}
             >
               🌟 Give Star
             </motion.button>
@@ -175,7 +175,7 @@ function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
               onClick={haptic.tap}
-              className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "mastWhiteShadow" : ""}`}
+              className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "WhiteShadow" : ""}`}
             >
               <section className="flex items-center justify-center gap-2"><SiGithub /> Follow Me</section>
             </motion.button>
