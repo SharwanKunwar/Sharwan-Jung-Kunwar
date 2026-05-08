@@ -1,0 +1,2 @@
+### Introduction:
+Welcome to my portfolio, where I turn ideas into real projects. I build, break, and rebuild—turning mistakes into lessons. Challenges excite me, chaos drives me, and every problem is a chance to experiment, innovate, and craft solutions that keep evolving.
