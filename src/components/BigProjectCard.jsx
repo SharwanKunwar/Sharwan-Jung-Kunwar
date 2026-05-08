@@ -12,14 +12,14 @@ function BigProjectCard(props) {
   return (
     <>
       <motion.div
-        initial={{ y: 10, filter: "blur(1px)" }}
+        initial={{ y: 5, filter: "blur(1px)" }}
         whileInView={{ y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.3 }}
-        className="relative inline-block "
+        className="relative inline-block"
       >
         <Card
           hoverable
-          className={`bg-gray-100!  ${isDarkMode ? "bg-gray-700!" : ""}`}
+          className={`bg-gray-100! hover:border! hover:border-blue-500!  ${isDarkMode ? "bg-gray-700!" : ""}`}
         >
           <img
             src={props.img}
@@ -82,8 +82,8 @@ function BigProjectCard(props) {
 
             <div className=" hidden  w-full h-full md:flex justify-center items-center ">
               <motion.div
-                initial={{ opacity: 0, x: -300 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 transition={{ duration: 1.3, delay: 0.5 }}
                 className="bg-green-400/30 backdrop-blur-sm w-[500px] rounded-2xl md:flex md:gap-5 border border-white/30 shadow-sm p-7">
 

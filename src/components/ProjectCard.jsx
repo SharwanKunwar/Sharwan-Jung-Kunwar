@@ -20,7 +20,7 @@ function ProjectCard(props) {
                 className={`relative inline-block bg-black  ${isDarkMode ? "rounded-xl" : "rounded-sm"}`}
             >
 
-                <Card className={`bg-gray-10! md:h-77.5! ${isDarkMode ? "bg-gray-700!" : "text-red-400"}`}>
+                <Card hoverable className={`hover:border! hover:border-blue-500! bg-gray-10! md:h-77.5! ${isDarkMode ? "bg-gray-700!" : "text-red-400"}`}>
                     <img src={props.img} alt="ProjectImg" className='rounded-md bg-linear-to-br from-indigo-400 to-green-400 via-pink-400 mastShadow  min-h-50 object-cover overflow-hidden' />
                     <div className='flex justify-between'>
                         <h1 className={`mt-2 font-medium text-neutral-400 ${isDarkMode ? "text-white" : ""}`}>{props.title}</h1>

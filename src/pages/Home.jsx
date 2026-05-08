@@ -67,14 +67,14 @@ const ProjectDetails = [
   },
   {
     id: 4,
-    title: "Gradient Generator",
-    imgUrl: "/Project-IMG/GG.png",
-    URL: "https://gradient-generator-six-pied.vercel.app/",
-    source: "https://github.com/SharwanKunwar/gradient-generator",
+    title: "Youtube Long Video Playlist Generator",
+    imgUrl: "/MainProjectImage/ShortPlaylist.png",
+    URL: "https://generate-playlist.vercel.app/",
+    source: "https://github.com/SharwanKunwar/Generate-Playlist",
     description:
-      "A React + Tailwind app to generate beautiful linear & radial gradients. Preview, copy CSS, and explore random color combos. Fun & responsive! 🎨⚛️",
+      "A React + Tailwind app that creates long YouTube video playlists instantly. Organize videos, manage playback flow, and enjoy a clean responsive experience. 🎬⚛️",
     teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
-    date: "Oct 7, 2025, 2:20 PM",
+    date: "May 8, 2026, 10:52 PM",
   },
 ];
 
@@ -262,9 +262,9 @@ function Home() {
         {/* Favorite Projects */}
         <div className="mt-10">
           <h1
-            className={`text-2xl font-medium mb-2 underline ${isDarkMode && "text-white"}`}
+            className={`text-2xl md:text-3xl font-medium mb-2 underline ${isDarkMode && "text-white"}`}
           >
-            Progress in Progress
+            Recently Worked Projects
           </h1>
           <p className="text-neutral-400 mb-2">
             Explore my coding journey through a mix of projects...

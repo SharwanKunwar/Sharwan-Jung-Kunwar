@@ -1,5 +1,15 @@
 export const ProjectDetails = [
-
+  {
+    id: 31,
+    title: "Youtube Long Video Playlist Generator",
+    imgUrl: "/MainProjectImage/ShortPlaylist.png",
+    URL: "https://generate-playlist.vercel.app/",
+    source: "https://github.com/SharwanKunwar/Generate-Playlist",
+    description:
+      "A React + Tailwind app that creates long YouTube video playlists instantly. Organize videos, manage playback flow, and enjoy a clean responsive experience. 🎬⚛️",
+    teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
+    date: "May 8, 2026, 10:52 PM",
+  },
   {
     id: 30,
     title: "Song-Composer",
