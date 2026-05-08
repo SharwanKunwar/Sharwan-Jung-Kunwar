@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container } from "../components/Container";
 import { motion } from "motion/react";
 import {
@@ -84,12 +84,12 @@ function Home() {
 
 
   // Scroll to top when page loads
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-  
-    //  🔥 HAPTIC FEEDBACK ENGINE
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  //  🔥 HAPTIC FEEDBACK ENGINE
+
   const vibrate = (pattern) => {
     if (navigator.vibrate) navigator.vibrate(pattern);
   };
@@ -124,10 +124,10 @@ function Home() {
             <h1
               className={`text-3xl md:text-4xl font-bold tracking-tight text-neutral-800 ${isDarkMode && "text-white"}`}
             > Sharwan Jung Kunwar </h1>
-            
+
             <div className="h-[30px] flex justify-start items-center">
               {/* MusicPlayer haptic on play/pause inside component */}
-            <MusicPlayer haptic={haptic} />  
+              <MusicPlayer haptic={haptic} />
             </div>
           </div>
 
@@ -177,7 +177,7 @@ function Home() {
               onClick={haptic.tap}
               className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "mastWhiteShadow" : ""}`}
             >
-              <section className="flex items-center justify-center gap-2"><SiGithub/> Follow Me</section>
+              <section className="flex items-center justify-center gap-2"><SiGithub /> Follow Me</section>
             </motion.button>
           </a>
         </section>
@@ -198,7 +198,7 @@ function Home() {
             transition={{ duration: 0.3 }}
             className="mt-3"
           >
-           <p className="text-neutral-400 text-sm md:text-sm max-w-full">
+            <p className="text-neutral-400 text-sm md:text-sm max-w-full">
               I started my coding journey with C, learning everything on my own through
               trial and error. From building simple logic programs to developing Android
               apps and modern web applications with React, I’ve gradually expanded into
@@ -248,9 +248,8 @@ function Home() {
                       aria-label="GitHub"
                     >
                       <FaGithub
-                        className={`text-black w-6 h-6 hover:text-gray-300 transition-colors duration-200 ${
-                          isDarkMode && "text-black"
-                        }`}
+                        className={`text-black w-6 h-6 hover:text-gray-300 transition-colors duration-200 ${isDarkMode && "text-black"
+                          }`}
                       />
                     </a>
                   </Button>

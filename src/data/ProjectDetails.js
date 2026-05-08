@@ -1,15 +1,5 @@
 export const ProjectDetails = [
-  {
-    id: 31,
-    title: "Lucifer local AI",
-    imgUrl: "/2026Projects/202604.png",
-    URL: "https://ollama-locally.vercel.app/",
-    source: "https://github.com/SharwanKunwar/ollamaLocally",
-    description:
-     "Lucifer Local AI is a privacy-focused assistant running locally with Ollama and LLaMA2, offering a React web interface for fast AI chat and full data control.",
-    teck: ["ReactJS", "Tailwindcss", "llama2:latest", "Ollama"],
-    date: "Mar 10, 2026, 11:02 AM",
-  },
+
   {
     id: 30,
     title: "Song-Composer",
@@ -64,16 +54,7 @@ export const ProjectDetails = [
     teck: ["ReactJS", "Tailwindcss", "Motion"],
     date: "Nov 9, 2025, 9:34 PM"
   },
-  {
-    id: 25,
-    title: "Dev Tools",
-    imgUrl: "/work/DevTool.png",
-    URL: "https://dev-tools-bay.vercel.app/",
-    source: "https://github.com/SharwanKunwar/Dev-Tools",
-    description: "Dev Tools is a curated collection of websites and resources for developers, including coding platforms, APIs, design inspiration, and productivity tools — all in one place.",
-    teck: ["ReactJS", "Tailwindcss", "Motion"],
-    date: "Oct 30, 2025, 1:12 PM"
-  },
+
   {
     id: 24,
     title: "LeadCoder",
