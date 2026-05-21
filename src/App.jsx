@@ -2,6 +2,7 @@
 import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
 import { useContext } from "react";
 import RootLayout from './Main/RootLayout';
+import { ShootingStarsAndStarsBackgroundDemo } from './components/ui/ShootingStarsAndStarsBackgroundDemo';
 
 function App() {
 
@@ -9,8 +10,9 @@ function App() {
 
   return (
     <>
-      <div className={`min-h-screen flex justify-center items-start no-scrollbar ${isDarkMode ? 'bg-black text-white' : 'bg-gray-0 text-black'}`}>
-        <RootLayout />
+      <div className={`min-h-screen flex justify-center items-start no-scrollbar ${isDarkMode ? 'bg-transparent text-white' : ' text-black'}`}>
+        <ShootingStarsAndStarsBackgroundDemo />
+        {/* <RootLayout /> */}
       </div>
     </>
   )

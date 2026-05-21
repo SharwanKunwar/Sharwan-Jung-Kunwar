@@ -1,5 +1,15 @@
 export const ProjectDetails = [
   {
+    id: 32,
+    title: "RoomFinder",
+    imgUrl: "/2026Projects/roomFinder.png",
+    URL: "https://room-finder-black.vercel.app/",
+    source: "https://room-finder-black.vercel.app/",
+    description: "A modern RoomFinder platform built with React and Tailwind CSS that connects tenants directly with room owners without middlemen, helping users save 2–3K in unnecessary fees. Features include secure P2P connection, owner-tenant interaction, expense tracking, in-app activity management, and a clean responsive experience. 🏠⚛️",
+    teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
+    date: "May 21, 2026, 9:32 PM",
+  },
+  {
     id: 31,
     title: "Youtube Long Video Playlist Generator",
     imgUrl: "/MainProjectImage/ShortPlaylist.png",
