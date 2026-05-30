@@ -9,7 +9,7 @@ import { StarsBackground } from "../ui/StarsBackground";
 export function ShootingStarsAndStarsBackgroundDemo({ children }) {
     return (
         <div
-            className="rounded-md bg-gray-900 flex flex-col items-center justify-center relative w-full">
+            className="bg-gray-900 flex flex-col items-center justify-center relative w-full">
 
             <Container className="no-scrollbar relative z-10">
                 <Navbar />

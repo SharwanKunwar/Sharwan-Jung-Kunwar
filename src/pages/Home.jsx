@@ -112,10 +112,14 @@ function Home() {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <div className="mt-19 mb-2">
+          <div className="mt-19 mb-4">
             <p
-              className={`inline-block rounded-full text-sm py-1 border  backdrop-blur-sm px-3  hover:animate-pulse ${isDarkMode ? "text-red-400 border-indigo-400" : "text-red-400/50 border-indigo-400/30"}`}
+              className={`inline-flex items-center gap-2 rounded-full text-sm py-1.5 px-4 font-medium backdrop-blur-md border shadow-sm transition-all duration-300 hover:scale-105 ${isDarkMode ? "text-indigo-300 border-indigo-500/30 bg-indigo-500/10" : "text-indigo-600 border-indigo-200 bg-indigo-50/50"}`}
             >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+              </span>
               Full Stack Developer
             </p>
           </div>

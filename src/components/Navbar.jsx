@@ -65,6 +65,11 @@ function Navbar() {
     setOpenFriend(true);
   };
 
+  const closeMobileMenu = () => {
+    haptic.closeMenu();
+    setOpen(false);
+  };
+
   const checkCode = () => {
     haptic.tap();
 
@@ -109,7 +114,7 @@ function Navbar() {
 
         <div className="flex gap-3 items-center">
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu --------------------------*/}
           <div className="md:hidden">
             {open ? (
               <X
@@ -117,7 +122,7 @@ function Navbar() {
                   haptic.closeMenu();
                   setOpen(false);
                 }}
-                className="w-9 h-9 cursor-pointer mr-2"
+                className="w-9 h-9 cursor-pointer mr-2 text-neutral-900 dark:text-white"
               />
             ) : (
               <Menu
@@ -125,7 +130,7 @@ function Navbar() {
                   haptic.openMenu();
                   setOpen(true);
                 }}
-                className="w-9 h-9 cursor-pointer mr-2"
+                className="w-9 h-9 cursor-pointer mr-2 text-neutral-900 dark:text-white"
               />
             )}
           </div>
@@ -181,7 +186,7 @@ function Navbar() {
       {open && (
         <>
           <div
-            className="fixed z-49 w-screen h-screen backdrop-blur-2xl left-0 top-0 flex justify-center items-center dark:bg-neutral-800/30"
+            className="fixed z-40 w-screen h-screen backdrop-blur-2xl left-0 top-0 flex justify-center items-center bg-white/80 dark:bg-neutral-800/30"
           >
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -191,7 +196,7 @@ function Navbar() {
             >
               {/* Header */}
               <div className="flex justify-between w-full items-center">
-                <h1 className="text-2xl py-4 px-8 border-b border-white/30">Menu</h1>
+                <h1 className="text-2xl py-4 px-8 border-b border-neutral-900/30 text-neutral-900 dark:border-white/30 dark:text-white">Menu</h1>
 
                 {/* Dark mode toggle for phone */}
                 <button
@@ -199,28 +204,28 @@ function Navbar() {
                   className={`text-black flex justify-center items-center rounded-full w-10 h-10 mastShadow mr-5 ${isDarkMode ? "text-white mastWhiteShadow" : ""
                     }`}
                 >
-                  {isDarkMode ? <FaSun color="gold" size={30} /> : <FaMoon color="white" size={30} />}
+                  {isDarkMode ? <FaSun color="gold" size={30} /> : <FaMoon color="black" size={30} />}
                 </button>
               </div>
 
               {/* Navigation Links */}
               <div className="h-full flex justify-center items-start pt-20">
-                <nav className="text-lg text-white">
+                <nav className="text-lg text-neutral-900 dark:text-white">
                   <ul className="flex flex-col gap-5">
-                    <Link to="home">
-                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-white/50 shadow-sm">
+                    <Link to="/home" onClick={closeMobileMenu}>
+                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
                         Home
                       </li>
                     </Link>
 
-                    <Link to="projects">
-                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-white/50 shadow-sm">
+                    <Link to="/projects" onClick={closeMobileMenu}>
+                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
                         Projects
                       </li>
                     </Link>
 
-                    <Link to="mySelf">
-                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-white/50 shadow-sm">
+                    <Link to="/mySelf" onClick={closeMobileMenu}>
+                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
                         MySelf
                       </li>
                     </Link>
