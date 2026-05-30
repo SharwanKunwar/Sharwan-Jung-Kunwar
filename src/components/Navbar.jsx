@@ -130,7 +130,7 @@ function Navbar() {
                   haptic.openMenu();
                   setOpen(true);
                 }}
-                className="w-9 h-9 cursor-pointer mr-2 text-neutral-900 dark:text-white"
+                className="w-9 h-9 cursor-pointer mr-2 text-gray-50 dark:text-white "
               />
             )}
           </div>
