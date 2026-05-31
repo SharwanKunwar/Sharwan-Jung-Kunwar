@@ -1,11 +1,21 @@
 export const ProjectDetails = [
   {
+    id: 33,
+    title: "DeathNote",
+    imgUrl: "/2026Projects/DeathNote.png",
+    URL: "https://death-note-sage.vercel.app/",
+    source: "https://github.com/SharwanKunwar/DeathNote",
+    description: "A Death Note themed REST app built with Spring Boot & PostgreSQL in Docker. Write a target's name and cause of death, view all entries, and delete them — powered by a dark, anime-inspired frontend. ☠️📓",
+    teck: ["ReactJS", "Tailwindcss", "antd"],
+    date: "May 31, 2026, 12:21 PM",
+  },
+  {
     id: 32,
     title: "RoomFinder",
     imgUrl: "/2026Projects/roomFinder.png",
     URL: "https://room-finder-black.vercel.app/",
     source: "https://room-finder-black.vercel.app/",
-    description: "A modern RoomFinder platform built with React and Tailwind CSS that connects tenants directly with room owners without middlemen, helping users save 2–3K in unnecessary fees. Features include secure P2P connection, owner-tenant interaction, expense tracking, in-app activity management, and a clean responsive experience. 🏠⚛️",
+    description: "A RoomFinder platform built with React & Tailwind CSS that connects tenants directly with room owners — no middlemen, no extra fees. Features P2P connection, expense tracking, and activity management. 🏠⚛️",
     teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
     date: "May 21, 2026, 9:32 PM",
   },

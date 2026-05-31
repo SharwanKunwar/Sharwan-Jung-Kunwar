@@ -56,14 +56,13 @@ const ProjectDetails = [
   },
   {
     id: 3,
-    title: "Find Images",
-    imgUrl: "/Project-IMG/SearchImg.png",
-    URL: "https://find-images-three.vercel.app/",
-    source: "https://github.com/SharwanKunwar/Find-Images",
-    description:
-      "A React image gallery using Pexels API to search, view, and download images. Features responsive grid, pagination, loading state, and error toasts.",
-    teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
-    date: "Oct 8, 2025, 3:20 PM",
+    title: "DeathNote",
+    imgUrl: "/2026Projects/DeathNote.png",
+    URL: "https://death-note-sage.vercel.app/",
+    source: "https://github.com/SharwanKunwar/DeathNote",
+    description: "A Death Note themed REST app built with Spring Boot & PostgreSQL in Docker. Write a target's name and cause of death, view all entries, and delete them — powered by a dark, anime-inspired frontend. ☠️📓",
+    teck: ["ReactJS", "Tailwindcss", "antd"],
+    date: "May 31, 2026, 12:21 PM",
   },
   {
     id: 4,
