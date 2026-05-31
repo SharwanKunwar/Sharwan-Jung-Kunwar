@@ -103,7 +103,7 @@ function Home() {
   return (
     <div id="home" className="min-h-screen flex items-start justify-start">
       <Container className={`min-h-[200vh] p-4 md:p-10 md:pt-0 `}>
-        <div className="md:h-12.5 h-6.25"></div>
+        <div className="md:h-12.5 h-4.25"></div>
 
         {/* Hero Section */}
         <motion.section
