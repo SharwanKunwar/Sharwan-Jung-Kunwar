@@ -107,31 +107,41 @@ function Navbar() {
           initial={{ rotate: 0 }}
           whileInView={{ rotate: 3600 }}
           src="/icons/logo.gif"
-          alt="logo"
+          alt="Antigravity Logo"
           onClick={handleLogoClick}
-          className="h-12 w-12 rounded-full bg-blue-200 p-0.5 object-cover mastShadow"
+          onKeyDown={(e) => { if (e.key === 'Enter') handleLogoClick() }}
+          role="button"
+          tabIndex={0}
+          aria-label="Open secret menu"
+          className="h-12 w-12 rounded-full bg-blue-200 p-0.5 object-cover mastShadow cursor-pointer focus-visible:outline-indigo-400"
         />
 
         <div className="flex gap-3 items-center">
 
           {/* Mobile Menu --------------------------*/}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
             {open ? (
-              <X
+              <button
+                aria-label="Close menu"
                 onClick={() => {
                   haptic.closeMenu();
                   setOpen(false);
                 }}
-                className="w-9 h-9 cursor-pointer mr-2 text-neutral-900 dark:text-white"
-              />
+                className="p-1 focus-visible:outline-indigo-400 rounded"
+              >
+                <X className="w-9 h-9 cursor-pointer text-neutral-900 dark:text-white" />
+              </button>
             ) : (
-              <Menu
+              <button
+                aria-label="Open menu"
                 onClick={() => {
                   haptic.openMenu();
                   setOpen(true);
                 }}
-                className={`w-9 h-9 cursor-pointer mr-2 ${isDarkMode ? "text-white" : "text-neutral-900"}`}
-              />
+                className="p-1 focus-visible:outline-indigo-400 rounded"
+              >
+                <Menu className={`w-9 h-9 cursor-pointer ${isDarkMode ? "text-white" : "text-neutral-900"}`} />
+              </button>
             )}
           </div>
 
@@ -166,11 +176,12 @@ function Navbar() {
 
           {/* Dark Mode Toggle */}
           <button
+            aria-label="Toggle dark mode"
             onClick={() => {
               haptic.tap();
               toggleDarkMode();
             }}
-            className={`rounded-full w-10 h-10 mastBlueShadow hidden md:flex justify-center items-center ${isDarkMode && "mastOrangeShadow"}`}
+            className={`rounded-full w-10 h-10 mastBlueShadow hidden md:flex justify-center items-center focus-visible:outline-indigo-400 ${isDarkMode && "mastOrangeShadow"}`}
           >
             {isDarkMode ? <FaSun color='gold' size={20} /> : <FaMoon color='black' size={20} />}
           </button>
@@ -200,8 +211,9 @@ function Navbar() {
 
                 {/* Dark mode toggle for phone */}
                 <button
+                  aria-label="Toggle dark mode"
                   onClick={toggleDarkMode}
-                  className={`text-black flex justify-center items-center rounded-full w-10 h-10 mastShadow mr-5 ${isDarkMode ? "text-white mastWhiteShadow" : ""
+                  className={`text-black flex justify-center items-center rounded-full w-10 h-10 mastShadow mr-5 focus-visible:outline-indigo-400 ${isDarkMode ? "text-white mastWhiteShadow" : ""
                     }`}
                 >
                   {isDarkMode ? <FaSun color="gold" size={30} /> : <FaMoon color="black" size={30} />}

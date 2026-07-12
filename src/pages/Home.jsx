@@ -100,7 +100,7 @@ function Home() {
   };
 
   return (
-    <div id="home" className="min-h-screen flex items-start justify-start">
+    <main id="home" className="min-h-screen flex items-start justify-start">
       <Container className={`min-h-[200vh] p-4 md:p-10 md:pt-0 `}>
         <div className="md:h-12.5 h-4.25"></div>
 
@@ -134,9 +134,9 @@ function Home() {
             </div>
           </div>
 
-          <p className="text-neutral-400 pt-3 mb-5 md:text-sm text-sm max-w-[90%]">
-            I turn ideas into working projects, welcome chaos, and see bugs as
-            opportunities to learn. I build, break, and iterate
+          <p className={`pt-3 mb-5 md:text-[15px] text-sm max-w-[90%] leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+            I turn complex ideas into functional software, embracing chaos and seeing bugs as
+            learning opportunities. I build, break, and iterate
             relentlessly—sometimes breaking more than I create, but always
             improving.
           </p>
@@ -201,7 +201,7 @@ function Home() {
             transition={{ duration: 0.3 }}
             className="mt-3"
           >
-            <p className="text-neutral-400 text-sm md:text-sm max-w-full">
+            <p className={`text-sm md:text-[15px] max-w-full leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
               I started my coding journey with C, learning everything on my own through
               trial and error. From building simple logic programs to developing Android
               apps and modern web applications with React, I’ve gradually expanded into
@@ -209,7 +209,7 @@ function Home() {
               breaking, and improving systems every day.
             </p>
 
-            <section className="mt-10 w-full text-neutral-400 md:text-sm text-sm max-w-2xl">
+            <section className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
               <p>
                 If Googling me is your thing—go ahead. You can find me across
                 the web here:
@@ -263,13 +263,13 @@ function Home() {
         )}
 
         {/* Favorite Projects */}
-        <div className="mt-10">
-          <h1
-            className={`text-2xl md:text-3xl font-medium mb-2 underline ${isDarkMode && "text-white"}`}
+        <section className="mt-16">
+          <h2
+            className={`text-2xl md:text-3xl font-semibold mb-3 tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"}`}
           >
             Recently Worked Projects
-          </h1>
-          <p className="text-neutral-400 mb-2">
+          </h2>
+          <p className={`mb-6 text-sm md:text-[15px] ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
             Explore my coding journey through a mix of projects...
           </p>
           <div className="grid lg:grid-cols-2 lg:grid-rows-2 gap-5 py-5">
@@ -286,12 +286,12 @@ function Home() {
               />
             ))}
           </div>
-          <div className="text-center mt-5">
+          <div className="text-center mt-8">
             <Link to="/projects">
-              <Button size="large" className="w-full! mb-10" onClick={haptic.soft}>More Projects</Button>
+              <Button size="large" className="w-full! mb-10 h-12 text-base shadow-sm" onClick={haptic.soft}>View All Projects</Button>
             </Link>
           </div>
-        </div>
+        </section>
 
         {/* Skills Marquee -------------------------------------------------------*/}
         <div className="relative w-full md:mt-10 mt-5 overflow-hidden ">
@@ -391,7 +391,7 @@ function Home() {
         {/* Resume Section */}
         <Resume />
       </Container>
-    </div>
+    </main>
   );
 }
 

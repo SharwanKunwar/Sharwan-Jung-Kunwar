@@ -5,10 +5,10 @@ import { DarkModeContext } from '../context/DarkModeContext';
 function Resume() {
   const{isDarkMode} = useContext(DarkModeContext)
   return (
-    <>
-        <div id="education" className={`flex justify-center p-2 border-t border-b border-black/30 text-3xl mt-15 ${isDarkMode?"border-white/30":""}`}>Resume</div>
-          <p className="pt-4 md:block hidden text-center text-neutral-500">Explore my journey through development projects and academic growth. This section highlights my work experience and education timeline, showcasing skills in both frontend and backend technologies including Java, Spring Boot, Android, and web development.</p>
-          <p className="pt-4 md:hidden block text-center text-neutral-500">My journey in dev and education, with skills in Java, Spring Boot, Android & web.</p>
+    <section aria-labelledby="resume-heading" className="w-full">
+        <h2 id="resume-heading" className={`flex justify-center p-2 border-t border-b border-black/30 text-3xl mt-15 font-semibold tracking-tight ${isDarkMode?"border-white/20 text-white":"text-neutral-900"}`}>Resume</h2>
+          <p className={`pt-4 md:block hidden text-center md:text-[15px] max-w-3xl mx-auto leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>Explore my journey through software engineering and academic growth. This section highlights my technical experience and education timeline, showcasing skills in frontend and backend technologies including Java, Spring Boot, React, and system architecture.</p>
+          <p className={`pt-4 md:hidden block text-center text-sm px-4 leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>My journey in software engineering and education, with skills in modern web development and backend architecture.</p>
           
         <div className="flex flex-col gap-2 mt-10">
           <motion.h2 
@@ -18,7 +18,7 @@ function Resume() {
           <motion.p
           initial={{y:20,opacity:0, filter:'blur(5px)'}}
           whileInView={{y:0, opacity:1, filter:'none'}}
-          className="text-neutral-500"
+          className={`transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}
           >Quick glance at my frontend and backend skills, real-world projects, and growth as a software developer.</motion.p>
         </div>
         
@@ -26,7 +26,7 @@ function Resume() {
         <br /><br />
         <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative">
 
-          <div className="absolute  w-5 left-0 top-0 rounded md:left-6/21 h-full flex justify-center items-center"> 
+          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 rounded md:left-6/21 h-full flex justify-center items-center"> 
           <div className="bg-gray-400 h-full w-0.5 rounded-full">
             <motion.div
             initial={{y:100, opacity:0, filter:"blur(1px)"}}
@@ -53,9 +53,9 @@ function Resume() {
           >
             <div>
               <h1 className="font-bold text-[18px]">JavaScript / ReactJS / Nextjs</h1>
-              <p className="text-[14px] mt-2 w-[90%] text-neutral-500">I began my frontend journey with HTML, CSS and javaScript, building simple static pages. Later, i explored Nextjs, which transformed the way i build modern web interfaces.</p>
+              <p className={`text-[14px] mt-2 w-[90%] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>I began my frontend journey with HTML, CSS and javaScript, building simple static pages. Later, i explored Nextjs, which transformed the way i build modern web interfaces.</p>
               <p className={`text-black font-bold mt-3 text-[14px] ${isDarkMode?"text-gray-300":""}`}>I've Worked on several Frontent projects where i focused on:</p>
-              <ol className="list-disc ml-4 text-[13px] mt-2 text-neutral-500">
+              <ol className={`list-disc ml-4 text-[13px] mt-2 transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
                 <li>Built with Next.js for server-side rendering and routing</li>
                 <li>Styled using Tailwind CSS for responsive design</li>
                 <li>Added smooth animations with Framer Motion</li>
@@ -71,7 +71,7 @@ function Resume() {
         <br /><br />
         <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative">
 
-          <div className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
+          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
           <div className="bg-gray-400 h-full w-0.5  rounded-full">
             <motion.div
             initial={{y:100, opacity:0, filter:"blur(1px)"}}
@@ -98,9 +98,9 @@ function Resume() {
           >
             <div className="md:pl-5">
               <h1 className="font-bold text-[18px]">C / Java and Other programming practices</h1>
-              <p className="text-[14px] mt-2 w-[90%] text-neutral-500">I focused mainly on programming fundamentals using <strong>C</strong> and <strong>Java</strong>. I practiced problem-solving, logic building, and core concepts like <strong>DSA</strong>, with diving into frontend or backend frameworks.</p>
+              <p className={`text-[14px] mt-2 w-[90%] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>I focused mainly on programming fundamentals using <strong>C</strong> and <strong>Java</strong>. I practiced problem-solving, logic building, and core concepts like <strong>DSA</strong>, with diving into frontend or backend frameworks.</p>
               <p className={`text-black font-bold mt-3 text-[14px] ${isDarkMode?"text-gray-300":""}`}>I've worked on several projects:</p>
-              <ol className="list-disc ml-4 text-[14px] mt-2 text-neutral-500">
+              <ol className={`list-disc ml-4 text-[14px] mt-2 transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
                 <li>Library management system</li>
                 <li>Encryption and Decryption</li>
                 <li>Condition based Ai 'lucifer'</li>
@@ -124,7 +124,7 @@ function Resume() {
           <motion.p
           initial={{y:20,opacity:0, filter:'blur(5px)'}}
           whileInView={{y:0, opacity:1, filter:'none'}}
-          className="text-neutral-500"
+          className={`transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}
           >
             An overview of my academic journey, highlighting my qualifications, coursework and skills gained to support my professional growth.</motion.p>
         </div>
@@ -133,7 +133,7 @@ function Resume() {
         <br /><br />
         <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative ">
 
-          <div className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
+          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
           <div className="bg-gray-400 h-full w-0.5  rounded-full">
             <motion.div
             initial={{y:100, opacity:0, filter:"blur(1px)"}}
@@ -161,7 +161,7 @@ function Resume() {
           >
             <div className=" w-full">
               <h1 className="font-bold text-[18px] ">High School Diploma, Passed +2</h1>
-              <p className="pt-2 text-neutral-500 text-[14px]">Graduated with a strong academic record. Engaged in extracurricular activities and clubs.</p>
+              <p className={`pt-2 text-[14px] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>Graduated with a strong academic record. Engaged in extracurricular activities and clubs.</p>
             </div>
           </motion.div>
         </div>
@@ -170,7 +170,7 @@ function Resume() {
         <br /><br />
         <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative ">
 
-          <div className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
+          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
           <div className="bg-gray-400 h-full w-0.5  rounded-full">
             <motion.div
             initial={{y:100, opacity:0, filter:"blur(1px)"}}
@@ -198,11 +198,11 @@ function Resume() {
           >
             <div className=" w-full">
               <h1 className="font-bold text-[18px] ">Bachelor's Student BCA</h1>
-              <p className="pt-2 text-neutral-500 text-[14px]">Currently pursuing a Bachelor's degree, i focus on academic growth and skill development through hands-on projects, coding club events, and tech meetups, while also dedicating time to online courses and personal projects.</p>
+              <p className={`pt-2 text-[14px] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>Currently pursuing a Bachelor's degree, i focus on academic growth and skill development through hands-on projects, coding club events, and tech meetups, while also dedicating time to online courses and personal projects.</p>
             </div>
           </motion.div>
         </div>
-    </>
+    </section>
   )
 }
 

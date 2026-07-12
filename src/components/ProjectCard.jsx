@@ -21,10 +21,10 @@ function ProjectCard(props) {
             >
 
                 <Card hoverable className={`hover:border! hover:border-blue-500! bg-gray-10! md:h-77.5! ${isDarkMode ? "bg-gray-700!" : "text-red-400"}`}>
-                    <img src={props.img} alt="ProjectImg" className='rounded-md bg-linear-to-br from-indigo-400 to-green-400 via-pink-400 mastShadow  min-h-50 object-cover overflow-hidden' />
+                    <img loading="lazy" src={props.img} alt={props.title || "Project Image"} className='rounded-md bg-linear-to-br from-indigo-400 to-green-400 via-pink-400 mastShadow min-h-50 object-cover overflow-hidden' />
                     <div className='flex justify-between'>
-                        <h1 className={`mt-2 font-medium text-neutral-400 ${isDarkMode ? "text-white" : ""}`}>{props.title}</h1>
-                        <h1 className={`mt-2 font-medium text-neutral-400 ${isDarkMode ? "text-white" : ""}`}>{props.dt}</h1>
+                        <h1 className={`mt-2 font-medium ${isDarkMode ? "text-white" : "text-neutral-700"}`}>{props.title}</h1>
+                        <h1 className={`mt-2 font-medium ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>{props.dt}</h1>
                     </div>
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -45,11 +45,11 @@ function ProjectCard(props) {
 
                         </div>
                         <div className='w-full flex justify-center items-center gap-3 lg:mt-7 mt-5'>
-                            <a target='_blank' href={props.SUrl} className='w-6/12'>
-                                <Button size='large' className='w-full border border-white/30 text-white font-medium py-1 rounded-full hover:bg-indigo-600 bg-indigo-400'>Source Code</Button>
+                            <a target='_blank' rel='noopener noreferrer' href={props.SUrl} className='w-6/12' aria-label={`View source code for ${props.title}`}>
+                                <Button size='large' className='w-full border border-white/30 text-white font-medium py-1 rounded-full hover:bg-indigo-600 bg-indigo-400 transition-colors duration-300'>Source Code</Button>
                             </a>
-                            <a target='_blank' href={props.PUrl} className='w-6/12'>
-                                <Button size='large' className='w-full border text-white font-medium border-white/30 py-1 rounded-full hover:bg-indigo-600 bg-indigo-400'>Live Preview</Button>
+                            <a target='_blank' rel='noopener noreferrer' href={props.PUrl} className='w-6/12' aria-label={`View live preview for ${props.title}`}>
+                                <Button size='large' className='w-full border text-white font-medium border-white/30 py-1 rounded-full hover:bg-indigo-600 bg-indigo-400 transition-colors duration-300'>Live Preview</Button>
                             </a>
                         </div>
                     </motion.div>
