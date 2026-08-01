@@ -1,5 +1,5 @@
 
-import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
+import { DarkModeContext } from './context/DarkModeContext.js';
 import { useContext } from "react";
 import RootLayout from './Main/RootLayout';
 import { ShootingStarsAndStarsBackgroundDemo } from './components/ui/ShootingStarsAndStarsBackgroundDemo';

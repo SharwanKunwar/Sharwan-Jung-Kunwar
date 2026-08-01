@@ -2,7 +2,7 @@ import React from 'react'
 import { Badge, Button, Card } from 'antd';
 import { motion } from 'motion/react';
 import { useState, useContext } from 'react';
-import { DarkModeContext } from '../context/DarkModeContext';
+import { DarkModeContext } from '../context/DarkModeContext.js';
 import Ribbon from 'antd/es/badge/Ribbon';
 
 

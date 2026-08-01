@@ -1,6 +1,7 @@
 export const ProjectDetails = [
   {
     id: 33,
+    category: "full-stack",
     title: "DeathNote",
     imgUrl: "/2026Projects/DeathNote.png",
     URL: "https://death-note-sage.vercel.app/",
@@ -11,6 +12,7 @@ export const ProjectDetails = [
   },
   {
     id: 32,
+    category: "frontend",
     title: "RoomFinder",
     imgUrl: "/2026Projects/roomFinder.png",
     URL: "https://room-finder-black.vercel.app/",
@@ -21,6 +23,7 @@ export const ProjectDetails = [
   },
   {
     id: 31,
+    category: "frontend",
     title: "Youtube Long Video Playlist Generator",
     imgUrl: "/MainProjectImage/ShortPlaylist.png",
     URL: "https://generate-playlist.vercel.app/",
@@ -32,6 +35,7 @@ export const ProjectDetails = [
   },
   {
     id: 30,
+    category: "frontend",
     title: "Song-Composer",
     imgUrl: "/2026Projects/202603.png",
     URL: "https://song-composer-mu.vercel.app/",
@@ -43,6 +47,7 @@ export const ProjectDetails = [
   },
   {
     id: 29,
+    category: "frontend",
     title: "Fack-Data-Builder",
     imgUrl: "/2026Projects/202601.png",
     URL: "https://fake-data-builder.vercel.app/",
@@ -54,6 +59,7 @@ export const ProjectDetails = [
   },
   {
     id: 28,
+    category: "frontend",
     title: "Sharwan Jung Kunwar",
     imgUrl: "portfolio.png",
     URL: "https://sharwanjungkunwar.vercel.app/",
@@ -65,6 +71,7 @@ export const ProjectDetails = [
   },
   {
     id: 27,
+    category: "frontend",
     title: "Focus Planner",
     imgUrl: "2026Projects/focusPlanner.png",
     URL: "https://focus-planner-mu.vercel.app/",
@@ -76,6 +83,7 @@ export const ProjectDetails = [
   },
   {
     id: 26,
+    category: "frontend",
     title: "Super Site",
     imgUrl: "/work/superSite.png",
     URL: "https://super-site-rho.vercel.app/",
@@ -87,6 +95,7 @@ export const ProjectDetails = [
 
   {
     id: 24,
+    category: "frontend",
     title: "LeadCoder",
     imgUrl: "/Project-IMG/LeadCoder.png",
     URL: "https://lead-coder.vercel.app/",
@@ -97,6 +106,7 @@ export const ProjectDetails = [
   },
   {
     id: 23,
+    category: "frontend",
     title: "Focus Planner",
     imgUrl: "/Project-IMG/Focus.png",
     URL: "https://focus-ten-omega.vercel.app/",
@@ -107,6 +117,7 @@ export const ProjectDetails = [
   },
   {
     id: 22,
+    category: "frontend",
     title: "Find Images",
     imgUrl: "/Project-IMG/SearchImg.png",
     URL: "https://find-images-three.vercel.app/",
@@ -117,6 +128,7 @@ export const ProjectDetails = [
   },
   {
     id: 21,
+    category: "frontend",
     title: "Avatar Generator",
     imgUrl: "/work/avatarGenerator.png",
     URL: "https://generate-avatar-phi.vercel.app/",
@@ -127,6 +139,7 @@ export const ProjectDetails = [
   },
   {
     id: 20,
+    category: "frontend",
     title: "Youtube-Thumbnail-Downloader",
     imgUrl: "/work/youtube.png",
     URL: "https://download-youtube-thumbnail.vercel.app/",
@@ -137,6 +150,7 @@ export const ProjectDetails = [
   },
   {
     id: 19,
+    category: "frontend",
     title: "Gradient Generator",
     imgUrl: "/Project-IMG/GG.png",
     URL: "https://gradient-generator-six-pied.vercel.app/",
@@ -147,6 +161,7 @@ export const ProjectDetails = [
   },
   {
     id: 18,
+    category: "ui-design",
     title: "Portfolio Design",
     imgUrl: "/work/portfolio.png",
     URL: "https://portfolio-design-dusky.vercel.app/",
@@ -157,6 +172,7 @@ export const ProjectDetails = [
   },
   {
     id: 17,
+    category: "ui-design",
     title: "Traval CheckPoint",
     imgUrl: "/work/travel.png",
     URL: "https://travel-check-point.vercel.app/",
@@ -167,6 +183,7 @@ export const ProjectDetails = [
   },
   {
     id: 16,
+    category: "ui-design",
     title: "Loaders animation",
     imgUrl: "/work/Loaders.png",
     URL: "https://loaders-motion.vercel.app/",
@@ -177,6 +194,7 @@ export const ProjectDetails = [
   },
   {
     id: 15,
+    category: "ui-design",
     title: "3D Book Slider",
     imgUrl: "/work/3dBook.png",
     URL: "https://3-d-book-slider.vercel.app/",
@@ -187,6 +205,7 @@ export const ProjectDetails = [
   },
   {
     id: 14,
+    category: "ui-design",
     title: "3D Scene | R3F",
     imgUrl: "/work/space.png",
     URL: "https://3d-scene-mu.vercel.app/",
@@ -197,6 +216,7 @@ export const ProjectDetails = [
   },
   {
     id: 13,
+    category: "ui-design",
     title: "Heart 3D | R3F",
     imgUrl: "/work/heart.png",
     URL: "https://heart-3d-r3-f.vercel.app/",
@@ -207,6 +227,7 @@ export const ProjectDetails = [
   },
   {
     id: 12,
+    category: "ui-design",
     title: "Portfolio",
     imgUrl: "/work/work001.png",
     URL: "https://sharwan-jung-kunwar.vercel.app/",
@@ -217,6 +238,7 @@ export const ProjectDetails = [
   },
   {
     id: 11,
+    category: "ui-design",
     title: "Stranger",
     imgUrl: "/work/Stranger.png",
     URL: "https://stranger-cyan.vercel.app/",
@@ -227,6 +249,7 @@ export const ProjectDetails = [
   },
   {
     id: 10,
+    category: "frontend",
     title: "Todo App",
     imgUrl: "/work/todo.png",
     URL: "https://progress-tracker-drab.vercel.app/",
@@ -237,6 +260,7 @@ export const ProjectDetails = [
   },
   {
     id: 9,
+    category: "frontend",
     title: "Smart video player",
     imgUrl: "/work/SmartVideoPlayer.png",
     URL: "https://smart-video-player.vercel.app/",
@@ -247,6 +271,7 @@ export const ProjectDetails = [
   },
   {
     id: 8,
+    category: "frontend",
     title: "Programming Notes",
     imgUrl: "/work/work02.png",
     URL: "https://programming-notes-eight.vercel.app/",
@@ -257,6 +282,7 @@ export const ProjectDetails = [
   },
   {
     id: 7,
+    category: "ui-design",
     title: "BCA Aspirant",
     imgUrl: "/work/work03.png",
     URL: "https://bca-aspirant-hub.vercel.app/",
@@ -267,6 +293,7 @@ export const ProjectDetails = [
   },
   {
     id: 6,
+    category: "ui-design",
     title: "My Portfolio 07",
     imgUrl: "/work/work01.png",
     URL: "https://sharwankunwar.github.io/My-Portfolio-07/",
@@ -277,6 +304,7 @@ export const ProjectDetails = [
   },
   {
     id: 5,
+    category: "ui-design",
     title: "Quiz",
     imgUrl: "/work/quiz.png",
     URL: "https://sharwankunwar.github.io/Quiz-With-Moving-Button/",
@@ -287,6 +315,7 @@ export const ProjectDetails = [
   },
   {
     id: 4,
+    category: "ui-design",
     title: "Happyness Dozz",
     imgUrl: "/work/happy.png",
     URL: "",
@@ -297,6 +326,7 @@ export const ProjectDetails = [
   },
   {
     id: 3,
+    category: "ui-design",
     title: "Demo Digitalize Ideas",
     imgUrl: "/work/work06.png",
     URL: "",
@@ -307,6 +337,7 @@ export const ProjectDetails = [
   },
   {
     id: 2,
+    category: "ui-design",
     title: "Home Page",
     imgUrl: "/work/HomePage.png",
     URL: "https://sharwankunwar.github.io/Web-UI/",
@@ -317,6 +348,7 @@ export const ProjectDetails = [
   },
   {
     id: 1,
+    category: "ui-design",
     title: "CasinoPlanet",
     imgUrl: "/work/work05.png",
     URL: "https://sharwankunwar.github.io/Casino-online/",

@@ -25,7 +25,7 @@ import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
 import ProjectCard from "../components/ProjectCard";
 import { Button } from "antd";
 import Resume from "../pages/Resume";
-import { DarkModeContext } from "../context/DarkModeContext";
+import { DarkModeContext } from "../context/DarkModeContext.js";
 import { Link } from "react-router-dom";
 import GithubHeatmap from "../components/GithubHeatmap";
 import MusicPlayer from "../components/MusicPlayer";
@@ -128,7 +128,7 @@ function Home() {
               className={`text-3xl md:text-4xl font-bold tracking-tight text-neutral-800 ${isDarkMode && "text-white"}`}
             > Sharwan Jung Kunwar </h1>
 
-            <div className="h-[30px] flex justify-start items-center">
+            <div className="h-7.5 flex justify-start items-center">
               {/* MusicPlayer haptic on play/pause inside component */}
               <MusicPlayer haptic={haptic} />
             </div>

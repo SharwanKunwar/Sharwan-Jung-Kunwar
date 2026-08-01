@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { motion } from 'motion/react';
-import { DarkModeContext } from '../context/DarkModeContext';
+import { DarkModeContext } from '../context/DarkModeContext.js';
 
 function Resume() {
   const{isDarkMode} = useContext(DarkModeContext)

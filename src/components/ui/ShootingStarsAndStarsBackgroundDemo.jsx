@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import React, { useContext } from "react";
 import { ShootingStars } from "../ui/ShootingStars";
 import { StarsBackground } from "../ui/StarsBackground";
-import { DarkModeContext } from '../../context/DarkModeContext';
+import { DarkModeContext } from '../../context/DarkModeContext.js';
 
 export function ShootingStarsAndStarsBackgroundDemo({ children }) {
     const { isDarkMode } = useContext(DarkModeContext);

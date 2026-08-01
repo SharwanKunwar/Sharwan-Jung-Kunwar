@@ -1,5 +1,5 @@
 import { useRef, useState, useContext } from "react";
-import { DarkModeContext } from "../context/DarkModeContext";
+import { DarkModeContext } from "../context/DarkModeContext.js";
 
 function MusicPlayer() {
   const audioRef = useRef(null);

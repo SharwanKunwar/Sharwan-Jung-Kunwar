@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import { DarkModeContext } from '../context/DarkModeContext';
+import { DarkModeContext } from '../context/DarkModeContext.js';
 import { Button, Input, Modal } from 'antd';
 
 function Navbar() {

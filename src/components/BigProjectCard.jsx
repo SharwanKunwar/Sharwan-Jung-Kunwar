@@ -2,7 +2,7 @@
 import { Badge, Button, Card } from "antd";
 import { motion } from "motion/react";
 import { useState, useContext } from "react";
-import { DarkModeContext } from "../context/DarkModeContext";
+import { DarkModeContext } from "../context/DarkModeContext.js";
 import Ribbon from "antd/es/badge/Ribbon";
 
 function BigProjectCard(props) {
@@ -30,7 +30,7 @@ function BigProjectCard(props) {
             <h1
               className={`mt-2 font-medium text-neutral-400 ${isDarkMode ? "text-white" : ""}`}
             >
-              {props.title}
+              {props.title} <span className="text-red-500">||</span> {props.category}
             </h1>
             <h1
               className={`mt-2 font-medium text-neutral-400 ${isDarkMode ? "text-white" : ""}`}
@@ -85,7 +85,7 @@ function BigProjectCard(props) {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1.3, delay: 0.5 }}
-                className="bg-green-400/30 backdrop-blur-sm w-[500px] rounded-2xl md:flex md:gap-5 border border-white/30 shadow-sm p-7">
+                className="bg-green-400/30 backdrop-blur-sm w-125 rounded-2xl md:flex md:gap-5 border border-white/30 shadow-sm p-7">
 
                 <div className="">
                   <h1 className="text-4xl text-shadow-sm font-medium mb-3">

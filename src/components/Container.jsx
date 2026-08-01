@@ -1,5 +1,5 @@
 import React from "react";
-import { DarkModeContext } from '../context/DarkModeContext';
+import { DarkModeContext } from '../context/DarkModeContext.js';
 import { useContext } from "react";
 
 export const Container = ({ children, className }) => {
