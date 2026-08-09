@@ -134,11 +134,10 @@ function Home() {
             </div>
           </div>
 
-          <p className={`pt-3 mb-5 md:text-[15px] text-sm max-w-[90%] leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-            I turn complex ideas into functional software, embracing chaos and seeing bugs as
-            learning opportunities. I build, break, and iterate
-            relentlessly—sometimes breaking more than I create, but always
-            improving.
+          <p className={`pt-3 mb-5 md:text-[15px] text-sm max-w-full leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+            I write code, chaos writes back. I treat bugs like unpaid mentors — brutal, frequent, oddly educational.
+            I break more than I build some days, but every crash teaches me something new.
+            Slowly, painfully, beautifully — it becomes functional software. Mostly.
           </p>
         </motion.section>
 
@@ -202,11 +201,9 @@ function Home() {
             className="mt-3"
           >
             <p className={`text-sm md:text-[15px] max-w-full leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-              I started my coding journey with C, learning everything on my own through
-              trial and error. From building simple logic programs to developing Android
-              apps and modern web applications with React, I’ve gradually expanded into
-              backend development using Spring Boot and PostgreSQL. I enjoy building,
-              breaking, and improving systems every day.
+              C taught me pain first, logic second — self-taught, self-doubted, self-improved.
+              From full-stack chaos to Android, React, Spring Boot, and PostgreSQL, I learned each one by breaking it first and understanding it later.
+              I don't fear bugs, I collect them like badges of honor. Still building. Still breaking. Still leveling up.
             </p>
 
             <section className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>

@@ -40,12 +40,12 @@ function Projects() {
     <Container>
       <div className='w-full pt-20 sm:pt-24 lg:pt-25 flex flex-col justify-center items-center gap-4'>
 
-        <h1 className={`text-2xl sm:text-3xl font-medium text-start w-full lg:w-[95%] lg:mt-3 ${isDarkMode && "text-white"}`}>
+        <h1 className={`text-2xl sm:text-3xl font-medium text-start w-full lg:w-[95%] lg:mt-3 px-3 ${isDarkMode && "text-white"}`}>
           {filters.find((filter) => filter.id === activeFilter)?.label} Projects
         </h1>
 
         <div className="w-full lg:w-[95%]">
-          <div className="flex flex-wrap gap-2 sm:gap-3 pb-2">
+          <div className="flex flex-wrap gap-2 sm:gap-3 pb-2 px-3">
             {filters.map((filter) => {
               const isActive = activeFilter === filter.id;
 
@@ -78,7 +78,6 @@ function Projects() {
                 SUrl={item.source}
                 PUrl={item.URL}
                 Stack={item.teck}
-                category={item.category}
                 dt={item.date}
               />
             ))}
