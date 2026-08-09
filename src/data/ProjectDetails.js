@@ -8,7 +8,7 @@ export const ProjectDetails = [
     source: "https://github.com/SharwanKunwar/BrowserManager",
     description: "A sleek browser bookmark & tab manager built with React, Tailwind CSS, and Ant Design. Organize links, group tabs, and reclaim your sanity — because 47 open tabs isn't a workflow, it's a cry for help. 🗂️🌐",
     teck: ["ReactJS", "Tailwindcss", "antd"],
-    date: "May 31, 2026, 12:21 PM",
+    date: "jul 26, 2026, 4:47 PM",
   },
   {
     id: 34,
@@ -19,7 +19,7 @@ export const ProjectDetails = [
     source: "https://github.com/SharwanKunwar/Project-us",
     description: "A playful React, Tailwind & Ant Design web app built for asking someone out — animated, interactive, and just cheesy enough to work. Because texting 'wanna hang out?' felt way too easy. 💌✨",
     teck: ["ReactJS", "Tailwindcss", "antd"],
-    date: "May 31, 2026, 12:21 PM",
+    date: "jul 42, 2026, 8:25 AM",
   },
   {
     id: 33,
