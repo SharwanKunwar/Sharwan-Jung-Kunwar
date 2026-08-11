@@ -123,14 +123,33 @@ function Home() {
             </p>
           </div>
 
-          <div className="">
-            <h1
-              className={`text-3xl md:text-4xl font-bold tracking-tight text-neutral-800 ${isDarkMode && "text-white"}`}
-            > Sharwan Jung Kunwar </h1>
+          <div className="space-y-4">
+            <div>
+              <h1
+                className={`text-3xl md:text-4xl font-bold tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"
+                  }`}
+              >
+                Sharwan Jung Kunwar
+              </h1>
 
-            <div className="h-7.5 flex justify-start items-center">
-              {/* MusicPlayer haptic on play/pause inside component */}
-              <MusicPlayer haptic={haptic} />
+              <div
+                className={`mt-1 mb-3 flex  gap-1.5 text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-500"
+                  }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span>🏠</span>
+                  <span>
+                    From <strong className="font-medium">Attriya-Kailali</strong>
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span>📍</span>
+                  <span>
+                    Based in <strong className="font-medium">Bhaktapur, Bode</strong>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
