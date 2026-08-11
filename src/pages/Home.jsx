@@ -100,8 +100,21 @@ function Home() {
   };
 
   return (
-    <main id="home" className="min-h-screen flex items-start justify-start">
-      <Container className={`min-h-[200vh] p-4 md:p-10 md:pt-0 `}>
+    <main
+      id="home"
+      className="relative min-h-screen flex items-start justify-start bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: !isDarkMode
+          ? "url('/BG_Images/bg001.jpeg')"
+          : "none",
+      }}
+    >
+      {/* Background overlay */}
+      {!isDarkMode && (
+        <div className="absolute inset-0 bg-white/50 pointer-events-none" />
+      )}
+
+      <Container className={`min-h-[210vh] p-4 md:p-10 md:pt-10 `}>
         <div className="md:h-12.5 h-4.25"></div>
 
         {/* Hero Section */}
@@ -126,7 +139,9 @@ function Home() {
           <div className="space-y-4">
             <div>
               <h1
-                className={`text-3xl md:text-4xl font-bold tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"
+                className={`text-3xl md:text-4xl font-bold tracking-tight ${isDarkMode
+                  ? "text-white [text-shadow:1px_1px_20px_rgb(156_163_175_/_0.7)]"
+                  : "text-neutral-900 [text-shadow:1px_1px_30px_rgb(156_163_175_/_0.5)]"
                   }`}
               >
                 Sharwan Jung Kunwar
@@ -136,15 +151,16 @@ function Home() {
                 className={`mt-1 mb-3 flex  gap-1.5 text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-500"
                   }`}
               >
-                <div className="flex items-center gap-2">
-                  <span>🏠</span>
+                <div className="flex items-center gap-1">
+                  <i className="ri-home-7-line text-lg text-yellow-300"></i>
+
                   <span>
                     From <strong className="font-medium">Attriya-Kailali</strong>
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span>📍</span>
+                  <i className="ri-map-pin-2-line text-lg text-indigo-400"></i>
                   <span>
                     Based in <strong className="font-medium">Bhaktapur, Bode</strong>
                   </span>
@@ -153,10 +169,11 @@ function Home() {
             </div>
           </div>
 
-          <p className={`pt-3 mb-5 md:text-[15px] text-sm max-w-full leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-            I write code, chaos writes back. I treat bugs like unpaid mentors — brutal, frequent, oddly educational.
-            I break more than I build some days, but every crash teaches me something new.
-            Slowly, painfully, beautifully — it becomes functional software. Mostly.
+          <p className={`pt-3 mb-5 md:text-[15px] text-sm max-w-[90%] text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+            I turn complex ideas into functional software, embracing chaos and seeing bugs as
+            learning opportunities. I build, break, and iterate
+            relentlessly—sometimes breaking more than I create, but always
+            improving.
           </p>
         </motion.section>
 
@@ -171,8 +188,8 @@ function Home() {
               haptic.soft();
               setMore(!more);
             }}
-            className="border border-black/30 rounded px-5 bg-indigo-400 text-white py-1 text-[13px] mastShadow hover:bg-indigo-500 hover:border-indigo-500"
-          >
+            className="border border-black/30 rounded px-5 bg-indigo-400 text-white font-bold text-shadow-sm py-1 text-[13px] mastShadow hover:bg-indigo-500 hover:border-indigo-500"
+          > <i className="ri-folder-history-line mr-1 text-md"></i>
             My Story
           </motion.button>
 
@@ -219,59 +236,108 @@ function Home() {
             transition={{ duration: 0.3 }}
             className="mt-3"
           >
-            <p className={`text-sm md:text-[15px] max-w-full leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-              C taught me pain first, logic second — self-taught, self-doubted, self-improved.
-              From full-stack chaos to Android, React, Spring Boot, and PostgreSQL, I learned each one by breaking it first and understanding it later.
-              I don't fear bugs, I collect them like badges of honor. Still building. Still breaking. Still leveling up.
+            <p className={`text-sm md:text-[15px] max-w-full text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+              I started my coding journey with C, learning everything on my own through
+              trial and error. From building simple logic programs to developing Android
+              apps and modern web applications with React, I’ve gradually expanded into
+              backend development using Spring Boot and PostgreSQL. I enjoy building,
+              breaking, and improving systems every day.
             </p>
 
             <section className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-              <p>
-                If Googling me is your thing—go ahead. You can find me across
-                the web here:
+              <p className="text-lg font-bold capitalize text-indigo-500 [text-shadow:1px_1px_90px_theme(colors.indigo.500)]">
+                <span className="text-2xl text-indigo-500 text-shadow-black">i</span>F googling me is your thing—go ahead. You can find me across the web.
               </p>
 
-              <div className="grid md:grid-cols-9 grid-cols-5 gap-1 md:mt-3 mt-5">
+
+              <div className="grid md:grid-cols-8 grid-cols-5 gap-1 md:mt-3 mt-5">
+                {/* Fingerprint */}
+                <span
+                  className={`text-sm md:text-2xl font-medium text-shadow-sm ${isDarkMode ? "text-neutral-300" : "text-neutral-700"
+                    }`}
+                >
+                  <i className="text-2xl ri-fingerprint-line"></i>
+                </span>
+
+                {/* Facebook */}
                 <section className="flex justify-start items-center">
-                  <Button>
-                    <a
-                      href="https://www.facebook.com/sravana.kumvara/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Facebook"
-                    >
-                      <FaFacebook className="text-blue-400 w-6 h-6 hover:text-blue-200 transition-colors duration-200" />
-                    </a>
-                  </Button>
+                  <motion.a
+                    initial={{ opacity: 0, x: 150, filter: "blur(5px)" }}
+                    animate={{ opacity: 1, x: 0, filter: "none" }}
+                    transition={{ duration: 0.5, delay: 1.1 }}
+                    href="https://www.facebook.com/sravana.kumvara/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className={`
+        px-2 py-1 text-[13px] rounded
+        border transition-all duration-300
+        mastShadow
+        hover:text-white
+        hover:bg-indigo-500
+        hover:border-indigo-500
+        ${isDarkMode
+                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
+                        : "text-neutral-800 bg-white/50 border-black/20"
+                      }
+      `}
+                  >
+                    Facebook
+                  </motion.a>
                 </section>
 
+                {/* LinkedIn */}
                 <section className="flex justify-start items-center">
-                  <Button>
-                    <a
-                      href="https://www.linkedin.com/in/sharwan-kunwar-95a919317/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="LinkedIn"
-                    >
-                      <FaLinkedin className="text-blue-400 w-6 h-6 hover:text-blue-200 transition-colors duration-200" />
-                    </a>
-                  </Button>
+                  <motion.a
+                    initial={{ opacity: 0, x: 150, filter: "blur(5px)" }}
+                    animate={{ opacity: 1, x: 0, filter: "none" }}
+                    transition={{ duration: 0.7, delay: 1.3 }}
+                    href="https://www.linkedin.com/in/sharwan-kunwar-95a919317/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className={`
+        px-2 py-1 text-[13px] rounded
+        border transition-all duration-300
+        mastShadow
+        hover:text-white
+        hover:bg-indigo-500
+        hover:border-indigo-500
+        ${isDarkMode
+                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
+                        : "text-neutral-800 bg-white/50 border-black/20"
+                      }
+      `}
+                  >
+                    LinkedIn
+                  </motion.a>
                 </section>
 
+                {/* GitHub */}
                 <section className="flex justify-start items-center">
-                  <Button>
-                    <a
-                      href="https://github.com/SharwanKunwar"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub"
-                    >
-                      <FaGithub
-                        className={`text-black w-6 h-6 hover:text-gray-300 transition-colors duration-200 ${isDarkMode && "text-black"
-                          }`}
-                      />
-                    </a>
-                  </Button>
+                  <motion.a
+                    initial={{ opacity: 0, x: 150, filter: "blur(5px)" }}
+                    animate={{ opacity: 1, x: 0, filter: "none" }}
+                    transition={{ duration: 0.9, delay: 1.5 }}
+                    href="https://github.com/SharwanKunwar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className={`
+        px-2 py-1 text-[13px] rounded
+        border transition-all duration-300
+        mastShadow
+        hover:text-white
+        hover:bg-indigo-500
+        hover:border-indigo-500
+        ${isDarkMode
+                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
+                        : "text-neutral-800 bg-white/50 border-black/20"
+                      }
+      `}
+                  >
+                    GitHub
+                  </motion.a>
                 </section>
               </div>
             </section>
@@ -281,7 +347,7 @@ function Home() {
         {/* Favorite Projects */}
         <section className="mt-16">
           <h2
-            className={`text-2xl md:text-3xl font-semibold mb-3 tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"}`}
+            className={`text-2xl text-shadow-sm md:text-3xl font-semibold mb-3 tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"}`}
           >
             Recently Worked Projects
           </h2>
@@ -407,6 +473,7 @@ function Home() {
         {/* Resume Section */}
         <Resume />
       </Container>
+
     </main>
   );
 }

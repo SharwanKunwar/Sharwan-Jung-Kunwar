@@ -30,7 +30,7 @@ function BigProjectCard(props) {
             <h1
               className={`mt-2 font-medium text-neutral-400 ${isDarkMode ? "text-white" : ""}`}
             >
-              {props.title}
+              {props.title} <span className="text-red-500">||</span> {props.category}
             </h1>
             <h1
               className={`mt-2 font-medium text-neutral-400 ${isDarkMode ? "text-white" : ""}`}

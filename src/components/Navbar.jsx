@@ -87,168 +87,169 @@ function Navbar() {
   };
 
   return (
-    <Container className="flex justify-center">
-      <motion.nav
-        animate={{
-          boxShadow: scrolled
-            ? isDarkMode
-              ? '0px 4px 10px rgba(255,255,255,0.3)'
-              : '0px 4px 10px rgba(0,0,0,0.3)'
-            : 'none',
-          borderRadius: scrolled ? 100 : 0,
-          y: scrolled ? 10 : 0,
-          width: scrolled ? '50%' : '100%',
-        }}
-        transition={{ duration: 0.3, ease: 'linear' }}
-        className="fixed md:inset-x-0 top-2 z-50 md:max-w-6xl md:mx-auto flex items-center justify-between px-3 py-2  backdrop-blur-2xl"
-      >
-        {/* Logo */}
-        <motion.img
-          initial={{ rotate: 0 }}
-          whileInView={{ rotate: 3600 }}
-          src="/icons/logo.gif"
-          alt="Antigravity Logo"
-          onClick={handleLogoClick}
-          onKeyDown={(e) => { if (e.key === 'Enter') handleLogoClick() }}
-          role="button"
-          tabIndex={0}
-          aria-label="Open secret menu"
-          className="h-12 w-12 rounded-full bg-blue-200 p-0.5 object-cover mastShadow cursor-pointer focus-visible:outline-indigo-400"
-        />
+    <>
+      <div className="absolute md:top-0 md:left-0 w-full z-100 ">
+        <motion.nav
+          animate={{
+            boxShadow: scrolled
+              ? isDarkMode
+                ? '0px 4px 10px rgba(255,255,255,0.3)'
+                : '0px 4px 10px rgba(0,0,0,0.3)'
+              : 'none',
+            borderRadius: scrolled ? 100 : 0,
+            y: scrolled ? 10 : 0,
+            width: scrolled ? '50%' : '100%',
+          }}
+          transition={{ duration: 0.3, ease: 'linear' }}
+          className="fixed md:inset-x-0 inset-x-0 top-2 z-100 md:max-w-6xl md:mx-auto flex items-center justify-between px-3 py-2  backdrop-blur-2xl"
+        >
+          {/* Logo */}
+          <motion.img
+            initial={{ rotate: 0 }}
+            whileInView={{ rotate: 3600 }}
+            src="/icons/logo.gif"
+            alt="Antigravity Logo"
+            onClick={handleLogoClick}
+            onKeyDown={(e) => { if (e.key === 'Enter') handleLogoClick() }}
+            role="button"
+            tabIndex={0}
+            aria-label="Open secret menu"
+            className="h-12 w-12 rounded-full bg-blue-200 p-0.5 object-cover mastShadow cursor-pointer focus-visible:outline-indigo-400"
+          />
 
-        <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center">
 
-          {/* Mobile Menu --------------------------*/}
-          <div className="md:hidden flex items-center">
-            {open ? (
-              <button
-                aria-label="Close menu"
-                onClick={() => {
-                  haptic.closeMenu();
-                  setOpen(false);
-                }}
-                className="p-1 focus-visible:outline-indigo-400 rounded"
-              >
-                <X className="w-9 h-9 cursor-pointer text-neutral-900 dark:text-white" />
-              </button>
-            ) : (
-              <button
-                aria-label="Open menu"
-                onClick={() => {
-                  haptic.openMenu();
-                  setOpen(true);
-                }}
-                className="p-1 focus-visible:outline-indigo-400 rounded"
-              >
-                <Menu className={`w-9 h-9 cursor-pointer ${isDarkMode ? "text-white" : "text-neutral-900"}`} />
-              </button>
-            )}
-          </div>
-
-          {/* Desktop Nav */}
-          <div
-            className="relative md:flex space-x-6 items-center hidden"
-            onMouseLeave={() => setHovered(null)}
-          >
-            {hovered !== null && (
-              <motion.div
-                layout
-                className={`absolute top-0 h-full rounded-md z-0 ${isDarkMode ? "bg-neutral-400" : "bg-slate-300"}`}
-                initial={false}
-                animate={{ width: hoverRect.width, left: hoverRect.left }}
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-              />
-            )}
-
-            {navItems.map((item, index) => (
-              <Link
-                key={index}
-                ref={(el) => (navRefs.current[index] = el)}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onClick={haptic.tap}
-                to={item.url}
-                className={`relative px-2 py-2 text-sm z-10 ${isDarkMode ? "text-white" : "text-black"}`}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </div>
-
-          {/* Dark Mode Toggle */}
-          <button
-            aria-label="Toggle dark mode"
-            onClick={() => {
-              haptic.tap();
-              toggleDarkMode();
-            }}
-            className={`rounded-full w-10 h-10 mastBlueShadow hidden md:flex justify-center items-center focus-visible:outline-indigo-400 ${isDarkMode && "mastOrangeShadow"}`}
-          >
-            {isDarkMode ? <FaSun color='gold' size={20} /> : <FaMoon color='black' size={20} />}
-          </button>
-
-        </div>
-      </motion.nav>
-
-
-
-      {/* // modile nav  */}
-      {/* Mobile Menu Links */}
-      {/* Mobile Fullscreen Nav */}
-      {open && (
-        <>
-          <div
-            className="fixed z-40 w-screen h-screen backdrop-blur-2xl left-0 top-0 flex justify-center items-center bg-white/80 dark:bg-neutral-800/30"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: -120 }}
-              // transition={{duration:0.3}}
-              className="w-[90%] rounded-md mt-10"
-            >
-              {/* Header */}
-              <div className="flex justify-between w-full items-center">
-                <h1 className="text-2xl py-4 px-8 border-b border-neutral-900/30 text-neutral-900 dark:border-white/30 dark:text-white">Menu</h1>
-
-                {/* Dark mode toggle for phone */}
+            {/* Mobile Menu --------------------------*/}
+            <div className="md:hidden flex items-center">
+              {open ? (
                 <button
-                  aria-label="Toggle dark mode"
-                  onClick={toggleDarkMode}
-                  className={`text-black flex justify-center items-center rounded-full w-10 h-10 mastShadow mr-5 focus-visible:outline-indigo-400 ${isDarkMode ? "text-white mastWhiteShadow" : ""
-                    }`}
+                  aria-label="Close menu"
+                  onClick={() => {
+                    haptic.closeMenu();
+                    setOpen(false);
+                  }}
+                  className="p-1 focus-visible:outline-indigo-400 rounded"
                 >
-                  {isDarkMode ? <FaSun color="gold" size={30} /> : <FaMoon color="black" size={30} />}
+                  <X className="w-9 h-9 cursor-pointer text-neutral-900 dark:text-white" />
                 </button>
-              </div>
+              ) : (
+                <button
+                  aria-label="Open menu"
+                  onClick={() => {
+                    haptic.openMenu();
+                    setOpen(true);
+                  }}
+                  className="p-1 focus-visible:outline-indigo-400 rounded"
+                >
+                  <Menu className={`w-9 h-9 cursor-pointer ${isDarkMode ? "text-white" : "text-neutral-900"}`} />
+                </button>
+              )}
+            </div>
 
-              {/* Navigation Links */}
-              <div className="h-full flex justify-center items-start pt-20">
-                <nav className="text-lg text-neutral-900 dark:text-white">
-                  <ul className="flex flex-col gap-5">
-                    <Link to="/home" onClick={closeMobileMenu}>
-                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
-                        Home
-                      </li>
-                    </Link>
+            {/* Desktop Nav */}
+            <div
+              className="relative md:flex space-x-6 items-center hidden"
+              onMouseLeave={() => setHovered(null)}
+            >
+              {hovered !== null && (
+                <motion.div
+                  layout
+                  className={`absolute top-0 h-full rounded-md z-0 ${isDarkMode ? "bg-neutral-400" : "bg-slate-300"}`}
+                  initial={false}
+                  animate={{ width: hoverRect.width, left: hoverRect.left }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                />
+              )}
 
-                    <Link to="/projects" onClick={closeMobileMenu}>
-                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
-                        Projects
-                      </li>
-                    </Link>
+              {navItems.map((item, index) => (
+                <Link
+                  key={index}
+                  ref={(el) => (navRefs.current[index] = el)}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onClick={haptic.tap}
+                  to={item.url}
+                  className={`relative px-2 py-2 text-sm z-10 ${isDarkMode ? "text-white" : "text-black"}`}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
 
-                    <Link to="/mySelf" onClick={closeMobileMenu}>
-                      <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
-                        MySelf
-                      </li>
-                    </Link>
+            {/* Dark Mode Toggle */}
+            <button
+              aria-label="Toggle dark mode"
+              onClick={() => {
+                haptic.tap();
+                toggleDarkMode();
+              }}
+              className={`rounded-full w-10 h-10 mastBlueShadow hidden md:flex justify-center items-center focus-visible:outline-indigo-400 ${isDarkMode && "mastOrangeShadow"}`}
+            >
+              {isDarkMode ? <FaSun color='gold' size={20} /> : <FaMoon color='black' size={20} />}
+            </button>
 
-                  </ul>
-                </nav>
-              </div>
-            </motion.div>
           </div>
-        </>
-      )}
+        </motion.nav>
+
+
+
+        {/* // modile nav  */}
+        {/* Mobile Menu Links */}
+        {/* Mobile Fullscreen Nav */}
+        {open && (
+          <>
+            <div
+              className="fixed z-40 w-screen h-screen backdrop-blur-2xl left-0 top-0 flex justify-center items-center bg-white/80 dark:bg-neutral-800/30"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: -120 }}
+                // transition={{duration:0.3}}
+                className="w-[90%] rounded-md mt-10"
+              >
+                {/* Header */}
+                <div className="flex justify-between w-full items-center">
+                  <h1 className="text-2xl py-4 px-8 border-b border-neutral-900/30 text-neutral-900 dark:border-white/30 dark:text-white">Menu</h1>
+
+                  {/* Dark mode toggle for phone */}
+                  <button
+                    aria-label="Toggle dark mode"
+                    onClick={toggleDarkMode}
+                    className={`text-black flex justify-center items-center rounded-full w-10 h-10 mastShadow mr-5 focus-visible:outline-indigo-400 ${isDarkMode ? "text-white mastWhiteShadow" : ""
+                      }`}
+                  >
+                    {isDarkMode ? <FaSun color="gold" size={30} /> : <FaMoon color="black" size={30} />}
+                  </button>
+                </div>
+
+                {/* Navigation Links */}
+                <div className="h-full flex justify-center items-start pt-20">
+                  <nav className="text-lg text-neutral-900 dark:text-white">
+                    <ul className="flex flex-col gap-5">
+                      <Link to="/home" onClick={closeMobileMenu}>
+                        <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
+                          Home
+                        </li>
+                      </Link>
+
+                      <Link to="/projects" onClick={closeMobileMenu}>
+                        <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
+                          Projects
+                        </li>
+                      </Link>
+
+                      <Link to="/mySelf" onClick={closeMobileMenu}>
+                        <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
+                          MySelf
+                        </li>
+                      </Link>
+
+                    </ul>
+                  </nav>
+                </div>
+              </motion.div>
+            </div>
+          </>
+        )}
 
 
 
@@ -258,26 +259,27 @@ function Navbar() {
 
 
 
-      {/* Secret Modal */}
-      <Modal
-        open={openFriend}
-        onCancel={() => {
-          haptic.tap();
-          setOpenFriend(false);
-        }}
-        footer={null}
-      >
-        <h1 className='text-lg font-medium mb-2'>Private Zone</h1>
-        <Input
-          value={broCode}
-          onChange={(e) => setBroCode(e.target.value)}
-          placeholder='Enter Bro code'
-        />
-        <Button onClick={checkCode} className='mt-2'>
-          Check
-        </Button>
-      </Modal>
-    </Container>
+        {/* Secret Modal */}
+        <Modal
+          open={openFriend}
+          onCancel={() => {
+            haptic.tap();
+            setOpenFriend(false);
+          }}
+          footer={null}
+        >
+          <h1 className='text-lg font-medium mb-2'>Private Zone</h1>
+          <Input
+            value={broCode}
+            onChange={(e) => setBroCode(e.target.value)}
+            placeholder='Enter Bro code'
+          />
+          <Button onClick={checkCode} className='mt-2'>
+            Check
+          </Button>
+        </Modal>
+      </div>
+    </>
   );
 }
 
