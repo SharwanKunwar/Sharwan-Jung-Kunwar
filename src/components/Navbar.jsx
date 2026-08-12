@@ -1,11 +1,6 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
-<<<<<<< HEAD
-import { motion } from 'motion/react';
-import { Menu, X } from 'lucide-react';
-=======
 import { AnimatePresence, motion } from 'motion/react';
 import { ChevronRight, Menu, X } from 'lucide-react';
->>>>>>> 24b94b0 (updated)
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { DarkModeContext } from '../context/DarkModeContext.js';
