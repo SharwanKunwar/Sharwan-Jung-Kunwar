@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
+<<<<<<< HEAD
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
+=======
+import { AnimatePresence, motion } from 'motion/react';
+import { ChevronRight, Menu, X } from 'lucide-react';
+>>>>>>> 24b94b0 (updated)
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { DarkModeContext } from '../context/DarkModeContext.js';
@@ -59,8 +64,13 @@ function Navbar() {
 
   /* Disable background scroll */
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
-    return () => (document.body.style.overflow = "auto");
+    if (!open) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [open]);
 
   const handleMouseEnter = (index) => {
@@ -78,6 +88,15 @@ function Navbar() {
     haptic.closeMenu();
     setOpen(false);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && open) closeMobileMenu();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [open]);
 
   const checkCode = () => {
     haptic.tap();
@@ -132,29 +151,18 @@ function Navbar() {
 
             {/* Mobile Menu --------------------------*/}
             <div className="md:hidden flex items-center">
-              {open ? (
-                <button
-                  aria-label="Close menu"
-                  onClick={() => {
-                    haptic.closeMenu();
-                    setOpen(false);
-                  }}
-                  className="p-1 focus-visible:outline-indigo-400 rounded"
-                >
-                  <X className="w-9 h-9 cursor-pointer text-neutral-900 dark:text-white" />
-                </button>
-              ) : (
-                <button
-                  aria-label="Open menu"
-                  onClick={() => {
-                    haptic.openMenu();
-                    setOpen(true);
-                  }}
-                  className="p-1 focus-visible:outline-indigo-400 rounded"
-                >
-                  <Menu className={`w-9 h-9 cursor-pointer ${isDarkMode ? "text-white" : "text-neutral-900"}`} />
-                </button>
-              )}
+              <button
+                aria-label="Open menu"
+                aria-expanded={open}
+                aria-controls="mobile-navigation"
+                onClick={() => {
+                  haptic.openMenu();
+                  setOpen(true);
+                }}
+                className="grid h-11 w-11 place-items-center rounded-full border border-neutral-900/15 bg-white/50 shadow-sm backdrop-blur-xl focus-visible:outline-indigo-400 dark:border-white/20 dark:bg-neutral-900/50"
+              >
+                <Menu className={`h-6 w-6 ${isDarkMode ? "text-white" : "text-neutral-900"}`} />
+              </button>
             </div>
 
             {/* Desktop Nav */}
@@ -203,64 +211,76 @@ function Navbar() {
 
 
 
-        {/* // modile nav  */}
-        {/* Mobile Menu Links */}
-        {/* Mobile Fullscreen Nav */}
-        {open && (
-          <>
-            <div
-              className="fixed z-40 w-screen h-screen backdrop-blur-2xl left-0 top-0 flex justify-center items-center bg-white/80 dark:bg-neutral-800/30"
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site navigation"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[110] flex items-start justify-center bg-white/75 px-4 pt-5 backdrop-blur-xl dark:bg-neutral-950/80 md:hidden"
+              onClick={closeMobileMenu}
             >
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: -120 }}
-                // transition={{duration:0.3}}
-                className="w-[90%] rounded-md mt-10"
+                initial={{ opacity: 0, y: -24, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -16, scale: 0.97 }}
+                transition={{ type: 'spring', stiffness: 360, damping: 28 }}
+                className="w-full max-w-sm overflow-hidden rounded-3xl border border-neutral-900/10 bg-white/90 p-3 shadow-2xl dark:border-white/15 dark:bg-neutral-900/95"
+                onClick={(event) => event.stopPropagation()}
               >
-                {/* Header */}
-                <div className="flex justify-between w-full items-center">
-                  <h1 className="text-2xl py-4 px-8 border-b border-neutral-900/30 text-neutral-900 dark:border-white/30 dark:text-white">Menu</h1>
-
-                  {/* Dark mode toggle for phone */}
-                  <button
-                    aria-label="Toggle dark mode"
-                    onClick={toggleDarkMode}
-                    className={`text-black flex justify-center items-center rounded-full w-10 h-10 mastShadow mr-5 focus-visible:outline-indigo-400 ${isDarkMode ? "text-white mastWhiteShadow" : ""
-                      }`}
-                  >
-                    {isDarkMode ? <FaSun color="gold" size={30} /> : <FaMoon color="black" size={30} />}
-                  </button>
+                <div className="flex items-center justify-between px-2 py-1">
+                  <span className="text-sm font-semibold tracking-wide text-neutral-900 dark:text-white">Menu</span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      aria-label="Toggle dark mode"
+                      onClick={() => {
+                        haptic.tap();
+                        toggleDarkMode();
+                      }}
+                      className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 focus-visible:outline-indigo-400 dark:bg-white/10"
+                    >
+                      {isDarkMode ? <FaSun color="gold" size={20} /> : <FaMoon color="black" size={18} />}
+                    </button>
+                    <button
+                      aria-label="Close menu"
+                      onClick={closeMobileMenu}
+                      className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 text-neutral-900 focus-visible:outline-indigo-400 dark:bg-white/10 dark:text-white"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
+                  </div>
                 </div>
 
-                {/* Navigation Links */}
-                <div className="h-full flex justify-center items-start pt-20">
-                  <nav className="text-lg text-neutral-900 dark:text-white">
-                    <ul className="flex flex-col gap-5">
-                      <Link to="/home" onClick={closeMobileMenu}>
-                        <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
-                          Home
-                        </li>
-                      </Link>
-
-                      <Link to="/projects" onClick={closeMobileMenu}>
-                        <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
-                          Projects
-                        </li>
-                      </Link>
-
-                      <Link to="/mySelf" onClick={closeMobileMenu}>
-                        <li className="backdrop-blur-2xl text-center px-30 py-2 rounded-sm border border-neutral-900/40 dark:border-white/50 shadow-sm bg-white/30 dark:bg-transparent">
-                          MySelf
-                        </li>
-                      </Link>
-
-                    </ul>
-                  </nav>
-                </div>
+                <nav className="mt-4" aria-label="Mobile navigation">
+                  <ul className="space-y-2">
+                    {navItems.map((item, index) => (
+                      <motion.li
+                        key={item.url}
+                        initial={{ opacity: 0, x: -16 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.08 + index * 0.06 }}
+                      >
+                        <Link
+                          to={item.url}
+                          onClick={closeMobileMenu}
+                          className="flex items-center justify-between rounded-2xl border border-neutral-900/10 bg-neutral-50 px-5 py-4 text-base font-medium text-neutral-900 transition-colors hover:bg-neutral-100 focus-visible:outline-indigo-400 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                        >
+                          {item.title}
+                          <ChevronRight className="h-5 w-5 opacity-60" />
+                        </Link>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </nav>
               </motion.div>
-            </div>
-          </>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
 
 
