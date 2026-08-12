@@ -255,7 +255,7 @@ function Home() {
                 {/* Facebook */}
                 <section className="flex justify-start items-center">
                   <motion.a
-                    initial={{ opacity: 0, x: 150, filter: "blur(5px)" }}
+                    initial={{ opacity: 0, x: 100, filter: "blur(5px)" }}
                     animate={{ opacity: 1, x: 0, filter: "none" }}
                     transition={{ duration: 0.5, delay: 1.1 }}
                     href="https://www.facebook.com/sravana.kumvara/"
@@ -282,7 +282,7 @@ function Home() {
                 {/* LinkedIn */}
                 <section className="flex justify-start items-center">
                   <motion.a
-                    initial={{ opacity: 0, x: 150, filter: "blur(5px)" }}
+                    initial={{ opacity: 0, x: 100, filter: "blur(5px)" }}
                     animate={{ opacity: 1, x: 0, filter: "none" }}
                     transition={{ duration: 0.7, delay: 1.3 }}
                     href="https://www.linkedin.com/in/sharwan-kunwar-95a919317/"
@@ -309,7 +309,7 @@ function Home() {
                 {/* GitHub */}
                 <section className="flex justify-start items-center">
                   <motion.a
-                    initial={{ opacity: 0, x: 150, filter: "blur(5px)" }}
+                    initial={{ opacity: 0, x: 100, filter: "blur(5px)" }}
                     animate={{ opacity: 1, x: 0, filter: "none" }}
                     transition={{ duration: 0.9, delay: 1.5 }}
                     href="https://github.com/SharwanKunwar"

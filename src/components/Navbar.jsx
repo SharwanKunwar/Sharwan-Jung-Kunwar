@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import { Container } from './Container';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { FaSun, FaMoon } from 'react-icons/fa';
@@ -9,6 +8,7 @@ import { Button, Input, Modal } from 'antd';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMdScreen, setIsMdScreen] = useState(() => window.innerWidth >= 768);
   const [hovered, setHovered] = useState(null);
   const [hoverRect, setHoverRect] = useState({ width: 0, left: 0 });
   const [open, setOpen] = useState(false);
@@ -46,6 +46,15 @@ function Navbar() {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const handleBreakpointChange = (event) => setIsMdScreen(event.matches);
+
+    setIsMdScreen(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleBreakpointChange);
+    return () => mediaQuery.removeEventListener('change', handleBreakpointChange);
   }, []);
 
   /* Disable background scroll */
@@ -88,7 +97,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="absolute md:top-0 md:left-0 w-full z-100 ">
+      <div className="fixed inset-x-0 top-2 z-100 flex justify-center md:max-w-6xl md:mx-auto">
         <motion.nav
           animate={{
             boxShadow: scrolled
@@ -98,10 +107,12 @@ function Navbar() {
               : 'none',
             borderRadius: scrolled ? 100 : 0,
             y: scrolled ? 10 : 0,
-            width: scrolled ? '50%' : '100%',
+            width: scrolled ? (isMdScreen ? '85%' : '90%') : '100%',
+
+
           }}
           transition={{ duration: 0.3, ease: 'linear' }}
-          className="fixed md:inset-x-0 top-2 z-100 md:max-w-6xl md:mx-auto flex items-center justify-between px-3 py-2  backdrop-blur-2xl"
+          className="w-full flex items-center justify-between px-3 py-2 backdrop-blur-2xl"
         >
           {/* Logo */}
           <motion.img
