@@ -114,7 +114,7 @@ function Home() {
         <div className="absolute inset-0 bg-white/50 pointer-events-none" />
       )}
 
-      <Container className={`min-h-[210vh] p-4 md:p-10 md:pt-10 `}>
+      <Container className={`min-h-[210vh] p-4 md:p-10 md:pt-10 pt-10 `}>
         <div className="md:h-12.5 h-4.25"></div>
 
         {/* Hero Section */}
@@ -148,7 +148,7 @@ function Home() {
               </h1>
 
               <div
-                className={`mt-1 mb-3 flex  gap-1.5 text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-500"
+                className={`mt-1 mb-2 flex  gap-1.5 text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-500"
                   }`}
               >
                 <div className="flex items-center gap-1">
@@ -169,11 +169,8 @@ function Home() {
             </div>
           </div>
 
-          <p className={`pt-3 mb-5 md:text-[15px] text-sm max-w-[90%] text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-            I turn complex ideas into functional software, embracing chaos and seeing bugs as
-            learning opportunities. I build, break, and iterate
-            relentlessly—sometimes breaking more than I create, but always
-            improving.
+          <p className={`pt-1 mb-5  md:text-[15px] text-sm max-w-full text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+            I write code, chaos writes back. I treat bugs like unpaid mentors — brutal, frequent, oddly educational. I break more than I build some days, but every crash teaches me something new. Slowly, painfully, beautifully — it becomes functional software. Mostly.
           </p>
         </motion.section>
 
@@ -234,14 +231,10 @@ function Home() {
             whileInView={{ opacity: 1, y: 0, filter: "none" }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
-            className="mt-3"
+            className="md:mt-3 mt-5"
           >
-            <p className={`text-sm md:text-[15px] max-w-full text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-              I started my coding journey with C, learning everything on my own through
-              trial and error. From building simple logic programs to developing Android
-              apps and modern web applications with React, I’ve gradually expanded into
-              backend development using Spring Boot and PostgreSQL. I enjoy building,
-              breaking, and improving systems every day.
+            <p className={`text-sm md:text-[18px] font-medium  max-w-full text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+              C taught me pain first, logic second — self-taught, self-doubted, self-improved. From full-stack chaos to Android, React, Spring Boot, and PostgreSQL, I learned each one by breaking it first and understanding it later. I don't fear bugs, I collect them like badges of honor. Still building. Still breaking. Still leveling up.
             </p>
 
             <section className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>

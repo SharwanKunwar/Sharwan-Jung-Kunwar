@@ -101,7 +101,7 @@ function Navbar() {
             width: scrolled ? '50%' : '100%',
           }}
           transition={{ duration: 0.3, ease: 'linear' }}
-          className="fixed md:inset-x-0 inset-x-0 top-2 z-100 md:max-w-6xl md:mx-auto flex items-center justify-between px-3 py-2  backdrop-blur-2xl"
+          className="fixed md:inset-x-0 top-2 z-100 md:max-w-6xl md:mx-auto flex items-center justify-between px-3 py-2  backdrop-blur-2xl"
         >
           {/* Logo */}
           <motion.img
