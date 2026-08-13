@@ -1,5 +1,27 @@
 export const ProjectDetails = [
   {
+    id: 35,
+    category: "frontend",
+    title: "Browser-Manager",
+    imgUrl: "/2026Projects/home.png",
+    URL: "https://browser-manager-beige.vercel.app/",
+    source: "https://github.com/SharwanKunwar/BrowserManager",
+    description: "Browser Manager is a sleek web app for organizing and launching important browser links from one place, with a clean dashboard, categorized shortcuts, and a responsive interface for everyday browsing.🌐",
+    teck: ["ReactJS", "Tailwindcss", "antd"],
+    date: "Aug 13, 2026, 6:32 PM",
+  },
+  {
+    id: 34,
+    category: "frontend",
+    title: "project-us",
+    imgUrl: "/2026Projects/us.png",
+    URL: "https://project-us-snowy.vercel.app/",
+    source: "https://github.com/SharwanKunwar/Project-us",
+    description: "Project Us is a personal space designed to celebrate shared memories, moments, and connections through a warm, interactive interface with responsive layouts, playful visuals, and a simple experience.❤️",
+    teck: ["ReactJS", "Tailwindcss", "antd"],
+    date: "Jul 24, 2026, 8:25 PM",
+  },
+  {
     id: 33,
     category: "full-stack",
     title: "DeathNote",
