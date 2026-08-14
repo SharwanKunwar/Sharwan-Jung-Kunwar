@@ -1,207 +1,401 @@
 import React, { useContext } from 'react'
-import { motion } from 'motion/react';
-import { DarkModeContext } from '../context/DarkModeContext.js';
+import { motion } from 'motion/react'
+import { DarkModeContext } from '../context/DarkModeContext.js'
 
 function Resume() {
-  const{isDarkMode} = useContext(DarkModeContext)
+  const { isDarkMode } = useContext(DarkModeContext)
+
+  const experiences = [
+    {
+      date: 'Aug, 2026 — Current',
+      title: 'Backend Development',
+      stack: ['Java', 'Spring Boot', 'Hibernate', 'PostgreSQL'],
+      description:
+        'I started with Java, then moved to Spring Boot for REST APIs. I learned Hibernate, JPA, and PostgreSQL, along with backend architecture, validation, authentication, JWT, and API integration.',
+      points: [
+        'Building REST APIs with Spring Boot',
+        'Working with JPA, Hibernate, and PostgreSQL',
+        'Designing Controller, Service, and Repository architecture',
+        'Implementing authentication, validation, and JWT',
+      ],
+      current: true,
+    },
+    {
+      date: 'July, 2025',
+      title: 'Frontend Development',
+      stack: ['JavaScript', 'ReactJS', 'Next.js', 'Tailwind CSS'],
+      description:
+        'I began my frontend journey with HTML, CSS, and JavaScript, building simple static pages. Later, I explored React and Next.js, which transformed the way I build modern web interfaces.',
+      points: [
+        'Built responsive interfaces with React and Next.js',
+        'Styled applications using Tailwind CSS',
+        'Added smooth animations with Framer Motion',
+        'Implemented interactive navigation and modern UI patterns',
+      ],
+    },
+    {
+      date: 'Before 2025',
+      title: 'Exploring Programming',
+      stack: ['C', 'Java', 'DSA', 'Problem Solving'],
+      description:
+        'I started by learning programming fundamentals with C and Java. This stage helped me develop problem-solving skills, understand core programming concepts, and build a strong foundation for software development.',
+      points: [
+        'Practiced programming fundamentals and OOP',
+        'Worked with data structures and algorithms',
+        'Built small management systems and utilities',
+        'Developed problem-solving and logical thinking skills',
+      ],
+    },
+  ]
+
+  const education = [
+    {
+      date: '2081 — 2084',
+      title: 'RR Campus [TU]',
+      subtitle: "Bachelor's Student — BCA",
+      description:
+        'Currently pursuing a Bachelor of Computer Applications, focusing on academic growth, programming, hands-on projects, coding events, and continuous technical development.',
+    },
+    {
+      date: '2076 — 2078',
+      title: 'DLMSS — KAILALI',
+      subtitle: 'High School Diploma — +2',
+      description:
+        'Graduated with a strong academic foundation while participating in extracurricular activities and developing an early interest in technology and programming.',
+    },
+  ]
+
   return (
-    <section aria-labelledby="resume-heading" className="w-full">
-        <h2 id="resume-heading" className={`flex justify-center p-2 border-t border-b border-black/30 text-3xl mt-15 font-semibold tracking-tight ${isDarkMode?"border-white/20 text-white":"text-neutral-900"}`}>Resume</h2>
-          <p className={`pt-4 md:block hidden text-center md:text-[15px] max-w-3xl mx-auto leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>Explore my journey through software engineering and academic growth. This section highlights my technical experience and education timeline, showcasing skills in frontend and backend technologies including Java, Spring Boot, React, and system architecture.</p>
-          <p className={`pt-4 md:hidden block text-center text-sm px-4 leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>My journey in software engineering and education, with skills in modern web development and backend architecture.</p>
-          
-        <div className="flex flex-col gap-2 mt-10">
-          <motion.h2 
-          initial={{y:10,opacity:0, filter:'blur(5px)'}}
-          whileInView={{y:0, opacity:1, filter:'none'}}
-          className="font-bold text-2xl">Work Experience</motion.h2>
-          <motion.p
-          initial={{y:20,opacity:0, filter:'blur(5px)'}}
-          whileInView={{y:0, opacity:1, filter:'none'}}
-          className={`transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}
-          >Quick glance at my frontend and backend skills, real-world projects, and growth as a software developer.</motion.p>
-        </div>
-        
-        {/* work01 */}
-        <br /><br />
-        <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative">
+    <section
+      aria-labelledby="resume-heading"
+      className={`w-full py-10 md:py-16 transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-neutral-900'
+        }`}
+    >
+      {/* =====================================================
+          HEADER
+      ====================================================== */}
 
-          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 rounded md:left-6/21 h-full flex justify-center items-center"> 
-          <div className="bg-gray-400 h-full w-0.5 rounded-full">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(1px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
-            className="bg-indigo-500 rounded-full w-5 h-5 absolute top-5.5 left-0"></motion.div>
-          </div>
-          </div>
+      <div className="max-w-5xl mx-auto px-5 md:px-8">
 
-          <div className=" md:w-[50%]">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(3px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
-            >
-              <h1 className="font-bold text-[18px]">Frontend Development</h1>
-              <p className="text-indigo-500">July, 2025 - Current</p>
-            </motion.div>
-          </div>
+        <motion.div
+          initial={{ y: 20, opacity: 0, filter: 'blur(5px)' }}
+          whileInView={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <p
+            className={`text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-3 ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'
+              }`}
+          >
+            My Journey
+          </p>
+
+          <h2
+            id="resume-heading"
+            className="text-4xl md:text-5xl font-bold tracking-tight"
+          >
+            Resume
+          </h2>
+
+          <p
+            className={`mt-5 max-w-2xl mx-auto text-sm md:text-base leading-relaxed ${isDarkMode ? 'text-neutral-400' : 'text-neutral-600'
+              }`}
+          >
+            A timeline of my journey from programming fundamentals
+            to frontend and backend development.
+          </p>
+        </motion.div>
+
+        {/* =====================================================
+            WORK EXPERIENCE
+        ====================================================== */}
+
+        <div className="mb-20">
+
           <motion.div
-          initial={{y:100, opacity:0, filter:"blur(3px)"}}
-          whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-          transition={{duration:0.3}}
+            initial={{ y: 15, opacity: 0, filter: 'blur(5px)' }}
+            whileInView={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0 }}
+            transition={{ duration: 0.4 }}
+            className="mb-10"
           >
-            <div>
-              <h1 className="font-bold text-[18px]">JavaScript / ReactJS / Nextjs</h1>
-              <p className={`text-[14px] mt-2 w-[90%] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>I began my frontend journey with HTML, CSS and javaScript, building simple static pages. Later, i explored Nextjs, which transformed the way i build modern web interfaces.</p>
-              <p className={`text-black font-bold mt-3 text-[14px] ${isDarkMode?"text-gray-300":""}`}>I've Worked on several Frontent projects where i focused on:</p>
-              <ol className={`list-disc ml-4 text-[13px] mt-2 transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-                <li>Built with Next.js for server-side rendering and routing</li>
-                <li>Styled using Tailwind CSS for responsive design</li>
-                <li>Added smooth animations with Framer Motion</li>
-                <li>Used lucide-react and react-icons for consistent iconography</li>
-                <li>Implemented scroll-based navigation with active link highlighting</li>
-              </ol>
-
-            </div>
-          </motion.div>
-        </div>
-
-        {/* work02 */}
-        <br /><br />
-        <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative">
-
-          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
-          <div className="bg-gray-400 h-full w-0.5  rounded-full">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(1px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
-            className="bg-indigo-500 rounded-full w-5 h-5 absolute top-5.5 left-0"></motion.div>
-          </div>
-          </div>
-
-          <div className=" md:w-[50%]">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(3px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
+            <p
+              className={`text-xs tracking-[0.25em] uppercase font-semibold mb-2 ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'
+                }`}
             >
-              <h1 className="font-bold text-[18px]">Exploring Programming</h1>
-              <p className="text-indigo-500">Before 2025</p>
-            </motion.div>
-          </div>
-          <motion.div
-          initial={{y:100, opacity:0, filter:"blur(3px)"}}
-          whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-          transition={{duration:0.3}}
-          >
-            <div className="md:pl-5">
-              <h1 className="font-bold text-[18px]">C / Java and Other programming practices</h1>
-              <p className={`text-[14px] mt-2 w-[90%] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>I focused mainly on programming fundamentals using <strong>C</strong> and <strong>Java</strong>. I practiced problem-solving, logic building, and core concepts like <strong>DSA</strong>, with diving into frontend or backend frameworks.</p>
-              <p className={`text-black font-bold mt-3 text-[14px] ${isDarkMode?"text-gray-300":""}`}>I've worked on several projects:</p>
-              <ol className={`list-disc ml-4 text-[14px] mt-2 transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-                <li>Library management system</li>
-                <li>Encryption and Decryption</li>
-                <li>Condition based Ai 'lucifer'</li>
-                <li>Student management system</li>
-                <li>Several Games</li>
-                <li>Menu based systems</li>
-                <li>Password generator</li>
-                <li>Units convertors</li>
-              </ol>
+              Experience
+            </p>
 
-            </div>
-          </motion.div>
-        </div>
+            <h3 className="text-2xl md:text-3xl font-bold">
+              Work Experience
+            </h3>
 
-        {/* //education */}
-        <div className="flex flex-col gap-2 mt-20">
-          <motion.h2 
-          initial={{y:10,opacity:0, filter:'blur(5px)'}}
-          whileInView={{y:0, opacity:1, filter:'none'}}
-          className="font-bold text-2xl">Education</motion.h2>
-          <motion.p
-          initial={{y:20,opacity:0, filter:'blur(5px)'}}
-          whileInView={{y:0, opacity:1, filter:'none'}}
-          className={`transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}
-          >
-            An overview of my academic journey, highlighting my qualifications, coursework and skills gained to support my professional growth.</motion.p>
-        </div>
-        
-        {/* edu01 */}
-        <br /><br />
-        <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative ">
-
-          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
-          <div className="bg-gray-400 h-full w-0.5  rounded-full">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(1px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
-            className="bg-indigo-500 rounded-full w-5 h-5 absolute top-5.5 left-0"></motion.div>
-          </div>
-          </div>
-
-          <div className=" md:w-[40%]">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(3px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
+            <p
+              className={`mt-2 text-sm ${isDarkMode ? 'text-neutral-500' : 'text-neutral-500'
+                }`}
             >
-              <h1 className="font-bold text-[18px]">DLMSS - KAILALI</h1>
-              <p className="text-indigo-500">2076 - 2078</p>
-            </motion.div>
-          </div>
-          <motion.div
-          initial={{y:100, opacity:0, filter:"blur(3px)"}}
-          whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-          transition={{duration:0.3}}
-          className="w-full"
-          >
-            <div className=" w-full">
-              <h1 className="font-bold text-[18px] ">High School Diploma, Passed +2</h1>
-              <p className={`pt-2 text-[14px] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>Graduated with a strong academic record. Engaged in extracurricular activities and clubs.</p>
-            </div>
+              From learning the fundamentals to building complete applications.
+            </p>
           </motion.div>
+
+          <div className="relative">
+
+            {/* Timeline line */}
+            <div
+              className={`absolute left-[9px] md:left-[11px] top-2 bottom-2 w-px ${isDarkMode ? 'bg-white/10' : 'bg-black/10'
+                }`}
+            />
+
+            <div className="space-y-12">
+              {experiences.map((experience, index) => (
+                <motion.article
+                  key={experience.title}
+                  initial={{
+                    y: 50,
+                    opacity: 0,
+                    filter: 'blur(4px)',
+                  }}
+                  whileInView={{
+                    y: 0,
+                    opacity: 1,
+                    filter: 'blur(0px)',
+                  }}
+                  viewport={{ once: true, amount: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.08,
+                  }}
+                  className="relative pl-9 md:pl-12"
+                >
+
+                  {/* Timeline dot */}
+                  <div
+                    className={`absolute left-0 top-1.5 w-[19px] h-[19px] rounded-full border-4 ${experience.current
+                      ? isDarkMode
+                        ? 'bg-indigo-500 border-indigo-500/20 shadow-[0_0_20px_rgba(99,102,241,0.5)]'
+                        : 'bg-indigo-600 border-indigo-100 shadow-[0_0_20px_rgba(79,70,229,0.25)]'
+                      : isDarkMode
+                        ? 'bg-neutral-800 border-neutral-600'
+                        : 'bg-white border-neutral-300'
+                      }`}
+                  />
+
+                  <div
+                    className={`rounded-2xl border p-5 md:p-7 transition-all duration-300 ${isDarkMode
+                      ? 'border-white/10 bg-white/[0.025] hover:bg-white/[0.045] hover:border-white/15'
+                      : 'border-black/[0.08] bg-black/[0.015] hover:bg-black/[0.025] hover:border-black/15'
+                      }`}
+                  >
+
+                    {/* Date + Current */}
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <span
+                        className={`text-xs font-semibold tracking-wide ${isDarkMode
+                          ? 'text-indigo-400'
+                          : 'text-indigo-600'
+                          }`}
+                      >
+                        {experience.date}
+                      </span>
+
+                      {experience.current && (
+                        <span
+                          className={`px-2.5 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold ${isDarkMode
+                            ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-400/20'
+                            : 'bg-indigo-50 text-indigo-600 border border-indigo-100'
+                            }`}
+                        >
+                          Current
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Title */}
+                    <h4 className="text-xl md:text-2xl font-bold">
+                      {experience.title}
+                    </h4>
+
+                    {/* Technology badges */}
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {experience.stack.map((technology) => (
+                        <span
+                          key={technology}
+                          className={`px-3 py-1.5 rounded-full text-xs border ${isDarkMode
+                            ? 'border-white/10 bg-white/5 text-neutral-300'
+                            : 'border-black/10 bg-black/[0.03] text-neutral-600'
+                            }`}
+                        >
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Story */}
+                    <p
+                      className={`mt-5 text-sm leading-7 max-w-3xl ${isDarkMode
+                        ? 'text-neutral-400'
+                        : 'text-neutral-600'
+                        }`}
+                    >
+                      {experience.description}
+                    </p>
+
+                    {/* Focus */}
+                    <div className="mt-6">
+                      <p
+                        className={`text-xs uppercase tracking-wider font-semibold mb-3 ${isDarkMode
+                          ? 'text-neutral-300'
+                          : 'text-neutral-700'
+                          }`}
+                      >
+                        What I focused on
+                      </p>
+
+                      <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+                        {experience.points.map((point) => (
+                          <li
+                            key={point}
+                            className={`flex items-start gap-2 text-sm ${isDarkMode
+                              ? 'text-neutral-400'
+                              : 'text-neutral-600'
+                              }`}
+                          >
+                            <span
+                              className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${isDarkMode
+                                ? 'bg-indigo-400'
+                                : 'bg-indigo-600'
+                                }`}
+                            />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* edu02 */}
-        <br /><br />
-        <div className=" flex md:flex-row flex-col gap-5 justify-between md:ml-0 pl-10 pt-5 relative ">
+        {/* =====================================================
+            EDUCATION
+        ====================================================== */}
 
-          <div aria-hidden="true" className="absolute  w-5 left-0 top-0 md:left-6/21 h-full flex justify-center items-center"> 
-          <div className="bg-gray-400 h-full w-0.5  rounded-full">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(1px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
-            className="bg-indigo-500 rounded-full w-5 h-5 absolute top-5.5 left-0"></motion.div>
-          </div>
-          </div>
+        <div>
 
-          <div className=" md:w-[40%]">
-            <motion.div
-            initial={{y:100, opacity:0, filter:"blur(3px)"}}
-            whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-            transition={{duration:0.3}}
+          <motion.div
+            initial={{ y: 15, opacity: 0, filter: 'blur(5px)' }}
+            whileInView={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0 }}
+            transition={{ duration: 0.4 }}
+            className="mb-10"
+          >
+            <p
+              className={`text-xs tracking-[0.25em] uppercase font-semibold mb-2 ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'
+                }`}
             >
-              <h1 className="font-bold text-[18px]">RR Campus [TU]</h1>
-              <p className="text-indigo-500">2081 - 2084</p>
-            </motion.div>
-          </div>
-          <motion.div
-          initial={{y:100, opacity:0, filter:"blur(3px)"}}
-          whileInView={{y:0, opacity:1, filter:"blur(0px)"}}
-          transition={{duration:0.3}}
-          className="w-full"
-          >
-            <div className=" w-full">
-              <h1 className="font-bold text-[18px] ">Bachelor's Student BCA</h1>
-              <p className={`pt-2 text-[14px] transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>Currently pursuing a Bachelor's degree, i focus on academic growth and skill development through hands-on projects, coding club events, and tech meetups, while also dedicating time to online courses and personal projects.</p>
-            </div>
+              Academic Journey
+            </p>
+
+            <h3 className="text-2xl md:text-3xl font-bold">
+              Education
+            </h3>
+
+            <p
+              className={`mt-2 text-sm ${isDarkMode ? 'text-neutral-500' : 'text-neutral-500'
+                }`}
+            >
+              The academic foundation behind my technical journey.
+            </p>
           </motion.div>
+
+          <div className="relative">
+
+            {/* Timeline line */}
+            <div
+              className={`absolute left-[9px] md:left-[11px] top-2 bottom-2 w-px ${isDarkMode ? 'bg-white/10' : 'bg-black/10'
+                }`}
+            />
+
+            <div className="space-y-10">
+              {education.map((item, index) => (
+                <motion.article
+                  key={item.title}
+                  initial={{
+                    y: 50,
+                    opacity: 0,
+                    filter: 'blur(4px)',
+                  }}
+                  whileInView={{
+                    y: 0,
+                    opacity: 1,
+                    filter: 'blur(0px)',
+                  }}
+                  viewport={{ once: true, amount: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.08,
+                  }}
+                  className="relative pl-9 md:pl-12"
+                >
+
+                  {/* Timeline dot */}
+                  <div
+                    className={`absolute left-0 top-1.5 w-[19px] h-[19px] rounded-full border-4 ${isDarkMode
+                      ? 'bg-neutral-800 border-neutral-600'
+                      : 'bg-white border-neutral-300'
+                      }`}
+                  />
+
+                  <div
+                    className={`rounded-2xl border p-5 md:p-7 transition-all duration-300 ${isDarkMode
+                      ? 'border-white/10 bg-white/[0.025] hover:bg-white/[0.045]'
+                      : 'border-black/[0.08] bg-black/[0.015] hover:bg-black/[0.025]'
+                      }`}
+                  >
+
+                    <p
+                      className={`text-xs font-semibold tracking-wide ${isDarkMode
+                        ? 'text-indigo-400'
+                        : 'text-indigo-600'
+                        }`}
+                    >
+                      {item.date}
+                    </p>
+
+                    <h4 className="text-xl md:text-2xl font-bold mt-2">
+                      {item.title}
+                    </h4>
+
+                    <p
+                      className={`text-sm font-medium mt-1 ${isDarkMode
+                        ? 'text-neutral-300'
+                        : 'text-neutral-700'
+                        }`}
+                    >
+                      {item.subtitle}
+                    </p>
+
+                    <p
+                      className={`mt-4 text-sm leading-7 max-w-3xl ${isDarkMode
+                        ? 'text-neutral-400'
+                        : 'text-neutral-600'
+                        }`}
+                    >
+                      {item.description}
+                    </p>
+
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
         </div>
+
+      </div>
     </section>
   )
 }

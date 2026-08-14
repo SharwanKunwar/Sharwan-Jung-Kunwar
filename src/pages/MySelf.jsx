@@ -5,9 +5,10 @@ import { books } from "../data/books.js";
 import BlogPage from "../pages/BlogPage.jsx";
 import { blogs } from "../data/blogs";
 import MyLocationMap from "../components/MyLocationMap.jsx";
-import gallary01 from '../data/gallary01.js'
-import gallary02 from '../data/gallary02.js'
-import gallary03 from '../data/gallary03.js'
+import gallary01 from "../data/gallary01.js";
+import gallary02 from "../data/gallary02.js";
+import gallary03 from "../data/gallary03.js";
+import { DarkModeContext } from "../context/DarkModeContext.js";
 
 export default function MySelf({ username = "SharwanKunwar" }) {
   const [profile, setProfile] = useState(null);
@@ -16,6 +17,9 @@ export default function MySelf({ username = "SharwanKunwar" }) {
     stars: 0,
     forks: 0,
   });
+  const [isMuted, setIsMuted] = useState(true);
+
+  const { isDarkMode } = React.useContext(DarkModeContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,30 +28,37 @@ export default function MySelf({ username = "SharwanKunwar" }) {
   useEffect(() => {
     async function fetchGithubData() {
       try {
-        const userRes = await fetch(`https://api.github.com/users/${username}`);
+        const userRes = await fetch(
+          `https://api.github.com/users/${username}`
+        );
+
         const userData = await userRes.json();
         setProfile(userData);
 
         const repoRes = await fetch(
-          `https://api.github.com/users/${username}/repos?per_page=100`,
+          `https://api.github.com/users/${username}/repos?per_page=100`
         );
+
         const repoData = await repoRes.json();
-        setRepos(repoData);
 
-        const totalStars = repoData.reduce(
-          (acc, repo) => acc + repo.stargazers_count,
-          0,
-        );
+        if (Array.isArray(repoData)) {
+          setRepos(repoData);
 
-        const totalForks = repoData.reduce(
-          (acc, repo) => acc + repo.forks_count,
-          0,
-        );
+          const totalStars = repoData.reduce(
+            (acc, repo) => acc + repo.stargazers_count,
+            0
+          );
 
-        setStats({
-          stars: totalStars,
-          forks: totalForks,
-        });
+          const totalForks = repoData.reduce(
+            (acc, repo) => acc + repo.forks_count,
+            0
+          );
+
+          setStats({
+            stars: totalStars,
+            forks: totalForks,
+          });
+        }
       } catch (error) {
         console.error("Error fetching GitHub data:", error);
       }
@@ -57,124 +68,454 @@ export default function MySelf({ username = "SharwanKunwar" }) {
   }, [username]);
 
   if (!profile) {
-    return <p className="text-center mt-10">Loading Developer Data...</p>;
+    return (
+      <div
+        className={`min-h-screen flex items-center justify-center ${isDarkMode ? "bg-neutral-950 text-white" : "bg-neutral-100"
+          }`}
+      >
+        <div className="text-center">
+          <div className="w-10 h-10 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+
+          <p
+            className={`text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-600"
+              }`}
+          >
+            Loading Developer Data...
+          </p>
+        </div>
+      </div>
+    );
   }
 
+  const galleryColumns = [gallary01, gallary02, gallary03];
+
   return (
-    <div className="max-w-6xl mx-auto mt-25 px-2">
-      {/* Video Banner */}
-      <div className="h-[300px] mb-10">
-        <video
-          src="/video/video.mp4"
-          autoPlay
-          loop
-          className="w-full h-full object-cover rounded-xl mastOrangeShadow"
-        />
-      </div>
+    <main
+      className={`relative min-h-screen overflow-hidden transition-colors duration-500 ${isDarkMode ? "bg-neutral-950 text-white" : "bg-neutral-100 text-neutral-900"
+        }`}
+    >
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
 
-      {/* Profile Section */}
-      <div className="md:flex gap-1">
-        {/* Image */}
-        <div className="md:w-[30%]">
-          <img
-            src={profile.avatar_url}
-            alt="avatar"
-            className="md:w-[350px] md:h-[410px] rounded-xl border-2 mb-3 border-indigo-500 shadow-lg object-cover"
+      {!isDarkMode && (
+        <>
+          <div
+            className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+            style={{
+              backgroundImage: "url('/BG_Images/bg001.jpeg')",
+            }}
           />
-        </div>
 
-        {/* Info */}
-        <div className="md:w-[70%] md:p-5">
-          <h2 className="md:text-3xl text-2xl font-bold">{profile.name}</h2>
-          <p className="text-neutral-400 mt-2">{profile.bio}</p>
+          <div className="fixed inset-0 bg-white/60 pointer-events-none" />
+        </>
+      )}
 
-          {/* GitHub Heatmap */}
-          <div className="rounded-md mastShadow p-2 my-4">
-            <GitHubCalendar
-              username={username}
-              year={new Date().getFullYear()}
+      {isDarkMode && (
+        <>
+          <div className="fixed inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(79,70,229,0.12),transparent_30%),radial-gradient(circle_at_80%_50%,rgba(59,130,246,0.08),transparent_30%)] pointer-events-none" />
+
+          <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none" />
+        </>
+      )}
+
+      {/* =====================================================
+          CONTENT
+      ====================================================== */}
+
+      <div className="relative z-10 max-w-6xl mx-auto px-3 md:px-5 pt-24 pb-20">
+
+        {/* =====================================================
+            HERO VIDEO
+        ====================================================== */}
+
+        <section className="relative group mb-8">
+          <div
+            className={`absolute -inset-1 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition duration-700 ${isDarkMode ? "bg-indigo-500" : "bg-indigo-400"
+              }`}
+          />
+
+          <div
+            className={`relative h-[240px] md:h-[360px] overflow-hidden rounded-3xl border ${isDarkMode
+                ? "border-white/10 bg-white/[0.03]"
+                : "border-black/10 bg-white/40"
+              }`}
+          >
+            <video
+              src="/video/video.mp4"
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              className="w-full h-full object-cover"
             />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+
+            {/* Sound Toggle */}
+            <button
+              onClick={() => setIsMuted(!isMuted)}
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+              className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full
+                 flex items-center justify-center
+                 bg-black/40 backdrop-blur-md
+                 border border-white/20
+                 text-white
+                 hover:bg-black/60
+                 hover:scale-105
+                 active:scale-95
+                 transition-all duration-300"
+            >
+              {isMuted ? "🔇" : "🔊"}
+            </button>
+
+            <div className="absolute bottom-6 left-6 md:left-10">
+              <p className="text-indigo-300 text-xs md:text-sm tracking-[0.3em] uppercase font-semibold mb-2">
+                Developer • Builder • Learner
+              </p>
+
+              <h1 className="text-white text-3xl md:text-5xl font-bold tracking-tight">
+                My Digital Journey
+              </h1>
+
+              <p className="text-white/70 text-sm md:text-base mt-2 max-w-xl">
+                A collection of the things I build, read, write, and experience.
+              </p>
+            </div>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 my-3">
-            <StatCard label="Public Repos" value={profile.public_repos} />
-            <StatCard label="Followers" value={profile.followers} />
-            <StatCard label="Total Stars" value={stats.stars} />
-            <StatCard label="Total Forks" value={stats.forks} />
-          </div>
-        </div>
-      </div>
-
-      {/* Books Section */}
-      <h1 className="font-medium mb-3 mt-5 text-xl">My Favorite Books</h1>
-      <div className="mb-10 flex-wrap rounded-md  text-black">
-        <div className="md:flex gap-3 flex-wrap">
-          {books.map((item, index) => (
-            <BookCard
-              key={index}
-              imgPath={item.imgPath}
-              title={item.title}
-              description={item.description}
-              bookUrl={item.bookUrl}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Blogs */}
-      <div className="flex justify-between items-center mb-4"> <h1 className="text-xl font-medium underline">My Blogs</h1> </div>
-      <div className="bg-linear-to-br from-sky-200 to-pink-400 mb-5 rounded-md px-5 p-5">
-        <section className="flex flex-col gap-3">
-          {blogs.map((item) => (
-            <BlogPage
-              key={item.id}
-              img={item.img}
-              id={item.id}
-              title={item.title}
-              des={item.des}
-            />
-          ))}
         </section>
+
+        {/* =====================================================
+            PROFILE
+        ====================================================== */}
+
+        <section
+          className={`rounded-3xl border p-4 md:p-7 mb-12 backdrop-blur-xl ${isDarkMode
+            ? "bg-white/[0.025] border-white/10"
+            : "bg-white/50 border-black/10"
+            }`}
+        >
+          <div className="grid md:grid-cols-[280px_1fr] gap-7">
+
+            {/* Profile Image */}
+
+            <div className="relative group">
+              <div
+                className={`absolute -inset-1 rounded-2xl blur-md opacity-30 group-hover:opacity-60 transition duration-500 ${isDarkMode ? "bg-indigo-500" : "bg-indigo-400"
+                  }`}
+              />
+
+              <img
+                src={profile.avatar_url}
+                alt={profile.name || username}
+                className="relative w-full md:w-[280px] h-[330px] md:h-[350px] rounded-2xl border-2 border-indigo-500 object-cover"
+              />
+            </div>
+
+            {/* Profile Info */}
+
+            <div className="flex flex-col justify-center">
+
+              <div className="flex flex-wrap items-center gap-3">
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                  {profile.name}
+                </h2>
+
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-medium border ${isDarkMode
+                    ? "bg-green-400/10 text-green-400 border-green-400/20"
+                    : "bg-green-500/10 text-green-600 border-green-500/20"
+                    }`}
+                >
+                  Available to build
+                </span>
+              </div>
+
+              <p
+                className={`mt-3 leading-relaxed max-w-2xl ${isDarkMode
+                  ? "text-neutral-400"
+                  : "text-neutral-600"
+                  }`}
+              >
+                {profile.bio ||
+                  "Software developer focused on building useful applications and learning new technologies."}
+              </p>
+
+              {/* GitHub Link */}
+
+              <a
+                href={`https://github.com/${username}`}
+                target="_blank"
+                rel="noreferrer"
+                className={`inline-flex items-center gap-2 mt-5 w-fit px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
+                  ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
+                  : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
+                  }`}
+              >
+                <span>GitHub</span>
+                <span>↗</span>
+              </a>
+
+              {/* Stats */}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-7">
+                <StatCard
+                  label="Public Repos"
+                  value={profile.public_repos}
+                  isDarkMode={isDarkMode}
+                />
+
+                <StatCard
+                  label="Followers"
+                  value={profile.followers}
+                  isDarkMode={isDarkMode}
+                />
+
+                <StatCard
+                  label="Total Stars"
+                  value={stats.stars}
+                  isDarkMode={isDarkMode}
+                />
+
+                <StatCard
+                  label="Total Forks"
+                  value={stats.forks}
+                  isDarkMode={isDarkMode}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              GITHUB CONTRIBUTION
+          ================================================== */}
+
+          <div
+            className={`mt-7 rounded-2xl border p-4 md:p-5 overflow-hidden ${isDarkMode
+              ? "bg-black/20 border-white/10"
+              : "bg-white/40 border-black/10"
+              }`}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <div>
+                <p className="font-semibold">GitHub Activity</p>
+
+                <p
+                  className={`text-xs mt-1 ${isDarkMode
+                    ? "text-neutral-500"
+                    : "text-neutral-500"
+                    }`}
+                >
+                  My coding consistency throughout the year.
+                </p>
+              </div>
+
+              <span
+                className={`text-xs ${isDarkMode
+                  ? "text-neutral-500"
+                  : "text-neutral-500"
+                  }`}
+              >
+                {new Date().getFullYear()}
+              </span>
+            </div>
+
+            <div className="overflow-x-auto pb-2">
+              <GitHubCalendar
+                username={username}
+                year={new Date().getFullYear()}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            BOOKS
+        ====================================================== */}
+
+        <SectionHeader
+          eyebrow="Reading"
+          title="My Favorite Books"
+          description="Books that influenced the way I think, learn, and approach problems."
+          isDarkMode={isDarkMode}
+        />
+
+        <section className="mb-16">
+          <div className="flex flex-wrap gap-4">
+            {books.map((item, index) => (
+              <div
+                key={index}
+                className="transition-transform duration-300 hover:-translate-y-1"
+              >
+                <BookCard
+                  imgPath={item.imgPath}
+                  title={item.title}
+                  description={item.description}
+                  bookUrl={item.bookUrl}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* =====================================================
+            BLOGS
+        ====================================================== */}
+
+        <SectionHeader
+          eyebrow="Thoughts"
+          title="My Blogs"
+          description="Things I've learned, explored, and wanted to put into words."
+          isDarkMode={isDarkMode}
+        />
+
+        <section
+          className={`mb-16 rounded-3xl border overflow-hidden ${isDarkMode
+            ? "border-white/10 bg-white/[0.025]"
+            : "border-black/10 bg-white/50"
+            }`}
+        >
+          <div className="p-4 md:p-6">
+            <section className="flex flex-col gap-3">
+              {blogs.map((item) => (
+                <BlogPage
+                  key={item.id}
+                  img={item.img}
+                  id={item.id}
+                  title={item.title}
+                  des={item.des}
+                />
+              ))}
+            </section>
+          </div>
+        </section>
+
+        {/* =====================================================
+            GALLERY
+        ====================================================== */}
+
+        <SectionHeader
+          eyebrow="Life Outside Code"
+          title="My Gallery"
+          description="A visual collection of moments, places, and memories."
+          isDarkMode={isDarkMode}
+        />
+
+        <section
+          className={`rounded-3xl border p-3 md:p-5 ${isDarkMode
+            ? "border-white/10 bg-white/[0.025]"
+            : "border-black/10 bg-white/50"
+            }`}
+        >
+          <div className="h-[700px] overflow-y-auto pr-1">
+            <div className="grid md:grid-cols-3 gap-4 items-start">
+
+              {galleryColumns.map((column, columnIndex) => (
+                <div
+                  key={columnIndex}
+                  className="flex flex-col gap-4"
+                >
+                  {column.map((item, index) => (
+                    <div
+                      key={index}
+                      className="relative group overflow-hidden rounded-2xl"
+                    >
+                      <img
+                        src={item.path}
+                        alt={item.id}
+                        loading="lazy"
+                        className="w-full rounded-2xl shadow-sm transition-transform duration-500 group-hover:scale-[1.025]"
+                      />
+
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
+                    </div>
+                  ))}
+                </div>
+              ))}
+
+            </div>
+          </div>
+        </section>
+
       </div>
+    </main>
+  );
+}
 
-      
-      <div className=" w-full h-[7%] mt-10 mb-5"><h1 className="text-xl font-medium underline">My Gallery</h1></div>
-      <div className=" backdrop-blur-sm  h-[700px] flex flex-col gap-3 rounded-md ">
-        
-        <div className=" w-full h-[95%] grid md:grid-cols-3 gap-5 overflow-y-scroll">
-            {/* img layout 01  */}
-            <div className=" ">
-              {gallary01.map((item, index)=>(
-                  <img src={item.path} alt={item.id} className="rounded-md mb-5 shadow-sm"/>
-              ))}
-            </div>
-            {/* img layout 02  */}
-            <div className="">
-              {gallary02.map((item, index)=>(
-                  <img src={item.path} alt={item.id} className="rounded-md mb-5 shadow-sm"/>
-              ))}
-            </div>
-            {/* img layout 03  */}
-            <div className="">
-              {gallary03.map((item, index)=>(
-                  <img src={item.path} alt={item.id} className="rounded-md mb-5 shadow-sm"/>
-              ))}
-            </div>
 
-        </div>
-      </div>
+/* =========================================================
+   SECTION HEADER
+========================================================= */
 
+function SectionHeader({
+  eyebrow,
+  title,
+  description,
+  isDarkMode,
+}) {
+  return (
+    <div className="mb-7">
+
+      <p
+        className={`text-xs tracking-[0.25em] uppercase font-semibold mb-2 ${isDarkMode
+          ? "text-indigo-400"
+          : "text-indigo-600"
+          }`}
+      >
+        {eyebrow}
+      </p>
+
+      <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+        {title}
+      </h2>
+
+      <p
+        className={`mt-2 text-sm max-w-xl ${isDarkMode
+          ? "text-neutral-500"
+          : "text-neutral-600"
+          }`}
+      >
+        {description}
+      </p>
 
     </div>
   );
 }
 
-function StatCard({ label, value }) {
+
+/* =========================================================
+   STAT CARD
+========================================================= */
+
+function StatCard({
+  label,
+  value,
+  isDarkMode,
+}) {
   return (
-    <div className="bg-gray-50/30 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center shadow-md">
-      <p className="text-3xl font-bold text-indigo-400">{value}</p>
-      <p className="text-sm text-neutral-400 mt-2">{label}</p>
+    <div
+      className={`group rounded-2xl border p-4 md:p-5 text-center transition-all duration-300 hover:-translate-y-1 ${isDarkMode
+        ? "bg-white/[0.035] border-white/10 hover:bg-white/[0.06]"
+        : "bg-white/50 border-black/10 hover:bg-white/80"
+        }`}
+    >
+      <p
+        className={`text-2xl md:text-3xl font-bold transition-transform duration-300 group-hover:scale-105 ${isDarkMode
+          ? "text-indigo-400"
+          : "text-indigo-600"
+          }`}
+      >
+        {value}
+      </p>
+
+      <p
+        className={`text-[11px] md:text-xs mt-2 ${isDarkMode
+          ? "text-neutral-500"
+          : "text-neutral-500"
+          }`}
+      >
+        {label}
+      </p>
     </div>
   );
 }

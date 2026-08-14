@@ -17,6 +17,7 @@ function Projects() {
   const [visibleCount, setVisibleCount] = useState(4);
   const [activeFilter, setActiveFilter] = useState('all');
 
+
   // Scroll to top when page loads
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,66 +38,78 @@ function Projects() {
   };
 
   return (
-    <Container>
-      <div className='w-full pt-20 sm:pt-24 lg:pt-25 flex flex-col justify-center items-center gap-4'>
+    <div
+      style={{
+        backgroundImage: !isDarkMode
+          ? "url('/BG_Images/bg001.jpeg')"
+          : "none",
+      }}
+    >
+      {/* Background overlay */}
+      {!isDarkMode && (
+        <div className="absolute inset-0 bg-white/50 pointer-events-none" />
+      )}
+      <Container>
+        <div className='w-full pt-20 sm:pt-24 lg:pt-25 flex flex-col justify-center items-center gap-4'>
 
-        <h1 className={`text-2xl sm:text-3xl px-3 font-medium text-start w-full lg:w-[95%] lg:mt-3 ${isDarkMode && "text-white"}`}>
-          {filters.find((filter) => filter.id === activeFilter)?.label} Projects
-        </h1>
+          <h1 className={`text-2xl sm:text-3xl px-3 font-medium text-start w-full lg:w-[95%] lg:mt-3 ${isDarkMode && "text-white"}`}>
+            {filters.find((filter) => filter.id === activeFilter)?.label} Projects
+          </h1>
 
-        <div className="w-full lg:w-[95%]">
-          <div className="flex flex-wrap gap-2 sm:gap-3 pb-2 px-3">
-            {filters.map((filter) => {
-              const isActive = activeFilter === filter.id;
+          <div className="w-full lg:w-[95%]">
+            <div className="flex flex-wrap gap-2 sm:gap-3 pb-2 px-3">
+              {filters.map((filter) => {
+                const isActive = activeFilter === filter.id;
 
-              return (
-                <button
-                  key={filter.id}
-                  type="button"
-                  aria-pressed={isActive}
-                  onClick={() => handleFilterChange(filter.id)}
-                  className={`rounded-full border px-3 py-1.5 text-sm font-medium transition-colors sm:px-4 ${isActive
-                    ? 'border-indigo-500 bg-indigo-500 text-white shadow-sm'
-                    : isDarkMode
-                      ? 'border-white/25 bg-white/5 text-white hover:bg-white/15'
-                      : 'border-neutral-300 bg-white text-neutral-700 hover:border-indigo-400 hover:text-indigo-600'
-                    }`}
-                >
-                  {filter.label}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    aria-pressed={isActive}
+                    onClick={() => handleFilterChange(filter.id)}
+                    className={`rounded-full border px-3 py-1.5 text-sm font-medium transition-colors sm:px-4 ${isActive
+                      ? 'border-indigo-500 bg-indigo-500 text-white shadow-sm'
+                      : isDarkMode
+                        ? 'border-white/25 bg-white/5 text-white hover:bg-white/15'
+                        : 'border-neutral-300 bg-white text-neutral-700 hover:border-indigo-400 hover:text-indigo-600'
+                      }`}
+                  >
+                    {filter.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 sm:gap-7 lg:gap-10 py-3">
+              {filteredProjects.slice(0, visibleCount).map((item) => (
+                <BigProjectCard
+                  key={item.id}
+                  title={item.title}
+                  img={item.imgUrl}
+                  des={item.description}
+                  SUrl={item.source}
+                  PUrl={item.URL}
+                  Stack={item.teck}
+                  category={item.category}
+                  dt={item.date}
+                />
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:gap-7 lg:gap-10 py-3">
-            {filteredProjects.slice(0, visibleCount).map((item) => (
-              <BigProjectCard
-                key={item.id}
-                title={item.title}
-                img={item.imgUrl}
-                des={item.description}
-                SUrl={item.source}
-                PUrl={item.URL}
-                Stack={item.teck}
-                category={item.category}
-                dt={item.date}
-              />
-            ))}
+          <div className="text-center my-10">
+            {!allLoaded ? (
+              <Button onClick={handleLoadMore}>Load More</Button>
+            ) : (
+              <p className='underline text-neutral-400 italic px-2 sm:px-6 lg:px-0'>
+                No more {activeFilter === 'all' ? 'projects' : filters.find((filter) => filter.id === activeFilter)?.label.toLowerCase()} projects to show.
+              </p>
+            )}
           </div>
-        </div>
 
-        <div className="text-center my-10">
-          {!allLoaded ? (
-            <Button onClick={handleLoadMore}>Load More</Button>
-          ) : (
-            <p className='underline text-neutral-400 italic px-2 sm:px-6 lg:px-0'>
-              No more {activeFilter === 'all' ? 'projects' : filters.find((filter) => filter.id === activeFilter)?.label.toLowerCase()} projects to show.
-            </p>
-          )}
         </div>
-
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }
 
