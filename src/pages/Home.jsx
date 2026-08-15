@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container } from "../components/Container";
 import { motion } from "motion/react";
-
 import {
   SiNextdotjs,
   SiC,
@@ -12,7 +11,6 @@ import {
   SiDocker,
   SiTailwindcss,
   SiJavascript,
-  SiTypescript,
   SiMongodb,
   SiFirebase,
   SiHtml5,
@@ -21,17 +19,12 @@ import {
   SiGithub,
   SiAntdesign,
 } from "react-icons/si";
-
-import ProjectCard from "../components/ProjectCard";
 import { Button } from "antd";
+import ProjectCard from "../components/ProjectCard";
 import Resume from "../pages/Resume";
 import { DarkModeContext } from "../context/DarkModeContext.js";
 import { Link } from "react-router-dom";
 import GithubHeatmap from "../components/GithubHeatmap";
-
-/* =========================================================
-   PROJECT DATA
-========================================================= */
 
 const ProjectDetails = [
   {
@@ -80,384 +73,228 @@ const ProjectDetails = [
   },
 ];
 
-/* =========================================================
-   SKILLS
-========================================================= */
+/* -------------------------------------------------------------------------- */
+/* Skills Marquee Data                                                        */
+/* -------------------------------------------------------------------------- */
 
-const primarySkills = [
+const topRow = [
   {
     icon: SiReact,
     name: "React",
-    color: "text-cyan-400",
-    glow: "hover:shadow-cyan-500/20",
+    tag: "UI Library",
+    color: "#61dafb",
   },
   {
     icon: SiSpringboot,
     name: "Spring Boot",
-    color: "text-green-500",
-    glow: "hover:shadow-green-500/20",
+    tag: "Backend",
+    color: "#6cbf47",
   },
   {
     icon: SiOpenjdk,
     name: "Java",
-    color: "text-red-500",
-    glow: "hover:shadow-red-500/20",
+    tag: "Language",
+    color: "#e76f51",
   },
   {
     icon: SiPostgresql,
     name: "PostgreSQL",
-    color: "text-blue-500",
-    glow: "hover:shadow-blue-500/20",
+    tag: "Database",
+    color: "#4f8fc0",
   },
   {
     icon: SiDocker,
     name: "Docker",
-    color: "text-sky-500",
-    glow: "hover:shadow-sky-500/20",
+    tag: "Containers",
+    color: "#3fa9f5",
   },
   {
     icon: SiTailwindcss,
     name: "Tailwind",
-    color: "text-cyan-400",
-    glow: "hover:shadow-cyan-500/20",
+    tag: "Styling",
+    color: "#38bdf8",
   },
   {
     icon: SiGithub,
     name: "GitHub",
-    color: "text-neutral-900 dark:text-white",
-    glow: "hover:shadow-white/10",
+    tag: "Version Control",
+    color: "#9aa0a6",
   },
 ];
 
-const secondarySkills = [
+const bottomRow = [
   {
     icon: SiJavascript,
     name: "JavaScript",
-    color: "text-yellow-400",
-    glow: "hover:shadow-yellow-500/20",
-  },
-  {
-    icon: SiTypescript,
-    name: "TypeScript",
-    color: "text-blue-500",
-    glow: "hover:shadow-blue-500/20",
+    tag: "Language",
+    color: "#f2cc4c",
   },
   {
     icon: SiC,
     name: "C",
-    color: "text-blue-500",
-    glow: "hover:shadow-blue-500/20",
+    tag: "Language",
+    color: "#8fb7e8",
   },
   {
     icon: SiNextdotjs,
     name: "Next.js",
-    color: "text-neutral-900 dark:text-white",
-    glow: "hover:shadow-white/10",
+    tag: "Framework",
+    color: "#a3a3a3",
   },
   {
     icon: SiMongodb,
     name: "MongoDB",
-    color: "text-green-500",
-    glow: "hover:shadow-green-500/20",
+    tag: "Database",
+    color: "#5fc76b",
   },
   {
     icon: SiFirebase,
     name: "Firebase",
-    color: "text-yellow-500",
-    glow: "hover:shadow-yellow-500/20",
+    tag: "Platform",
+    color: "#f5b942",
   },
   {
     icon: SiHtml5,
     name: "HTML5",
-    color: "text-orange-500",
-    glow: "hover:shadow-orange-500/20",
+    tag: "Markup",
+    color: "#e8734a",
   },
   {
     icon: SiCss3,
     name: "CSS3",
-    color: "text-blue-500",
-    glow: "hover:shadow-blue-500/20",
+    tag: "Styling",
+    color: "#4d90d6",
   },
   {
     icon: SiFramer,
-    name: "Motion",
-    color: "text-purple-500",
-    glow: "hover:shadow-purple-500/20",
+    name: "Framer",
+    tag: "Motion",
+    color: "#b39ddb",
   },
   {
     icon: SiAntdesign,
     name: "Ant Design",
-    color: "text-blue-600",
-    glow: "hover:shadow-blue-500/20",
+    tag: "UI Kit",
+    color: "#4d8cd6",
   },
 ];
 
-/* =========================================================
-   SKILL CARD
-========================================================= */
+/* -------------------------------------------------------------------------- */
+/* Utility                                                                     */
+/* -------------------------------------------------------------------------- */
 
-const SkillCard = ({ icon: Icon, name, color, glow }) => {
+function hexToRgba(hex, alpha) {
+  const h = hex.replace("#", "");
+
+  const full =
+    h.length === 3
+      ? h
+        .split("")
+        .map((c) => c + c)
+        .join("")
+      : h;
+
+  const bigint = parseInt(full, 16);
+
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+const maskStyle = {
+  maskImage:
+    "linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+  WebkitMaskImage:
+    "linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+};
+
+/* -------------------------------------------------------------------------- */
+/* Skill Chip                                                                  */
+/* -------------------------------------------------------------------------- */
+
+function SkillChip({ icon: Icon, name, tag, color, isDarkMode }) {
   return (
     <div
-      className={`
-        group
-        relative
-        shrink-0
+      className="group relative flex shrink-0 items-center gap-3 rounded-xl border px-3.5 py-2.5 backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.035]"
+      style={{
+        background: isDarkMode
+          ? "rgba(255,255,255,0.035)"
+          : "rgba(255,255,255,0.6)",
+        borderColor: isDarkMode
+          ? "rgba(255,255,255,0.08)"
+          : "rgba(0,0,0,0.08)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = `0 12px 28px -12px ${hexToRgba(
+          color,
+          0.55,
+        )}`;
 
-        w-[86px]
-        h-[86px]
+        e.currentTarget.style.borderColor = hexToRgba(color, 0.45);
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = "none";
 
-        md:w-[92px]
-        md:h-[92px]
-
-        flex
-        flex-col
-        items-center
-        justify-center
-
-        rounded-2xl
-
-        bg-white/50
-        dark:bg-white/[0.035]
-
-        backdrop-blur-xl
-
-        border
-        border-black/[0.08]
-        dark:border-white/[0.09]
-
-        shadow-[0_8px_25px_rgba(0,0,0,0.05)]
-        dark:shadow-[0_8px_25px_rgba(0,0,0,0.25)]
-
-        transition-all
-        duration-300
-        ease-out
-
-        hover:-translate-y-1.5
-        hover:scale-[1.04]
-
-        hover:bg-white/70
-        dark:hover:bg-white/[0.07]
-
-        hover:border-indigo-400/30
-        hover:shadow-xl
-
-        ${glow}
-      `}
+        e.currentTarget.style.borderColor = isDarkMode
+          ? "rgba(255,255,255,0.08)"
+          : "rgba(0,0,0,0.08)";
+      }}
     >
-      {/* Inner glow */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          rounded-2xl
-
-          opacity-0
-          group-hover:opacity-100
-
-          transition-opacity
-          duration-300
-
-          bg-gradient-to-br
-          from-indigo-500/[0.08]
-          via-transparent
-          to-purple-500/[0.08]
-        "
-      />
-
-      {/* Top shine */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          top-0
-          left-1/2
-          -translate-x-1/2
-
-          w-1/2
-          h-px
-
-          bg-gradient-to-r
-          from-transparent
-          via-white/70
-          to-transparent
-
-          opacity-30
-          group-hover:opacity-80
-
-          transition-opacity
-          duration-300
-        "
+      {/* Accent bar */}
+      <span
+        className="absolute bottom-2 left-0 top-2 w-[3px] rounded-full opacity-90"
+        style={{ background: color }}
       />
 
       {/* Icon */}
-      <Icon
-        className={`
-          relative
-          z-10
-
-          text-[30px]
-          md:text-[34px]
-
-          mb-2
-
-          transition-transform
-          duration-300
-
-          group-hover:scale-110
-
-          ${color}
-        `}
-      />
-
-      {/* Name */}
-      <span
-        className="
-          relative
-          z-10
-
-          text-[10px]
-          md:text-[11px]
-
-          font-medium
-          tracking-wide
-
-          whitespace-nowrap
-
-          text-neutral-700
-          dark:text-neutral-300
-
-          transition-colors
-          duration-300
-
-          group-hover:text-neutral-950
-          dark:group-hover:text-white
-        "
-      >
-        {name}
-      </span>
-    </div>
-  );
-};
-
-/* =========================================================
-   SKILL MARQUEE ROW
-========================================================= */
-
-const SkillMarqueeRow = ({
-  skills,
-  direction = "left",
-  duration = "28s",
-  isDarkMode,
-}) => {
-  return (
-    <div className="relative w-full overflow-hidden">
-      {/* Left fade */}
       <div
-        className={`
-          pointer-events-none
-          absolute
-          left-0
-          top-0
-          bottom-0
-          z-20
-
-          w-16
-          md:w-28
-
-          bg-gradient-to-r
-
-          ${isDarkMode
-            ? "from-[#080808]/95 via-[#080808]/50 to-transparent"
-            : "from-white/80 via-white/40 to-transparent"
-          }
-        `}
-      />
-
-      {/* Right fade */}
-      <div
-        className={`
-          pointer-events-none
-          absolute
-          right-0
-          top-0
-          bottom-0
-          z-20
-
-          w-16
-          md:w-28
-
-          bg-gradient-to-l
-
-          ${isDarkMode
-            ? "from-[#080808]/95 via-[#080808]/50 to-transparent"
-            : "from-white/80 via-white/40 to-transparent"
-          }
-        `}
-      />
-
-      {/* Moving track */}
-      <div
-        className={`
-          flex
-          w-max
-          gap-5
-          md:gap-7
-
-          ${direction === "left"
-            ? "animate-marquee-left"
-            : "animate-marquee-right"
-          }
-        `}
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
         style={{
-          animationDuration: duration,
+          background: hexToRgba(color, 0.16),
+          color,
         }}
       >
-        {/* First group */}
-        <div className="flex shrink-0 gap-5 md:gap-7">
-          {skills.map((skill, index) => (
-            <SkillCard
-              key={`first-${skill.name}-${index}`}
-              {...skill}
-            />
-          ))}
-        </div>
+        <Icon className="text-lg" />
+      </div>
 
-        {/* Duplicate group */}
-        <div
-          className="flex shrink-0 gap-5 md:gap-7"
-          aria-hidden="true"
+      {/* Text */}
+      <div className="flex flex-col leading-tight">
+        <span
+          className={`text-xs font-semibold ${isDarkMode ? "text-white" : "text-black"
+            }`}
         >
-          {skills.map((skill, index) => (
-            <SkillCard
-              key={`second-${skill.name}-${index}`}
-              {...skill}
-            />
-          ))}
-        </div>
+          {name}
+        </span>
+
+        <span
+          className={`text-[10px] tracking-wide ${isDarkMode ? "text-white/40" : "text-black/40"
+            }`}
+        >
+          {tag}
+        </span>
       </div>
     </div>
   );
-};
+}
 
-/* =========================================================
-   HOME
-========================================================= */
+/* -------------------------------------------------------------------------- */
+/* Home                                                                        */
+/* -------------------------------------------------------------------------- */
 
 function Home() {
   const [more, setMore] = useState(false);
-
   const { isDarkMode } = useContext(DarkModeContext);
 
-  /* Scroll to top */
+  /* Scroll to top when page loads */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  /* =======================================================
-     HAPTIC
-  ======================================================= */
+  /* ------------------------------------------------------------------------ */
+  /* Haptic Feedback                                                          */
+  /* ------------------------------------------------------------------------ */
 
   const vibrate = (pattern) => {
     if (navigator.vibrate) {
@@ -474,57 +311,24 @@ function Home() {
   return (
     <main
       id="home"
-      className="
-        relative
-        min-h-screen
-
-        flex
-        items-start
-        justify-start
-
-        bg-cover
-        bg-center
-        bg-no-repeat
-      "
+      className="relative min-h-screen flex items-start justify-start bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: !isDarkMode
           ? "url('/BG_Images/bg001.jpeg')"
           : "none",
       }}
     >
-      {/* Light mode overlay */}
+      {/* Background overlay */}
       {!isDarkMode && (
-        <div
-          className="
-            absolute
-            inset-0
-
-            bg-white/50
-
-            pointer-events-none
-          "
-        />
+        <div className="absolute inset-0 bg-white/50 pointer-events-none" />
       )}
 
-      <Container
-        className="
-          relative
-          z-10
-
-          min-h-[210vh]
-
-          p-4
-          md:p-10
-
-          md:pt-10
-          pt-10
-        "
-      >
+      <Container className="min-h-[210vh] p-4 md:p-10 md:pt-10 pt-10">
         <div className="md:h-12.5 h-4.25" />
 
-        {/* =================================================
-            HERO
-        ================================================= */}
+        {/* ------------------------------------------------------------------ */}
+        {/* Hero Section                                                       */}
+        {/* ------------------------------------------------------------------ */}
 
         <motion.section
           initial={{
@@ -543,112 +347,36 @@ function Home() {
             delay: 0.3,
           }}
         >
-          {/* Status */}
-
           <div className="mt-15 mb-4">
             <p
-              className={`
-                inline-flex
-                items-center
-                gap-2
-
-                rounded-full
-
-                text-sm
-
-                py-1.5
-                px-4
-
-                font-medium
-
-                backdrop-blur-md
-
-                border
-                shadow-sm
-
-                transition-all
-                duration-300
-
-                hover:scale-105
-
-                ${isDarkMode
+              className={`inline-flex items-center gap-2 rounded-full text-sm py-1.5 px-4 font-medium backdrop-blur-md border shadow-sm transition-all duration-300 hover:scale-105 ${isDarkMode
                   ? "text-indigo-300 border-indigo-500/30 bg-indigo-500/10"
                   : "text-indigo-600 border-indigo-200 bg-indigo-50/50"
-                }
-              `}
+                }`}
             >
               <span className="relative flex h-2 w-2">
-                <span
-                  className="
-                    animate-ping
-                    absolute
-                    inline-flex
-
-                    h-full
-                    w-full
-
-                    rounded-full
-
-                    bg-indigo-400
-                    opacity-75
-                  "
-                />
-
-                <span
-                  className="
-                    relative
-                    inline-flex
-
-                    rounded-full
-
-                    h-2
-                    w-2
-
-                    bg-indigo-500
-                  "
-                />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
               </span>
 
               Full Stack Developer
             </p>
           </div>
 
-          {/* Name */}
-
           <div className="space-y-4">
             <div>
               <h1
-                className={`
-                  text-3xl
-                  md:text-4xl
-
-                  font-bold
-                  tracking-tight
-
-                  ${isDarkMode
+                className={`text-3xl md:text-4xl font-bold tracking-tight ${isDarkMode
                     ? "text-white [text-shadow:1px_1px_20px_rgb(156_163_175_/_0.7)]"
                     : "text-neutral-900 [text-shadow:1px_1px_30px_rgb(156_163_175_/_0.5)]"
-                  }
-                `}
+                  }`}
               >
                 Sharwan Jung Kunwar
               </h1>
 
               <div
-                className={`
-                  mt-1
-                  mb-2
-
-                  flex
-                  gap-1.5
-
-                  text-sm
-
-                  ${isDarkMode
-                    ? "text-neutral-400"
-                    : "text-neutral-500"
-                  }
-                `}
+                className={`mt-1 mb-2 flex gap-1.5 text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-500"
+                  }`}
               >
                 <div className="flex items-center gap-1">
                   <i className="ri-home-7-line text-lg text-yellow-300" />
@@ -675,54 +403,22 @@ function Home() {
             </div>
           </div>
 
-          {/* Description */}
-
           <p
-            className={`
-              pt-1
-              mb-5
-
-              md:text-[15px]
-              text-sm
-
-              max-w-full
-
-              text-shadow-sm
-
-              leading-relaxed
-
-              ${isDarkMode
-                ? "text-neutral-400"
-                : "text-neutral-600"
-              }
-            `}
+            className={`pt-1 mb-5 md:text-[15px] text-sm max-w-full text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"
+              }`}
           >
-            I write code, chaos writes back. I treat bugs like unpaid
-            mentors — brutal, frequent, oddly educational. I break more
-            than I build some days, but every crash teaches me something
-            new. Slowly, painfully, beautifully — it becomes functional
-            software. Mostly.
+            I write code, chaos writes back. I treat bugs like unpaid mentors
+            — brutal, frequent, oddly educational. I break more than I build
+            some days, but every crash teaches me something new. Slowly,
+            painfully, beautifully — it becomes functional software. Mostly.
           </p>
         </motion.section>
 
-        {/* =================================================
-            BUTTONS
-        ================================================= */}
+        {/* ------------------------------------------------------------------ */}
+        {/* Hero Buttons                                                       */}
+        {/* ------------------------------------------------------------------ */}
 
-        <section
-          className="
-            w-full
-
-            flex
-            justify-start
-            items-center
-            flex-wrap
-
-            gap-5
-
-            mt-4
-          "
-        >
+        <section className="w-full flex justify-start items-center flex-wrap gap-5 mt-4">
           <motion.button
             initial={{
               opacity: 0,
@@ -740,34 +436,10 @@ function Home() {
               haptic.soft();
               setMore(!more);
             }}
-            className="
-              border
-              border-black/30
-
-              rounded
-
-              px-5
-              py-1
-
-              bg-indigo-400
-
-              text-white
-              font-bold
-              text-[13px]
-
-              text-shadow-sm
-
-              mastShadow
-
-              hover:bg-indigo-500
-              hover:border-indigo-500
-
-              transition-all
-              duration-300
-            "
+            className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-300 ${isDarkMode ? "WhiteShadow" : ""
+              }`}
           >
-            <i className="ri-folder-history-line mr-1 text-md" />
-
+            <i className="ri-folder-history-line mr-1 text-md text-indigo-300 hover:text-shadow-sm" />
             My Story
           </motion.button>
 
@@ -790,27 +462,8 @@ function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
               onClick={haptic.tap}
-              className={`
-                border
-                border-black/30
-
-                px-2
-                py-1
-
-                text-[13px]
-
-                hover:text-white
-                hover:bg-indigo-500
-                hover:border-indigo-500
-
-                rounded
-                mastShadow
-
-                transition-all
-                duration-300
-
-                ${isDarkMode ? "WhiteShadow" : ""}
-              `}
+              className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "WhiteShadow" : ""
+                }`}
             >
               🌟 Give Star
             </motion.button>
@@ -835,27 +488,8 @@ function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
               onClick={haptic.tap}
-              className={`
-                border
-                border-black/30
-
-                px-2
-                py-1
-
-                text-[13px]
-
-                hover:text-white
-                hover:bg-indigo-500
-                hover:border-indigo-500
-
-                rounded
-                mastShadow
-
-                transition-all
-                duration-300
-
-                ${isDarkMode ? "WhiteShadow" : ""}
-              `}
+              className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "WhiteShadow" : ""
+                }`}
             >
               <section className="flex items-center justify-center gap-2">
                 <SiGithub />
@@ -865,37 +499,20 @@ function Home() {
           </a>
         </section>
 
-        {/* =================================================
-            GITHUB HEATMAP
-        ================================================= */}
+        {/* ------------------------------------------------------------------ */}
+        {/* Github Heatmap                                                     */}
+        {/* ------------------------------------------------------------------ */}
 
         <div
-          className={`
-            md:flex
-            hidden
-
-            my-10
-
-            bg-gray-50/30
-
-            backdrop-blur-2xl
-
-            rounded-md
-
-            shadow-sm
-
-            ${isDarkMode
-              ? "bg-slate-800 mastWhiteShadow"
-              : ""
-            }
-          `}
+          className={`md:flex hidden my-10 bg-gray-50/30 backdrop-blur-2xl rounded-md shadow-sm ${isDarkMode && "bg-slate-800 mastWhiteShadow"
+            }`}
         >
           <GithubHeatmap />
         </div>
 
-        {/* =================================================
-            MY STORY
-        ================================================= */}
+        {/* ------------------------------------------------------------------ */}
+        {/* My Story Expanded                                                  */}
+        {/* ------------------------------------------------------------------ */}
 
         {more && (
           <motion.section
@@ -914,97 +531,45 @@ function Home() {
             className="md:mt-3 mt-5"
           >
             <p
-              className={`
-                text-sm
-                md:text-[18px]
-
-                font-medium
-
-                max-w-full
-
-                text-shadow-sm
-
-                leading-relaxed
-
-                ${isDarkMode
+              className={`text-sm md:text-[18px] font-medium max-w-full text-shadow-sm leading-relaxed ${isDarkMode
                   ? "text-neutral-400"
                   : "text-neutral-600"
-                }
-              `}
+                }`}
             >
-              C taught me pain first, logic second — self-taught,
-              self-doubted, self-improved. From full-stack chaos to
-              Android, React, Spring Boot, and PostgreSQL, I learned
-              each one by breaking it first and understanding it later.
-              I don't fear bugs, I collect them like badges of honor.
-              Still building. Still breaking. Still leveling up.
+              C taught me pain first, logic second — self-taught, self-doubted,
+              self-improved. From full-stack chaos to Android, React, Spring
+              Boot, and PostgreSQL, I learned each one by breaking it first and
+              understanding it later. I don't fear bugs, I collect them like
+              badges of honor. Still building. Still breaking. Still leveling
+              up.
             </p>
 
             <section
-              className={`
-                mt-10
-                w-full
-                md:text-sm
-                text-sm
-                max-w-2xl
-
-                ${isDarkMode
+              className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode
                   ? "text-neutral-400"
                   : "text-neutral-600"
-                }
-              `}
+                }`}
             >
-              <p
-                className="
-                  text-lg
-                  font-bold
-                  capitalize
-                  text-indigo-500
-                  [text-shadow:1px_1px_90px_theme(colors.indigo.500)]
-                "
-              >
-                <span
-                  className="
-                    text-2xl
-                    text-indigo-500
-                    text-shadow-black
-                  "
-                >
+              <p className="text-lg font-bold capitalize text-indigo-500 [text-shadow:1px_1px_90px_theme(colors.indigo.500)]">
+                <span className="text-2xl text-indigo-500 text-shadow-black">
                   i
                 </span>
-
-                F googling me is your thing—go ahead. You can find me
-                across the web.
+                F googling me is your thing—go ahead. You can find me across the
+                web.
               </p>
 
-              <div
-                className="
-                  grid
-                  md:grid-cols-8
-                  grid-cols-5
-                  gap-1
-                  md:mt-3
-                  mt-5
-                "
-              >
+              <div className="grid md:grid-cols-8 grid-cols-5 gap-1 md:mt-3 mt-5">
+                {/* Fingerprint */}
                 <span
-                  className={`
-                    text-sm
-                    md:text-2xl
-
-                    font-medium
-
-                    text-shadow-sm
-
-                    ${isDarkMode
+                  className={`text-sm md:text-2xl font-medium text-shadow-sm ${isDarkMode
                       ? "text-neutral-300"
                       : "text-neutral-700"
-                    }
-                  `}
+                    }`}
                 >
                   <i className="text-2xl ri-fingerprint-line" />
                 </span>
 
+                {/* Facebook */}
                 <section className="flex justify-start items-center">
                   <motion.a
                     initial={{
@@ -1025,33 +590,16 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
-                    className={`
-                      px-2
-                      py-1
-                      text-[13px]
-
-                      rounded
-                      border
-
-                      transition-all
-                      duration-300
-
-                      mastShadow
-
-                      hover:text-white
-                      hover:bg-indigo-500
-                      hover:border-indigo-500
-
-                      ${isDarkMode
-                        ? "text-neutral-200 bg-white/5 border-white/20"
+                    className={`px-2 py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
+                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
                         : "text-neutral-800 bg-white/50 border-black/20"
-                      }
-                    `}
+                      }`}
                   >
                     Facebook
                   </motion.a>
                 </section>
 
+                {/* LinkedIn */}
                 <section className="flex justify-start items-center">
                   <motion.a
                     initial={{
@@ -1072,33 +620,16 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className={`
-                      px-2
-                      py-1
-                      text-[13px]
-
-                      rounded
-                      border
-
-                      transition-all
-                      duration-300
-
-                      mastShadow
-
-                      hover:text-white
-                      hover:bg-indigo-500
-                      hover:border-indigo-500
-
-                      ${isDarkMode
-                        ? "text-neutral-200 bg-white/5 border-white/20"
+                    className={`px-2 py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
+                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
                         : "text-neutral-800 bg-white/50 border-black/20"
-                      }
-                    `}
+                      }`}
                   >
                     LinkedIn
                   </motion.a>
                 </section>
 
+                {/* GitHub */}
                 <section className="flex justify-start items-center">
                   <motion.a
                     initial={{
@@ -1119,28 +650,10 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
-                    className={`
-                      px-2
-                      py-1
-                      text-[13px]
-
-                      rounded
-                      border
-
-                      transition-all
-                      duration-300
-
-                      mastShadow
-
-                      hover:text-white
-                      hover:bg-indigo-500
-                      hover:border-indigo-500
-
-                      ${isDarkMode
-                        ? "text-neutral-200 bg-white/5 border-white/20"
+                    className={`px-2 py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
+                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
                         : "text-neutral-800 bg-white/50 border-black/20"
-                      }
-                    `}
+                      }`}
                   >
                     GitHub
                   </motion.a>
@@ -1150,62 +663,31 @@ function Home() {
           </motion.section>
         )}
 
-        {/* =================================================
-            PROJECTS
-        ================================================= */}
+        {/* ------------------------------------------------------------------ */}
+        {/* Favorite Projects                                                  */}
+        {/* ------------------------------------------------------------------ */}
 
         <section className="mt-16">
           <h2
-            className={`
-              text-2xl
-              md:text-3xl
-
-              font-semibold
-
-              mb-3
-
-              tracking-tight
-
-              ${isDarkMode
-                ? "text-white"
-                : "text-neutral-900"
-              }
-            `}
+            className={`text-2xl text-shadow-sm md:text-3xl font-semibold mb-3 tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"
+              }`}
           >
             Recently Worked Projects
           </h2>
 
           <p
-            className={`
-              mb-6
-
-              text-sm
-              md:text-[15px]
-
-              ${isDarkMode
+            className={`mb-6 text-sm md:text-[15px] ${isDarkMode
                 ? "text-neutral-400"
                 : "text-neutral-600"
-              }
-            `}
+              }`}
           >
             Explore my coding journey through a mix of projects...
           </p>
 
-          <div
-            className="
-              grid
-
-              lg:grid-cols-2
-              lg:grid-rows-2
-
-              gap-5
-
-              py-5
-            "
-          >
-            {ProjectDetails.map((item) => (
+          <div className="grid lg:grid-cols-2 lg:grid-rows-2 gap-5 py-5">
+            {ProjectDetails.map((item, index) => (
               <ProjectCard
-                key={item.id}
+                key={index}
                 title={item.title}
                 img={item.imgUrl}
                 des={item.description}
@@ -1221,13 +703,7 @@ function Home() {
             <Link to="/projects">
               <Button
                 size="large"
-                className="
-                  w-full!
-                  mb-10
-                  h-12
-                  text-base
-                  shadow-sm
-                "
+                className="w-full! mb-10 h-12 text-base shadow-sm"
                 onClick={haptic.soft}
               >
                 View All Projects
@@ -1236,263 +712,66 @@ function Home() {
           </div>
         </section>
 
-        {/* =================================================
-            SKILLS
-        ================================================= */}
+        {/* ------------------------------------------------------------------ */}
+        {/* Skills Marquee                                                     */}
+        {/* ------------------------------------------------------------------ */}
 
-        <section className="relative mt-16 md:mt-20">
-          {/* Header */}
+        <div className="relative w-full md:mt-10 mt-5">
 
-          <div className="mb-8 md:mb-10">
-            <div className="flex items-center gap-3 mb-2">
-              <span
-                className="
-                  h-px
-                  w-8
-                  bg-indigo-500
-                "
-              />
+          {/* Tech Stack Label */}
+          <div className="mb-3 flex items-center gap-2">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
 
-              <span
-                className="
-                  text-[11px]
-                  uppercase
-                  tracking-[0.25em]
-                  font-semibold
-                  text-indigo-500
-                "
-              >
-                Technologies
-              </span>
-            </div>
-
-            <div
-              className="
-                flex
-                flex-col
-                md:flex-row
-                md:items-end
-                md:justify-between
-
-                gap-3
-              "
+            <span
+              className={`text-[11px] uppercase tracking-[0.15em] ${isDarkMode
+                  ? "text-white/40"
+                  : "text-black/40"
+                }`}
             >
-              <div>
-                <h2
-                  className={`
-                    text-2xl
-                    md:text-3xl
+              Tech Stack
+            </span>
+          </div>
 
-                    font-semibold
-                    tracking-tight
-
-                    ${isDarkMode
-                      ? "text-white"
-                      : "text-neutral-900"
-                    }
-                  `}
-                >
-                  Tools I Build With
-                </h2>
-
-                <p
-                  className={`
-                    mt-2
-                    text-sm
-                    max-w-xl
-                    leading-relaxed
-
-                    ${isDarkMode
-                      ? "text-neutral-400"
-                      : "text-neutral-600"
-                    }
-                  `}
-                >
-                  Technologies I use to turn ideas into
-                  functional, scalable and occasionally
-                  chaotic software.
-                </p>
-              </div>
-
-              {/* Learning indicator */}
-
-              <div
-                className={`
-                  hidden
-                  md:flex
-
-                  items-center
-                  gap-2
-
-                  text-xs
-                  font-medium
-
-                  ${isDarkMode
-                    ? "text-neutral-400"
-                    : "text-neutral-500"
-                  }
-                `}
-              >
-                <span className="relative flex h-2 w-2">
-                  <span
-                    className="
-                      absolute
-                      inline-flex
-
-                      h-full
-                      w-full
-
-                      rounded-full
-
-                      bg-green-400
-
-                      opacity-60
-
-                      animate-ping
-                    "
+          {/* Top Row - Left to Right */}
+          <div
+            className="relative w-full overflow-hidden py-2"
+            style={maskStyle}
+          >
+            <div className="flex w-max animate-marquee-left gap-3 hover:[animation-play-state:paused]">
+              {[...Array(2)].map((_, idx) =>
+                topRow.map((item, i) => (
+                  <SkillChip
+                    key={`top-${idx}-${i}`}
+                    {...item}
+                    isDarkMode={isDarkMode}
                   />
-
-                  <span
-                    className="
-                      relative
-                      inline-flex
-
-                      h-2
-                      w-2
-
-                      rounded-full
-
-                      bg-green-500
-                    "
-                  />
-                </span>
-
-                Always learning
-              </div>
+                )),
+              )}
             </div>
           </div>
 
-          {/* =================================================
-              MARQUEE CONTAINER
-          ================================================= */}
-
+          {/* Bottom Row - Right to Left */}
           <div
-            className="
-              relative
-
-              py-5
-              md:py-6
-
-              rounded-3xl
-
-              overflow-hidden
-
-              border
-              border-black/[0.05]
-              dark:border-white/[0.06]
-
-              bg-white/[0.20]
-              dark:bg-white/[0.015]
-
-              backdrop-blur-sm
-            "
+            className="relative mt-4 w-full overflow-hidden py-2"
+            style={maskStyle}
           >
-            {/* Ambient glow */}
-
-            <div
-              className="
-                pointer-events-none
-
-                absolute
-
-                left-1/2
-                top-1/2
-
-                -translate-x-1/2
-                -translate-y-1/2
-
-                w-[60%]
-                h-24
-
-                rounded-full
-
-                bg-indigo-500/[0.08]
-
-                blur-3xl
-              "
-            />
-
-            {/* Row 1 */}
-
-            <SkillMarqueeRow
-              skills={primarySkills}
-              direction="left"
-              duration="28s"
-              isDarkMode={isDarkMode}
-            />
-
-            {/* Divider */}
-
-            <div
-              className="
-                relative
-                z-10
-
-                mx-8
-                md:mx-16
-
-                my-5
-
-                h-px
-
-                bg-gradient-to-r
-
-                from-transparent
-
-                via-black/10
-
-                to-transparent
-
-                dark:via-white/10
-              "
-            />
-
-            {/* Row 2 */}
-
-            <SkillMarqueeRow
-              skills={secondarySkills}
-              direction="right"
-              duration="34s"
-              isDarkMode={isDarkMode}
-            />
+            <div className="flex w-max animate-marquee-right gap-3 hover:[animation-play-state:paused]">
+              {[...Array(2)].map((_, idx) =>
+                bottomRow.map((item, i) => (
+                  <SkillChip
+                    key={`bottom-${idx}-${i}`}
+                    {...item}
+                    isDarkMode={isDarkMode}
+                  />
+                )),
+              )}
+            </div>
           </div>
+        </div>
 
-          {/* Hint */}
-
-          <p
-            className={`
-              mt-4
-
-              text-center
-
-              text-[10px]
-              md:text-xs
-
-              tracking-wide
-
-              ${isDarkMode
-                ? "text-neutral-500"
-                : "text-neutral-400"
-              }
-            `}
-          >
-            Hover over the technologies to pause the showcase
-          </p>
-        </section>
-
-        {/* =================================================
-            RESUME
-        ================================================= */}
+        {/* ------------------------------------------------------------------ */}
+        {/* Resume Section                                                     */}
+        {/* ------------------------------------------------------------------ */}
 
         <Resume />
       </Container>
