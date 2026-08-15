@@ -1,69 +1,82 @@
 @import "tailwindcss";
 
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 html {
   scroll-behavior: smooth;
 }
 
 
-
+/* =========================================================
+   SHADOWS
+========================================================= */
 
 .mastShadow {
-  box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1),
     0px 1px 0px 0px rgba(25, 28, 33, 0.02),
     0px 0px 0px 1px rgba(25, 28, 33, 0.08);
 }
 
 .WhiteShadow {
-  box-shadow: 0px 2px 3px -1px rgba(255, 255, 255, 0.119),
+  box-shadow:
+    0px 2px 3px -1px rgba(255, 255, 255, 0.119),
     0px 1px 0px 0px rgba(255, 255, 255, 0),
     0px 0px 0px 1px rgba(101, 101, 165, 0.501);
 }
 
-
-
 .mastBlueShadow {
-  box-shadow: 0px 2px 3px -1px rgba(146, 184, 233, 0.527),
+  box-shadow:
+    0px 2px 3px -1px rgba(146, 184, 233, 0.527),
     0px 1px 0px 0px rgba(156, 228, 228, 0.507),
     0px 0px 0px 1px rgba(151, 191, 230, 0.493);
 }
 
 .mastOrangeShadow {
-  box-shadow: 0px 2px 3px -1px rgba(243, 228, 12, 0.589),
+  box-shadow:
+    0px 2px 3px -1px rgba(243, 228, 12, 0.589),
     0px 1px 0px 0px rgba(240, 140, 26, 0.603),
     0px 0px 0px 1px rgba(243, 159, 62, 0.568);
 }
 
+
+/* =========================================================
+   WAVE
+========================================================= */
+
 @keyframes wave {
   0% {
-    transform: rotate(0.0deg)
+    transform: rotate(0deg);
   }
 
   10% {
-    transform: rotate(14.0deg)
+    transform: rotate(14deg);
   }
 
   20% {
-    transform: rotate(-8.0deg)
+    transform: rotate(-8deg);
   }
 
   30% {
-    transform: rotate(14.0deg)
+    transform: rotate(14deg);
   }
 
   40% {
-    transform: rotate(-4.0deg)
+    transform: rotate(-4deg);
   }
 
   50% {
-    transform: rotate(10.0deg)
+    transform: rotate(10deg);
   }
 
   60% {
-    transform: rotate(0.0deg)
+    transform: rotate(0deg);
   }
 
   100% {
-    transform: rotate(0.0deg)
+    transform: rotate(0deg);
   }
 }
 
@@ -73,69 +86,228 @@ html {
   animation: wave 2s infinite;
 }
 
-.mastgBackgroundColor {
 
-  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.mastgBackgroundColor {
+  background-image: linear-gradient(to top,
+      #a8edea 0%,
+      #fed6e3 100%);
 }
 
 
+/* =========================================================
+   SCROLLBAR
+========================================================= */
 
+/* Chrome / Safari / Opera */
 
-
-
-
-/* Hide scrollbar for all elements */
 ::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar in Firefox */
+/* Firefox */
+
 html {
   scrollbar-width: none;
 }
 
-/* Hide scrollbar in Edge, IE */
+/* Edge / IE */
+
 body {
   -ms-overflow-style: none;
 }
 
-/* Base focus styles for accessibility */
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
 *:focus-visible {
   outline: 2px solid #818cf8;
-  /* indigo-400 */
   outline-offset: 2px;
 }
 
 
-/* animation for teck stack  */
+/* =========================================================
+   SKILLS MARQUEE
+========================================================= */
+
+/*
+  Structure:
+
+  TRACK
+  ├── GROUP 1
+  │   ├── Skill
+  │   ├── Skill
+  │   └── ...
+  │
+  └── GROUP 2
+      ├── Skill
+      ├── Skill
+      └── ...
+
+  The second group is identical to the first group.
+
+  The animation moves exactly one group,
+  which creates the infinite loop.
+*/
+
+
+/* =========================================================
+   LEFT MOVING MARQUEE
+========================================================= */
+
 @keyframes marquee-left {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translate3d(0, 0, 0);
   }
 
-  100% {
-    transform: translateX(-100%);
+  to {
+    transform: translate3d(calc(-50% - 0.875rem),
+        0,
+        0);
   }
 }
+
+
+/* =========================================================
+   RIGHT MOVING MARQUEE
+========================================================= */
 
 @keyframes marquee-right {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translate3d(calc(-50% - 0.875rem),
+        0,
+        0);
   }
 
-  100% {
-    transform: translateX(100%);
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }
 
+
+/* =========================================================
+   MARQUEE CLASSES
+========================================================= */
+
 .animate-marquee-left {
-  animation: marquee-left 15s linear infinite;
+  animation-name: marquee-left;
+  animation-duration: 28s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  will-change: transform;
 }
 
 .animate-marquee-right {
-  animation: marquee-right 15s linear infinite;
+  animation-name: marquee-right;
+  animation-duration: 34s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  will-change: transform;
 }
 
-.hover\:animation-play-state-paused:hover {
+
+/* =========================================================
+   HOVER PAUSE
+========================================================= */
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
   animation-play-state: paused;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  @keyframes marquee-left {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(calc(-50% - 1.25rem),
+          0,
+          0);
+    }
+  }
+
+  @keyframes marquee-right {
+    from {
+      transform: translate3d(calc(-50% - 1.25rem),
+          0,
+          0);
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .animate-marquee-left {
+    animation-duration: 20s;
+  }
+
+  .animate-marquee-right {
+    animation-duration: 24s;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .animate-marquee-left {
+    animation-duration: 18s;
+  }
+
+  .animate-marquee-right {
+    animation-duration: 21s;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation-play-state: paused;
+  }
+}
+
+
+/* =========================================================
+   PERFORMANCE
+========================================================= */
+
+.animate-marquee-left,
+.animate-marquee-right {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+.animate-marquee-left,
+.animate-marquee-right {
+  user-select: none;
 }
