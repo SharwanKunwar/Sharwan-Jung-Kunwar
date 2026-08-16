@@ -90,7 +90,7 @@ function Projects() {
                   SUrl={item.source}
                   PUrl={item.URL}
                   Stack={item.teck}
-                  category={item.category}
+                  
                   dt={item.date}
                 />
               ))}
