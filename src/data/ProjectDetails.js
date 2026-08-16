@@ -1,5 +1,16 @@
 export const ProjectDetails = [
   {
+    id: 36,
+    category: "full-stack",
+    title: "Top-Cars-Details",
+    imgUrl: "/2026Projects/TopCars.png",
+    URL: "https://top-cars-details.vercel.app/",
+    source: "https://github.com/SharwanKunwar/Top-Cars-Details",
+    description: "Top-Cars-Details is a full-stack web app for exploring car information, featuring a React frontend, Spring Boot backend, and PostgreSQL database. It provides a clean, responsive interface for browsing detailed car data and specifications with ease. 🚗 Built for car enthusiasts.",
+    teck: ["ReactJS", "Tailwindcss", "antd"],
+    date: "Aug, 2026, 6:26 PM",
+  },
+  {
     id: 35,
     category: "frontend",
     title: "Browser-Manager",
