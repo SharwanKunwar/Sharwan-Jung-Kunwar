@@ -25,53 +25,10 @@ import Resume from "../pages/Resume";
 import { DarkModeContext } from "../context/DarkModeContext.js";
 import { Link } from "react-router-dom";
 import GithubHeatmap from "../components/GithubHeatmap";
+import { ProjectDetails } from '../data/ProjectDetails'
+import BigProjectCard from "../components/BigProjectCard.jsx";
 
-const ProjectDetails = [
-  {
-    id: 1,
-    title: "Focus Planner",
-    imgUrl: "/2026Projects/focusPlanner.png",
-    URL: "https://focus-planner-mu.vercel.app/",
-    source: "https://github.com/SharwanKunwar/FocusPlanner",
-    description:
-      "A modern focus planner that helps users organize tasks, set daily goals, track progress, and boost productivity with a clean, distraction-free interface.",
-    teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
-    date: "March 21, 2026, 11:00 PM",
-  },
-  {
-    id: 2,
-    title: "Fack-Data-Builder",
-    imgUrl: "/2026Projects/202601.png",
-    URL: "https://fake-data-builder.vercel.app/",
-    source: "https://github.com/SharwanKunwar/Fake-Data-Builder",
-    description:
-      "A tool that generates realistic fake data for testing and development. Built to simplify workflows, experiment with datasets, and make development faster and easier.",
-    teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
-    date: "Dec 5, 2025, 2:06 PM",
-  },
-  {
-    id: 3,
-    title: "DeathNote",
-    imgUrl: "/2026Projects/DeathNote.png",
-    URL: "https://death-note-sage.vercel.app/",
-    source: "https://github.com/SharwanKunwar/DeathNote",
-    description:
-      "A Death Note themed REST app built with Spring Boot & PostgreSQL in Docker. Write a target's name and cause of death, view all entries, and delete them — powered by a dark, anime-inspired frontend. ☠️📓",
-    teck: ["ReactJS", "Tailwindcss", "antd"],
-    date: "May 31, 2026, 12:21 PM",
-  },
-  {
-    id: 4,
-    title: "Youtube Long Video Playlist Generator",
-    imgUrl: "/MainProjectImage/ShortPlaylist.png",
-    URL: "https://generate-playlist.vercel.app/",
-    source: "https://github.com/SharwanKunwar/Generate-Playlist",
-    description:
-      "A React + Tailwind app that creates long YouTube video playlists instantly. Organize videos, manage playback flow, and enjoy a clean responsive experience. 🎬⚛️",
-    teck: ["ReactJS", "Tailwindcss", "Motion", "antd"],
-    date: "May 8, 2026, 10:52 PM",
-  },
-];
+
 
 /* -------------------------------------------------------------------------- */
 /* Skills Marquee Data                                                        */
@@ -350,8 +307,8 @@ function Home() {
           <div className="mt-15 mb-4">
             <p
               className={`inline-flex items-center gap-2 rounded-full text-sm py-1.5 px-4 font-medium backdrop-blur-md border shadow-sm transition-all duration-300 hover:scale-105 ${isDarkMode
-                  ? "text-indigo-300 border-indigo-500/30 bg-indigo-500/10"
-                  : "text-indigo-600 border-indigo-200 bg-indigo-50/50"
+                ? "text-indigo-300 border-indigo-500/30 bg-indigo-500/10"
+                : "text-indigo-600 border-indigo-200 bg-indigo-50/50"
                 }`}
             >
               <span className="relative flex h-2 w-2">
@@ -367,8 +324,8 @@ function Home() {
             <div>
               <h1
                 className={`text-3xl md:text-4xl font-bold tracking-tight ${isDarkMode
-                    ? "text-white [text-shadow:1px_1px_20px_rgb(156_163_175_/_0.7)]"
-                    : "text-neutral-900 [text-shadow:1px_1px_30px_rgb(156_163_175_/_0.5)]"
+                  ? "text-white [text-shadow:1px_1px_20px_rgb(156_163_175_/_0.7)]"
+                  : "text-neutral-900 [text-shadow:1px_1px_30px_rgb(156_163_175_/_0.5)]"
                   }`}
               >
                 Sharwan Jung Kunwar
@@ -532,8 +489,8 @@ function Home() {
           >
             <p
               className={`text-sm md:text-[18px] font-medium max-w-full text-shadow-sm leading-relaxed ${isDarkMode
-                  ? "text-neutral-400"
-                  : "text-neutral-600"
+                ? "text-neutral-400"
+                : "text-neutral-600"
                 }`}
             >
               C taught me pain first, logic second — self-taught, self-doubted,
@@ -546,116 +503,54 @@ function Home() {
 
             <section
               className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode
-                  ? "text-neutral-400"
-                  : "text-neutral-600"
+                ? "text-neutral-400"
+                : "text-neutral-600"
                 }`}
             >
-              <p className="text-lg font-bold capitalize text-indigo-500 [text-shadow:1px_1px_90px_theme(colors.indigo.500)]">
-                <span className="text-2xl text-indigo-500 text-shadow-black">
-                  i
-                </span>
-                F googling me is your thing—go ahead. You can find me across the
-                web.
-              </p>
+              <motion.p
+                initial={{
+                  opacity: 0,
+                  y: 15,
+                  filter: "blur(5px)",
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  filter: "none",
+                }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-sm font-medium capitalize text-slate-500 text-shadow-sm">
+                <span className="text-lg text-shadow-sm font-medium line-clamp-1">Curious about the person behind the code?</span>
+                Take a little detour into my world—my projects, interests, and the things that make me me.
+              </motion.p>
 
-              <div className="grid md:grid-cols-8 grid-cols-5 gap-1 md:mt-3 mt-5">
-                {/* Fingerprint */}
-                <span
-                  className={`text-sm md:text-2xl font-medium text-shadow-sm ${isDarkMode
-                      ? "text-neutral-300"
-                      : "text-neutral-700"
-                    }`}
-                >
-                  <i className="text-2xl ri-fingerprint-line" />
-                </span>
-
-                {/* Facebook */}
-                <section className="flex justify-start items-center">
-                  <motion.a
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                      filter: "blur(5px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      filter: "none",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 1.1,
-                    }}
-                    href="https://www.facebook.com/sravana.kumvara/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    className={`px-2 py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
-                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
-                        : "text-neutral-800 bg-white/50 border-black/20"
-                      }`}
-                  >
-                    Facebook
-                  </motion.a>
-                </section>
-
-                {/* LinkedIn */}
-                <section className="flex justify-start items-center">
-                  <motion.a
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                      filter: "blur(5px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      filter: "none",
-                    }}
-                    transition={{
-                      duration: 0.7,
-                      delay: 1.3,
-                    }}
-                    href="https://www.linkedin.com/in/sharwan-kunwar-95a919317/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    className={`px-2 py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
-                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
-                        : "text-neutral-800 bg-white/50 border-black/20"
-                      }`}
-                  >
-                    LinkedIn
-                  </motion.a>
-                </section>
-
+              <div className="grid  gap-1 md:mt-3 mt-2">
                 {/* GitHub */}
                 <section className="flex justify-start items-center">
                   <motion.a
                     initial={{
                       opacity: 0,
-                      x: 100,
-                      filter: "blur(5px)",
+                      x: 300,
+                      filter: "blur(1px)",
                     }}
-                    animate={{
+                    whileInView={{
                       opacity: 1,
                       x: 0,
                       filter: "none",
                     }}
-                    transition={{
-                      duration: 0.9,
-                      delay: 1.5,
-                    }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
                     href="https://github.com/SharwanKunwar"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
-                    className={`px-2 py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
-                        ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
-                        : "text-neutral-800 bg-white/50 border-black/20"
+                    className={`md:w-[6vw] w-[25vw] text-center py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
+                      ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
+                      : "text-neutral-800 bg-white/50 border-black/20"
                       }`}
                   >
-                    GitHub
+                    Click Me
                   </motion.a>
                 </section>
               </div>
@@ -677,25 +572,27 @@ function Home() {
 
           <p
             className={`mb-6 text-sm md:text-[15px] ${isDarkMode
-                ? "text-neutral-400"
-                : "text-neutral-600"
+              ? "text-neutral-400"
+              : "text-neutral-600"
               }`}
           >
             Explore my coding journey through a mix of projects...
           </p>
 
           <div className="grid lg:grid-cols-2 lg:grid-rows-2 gap-5 py-5">
-            {ProjectDetails.map((item, index) => (
-              <ProjectCard
-                key={index}
+            {ProjectDetails.map((item) => (
+              (item.priority === "main") ? <ProjectCard
+                key={item.id}
                 title={item.title}
                 img={item.imgUrl}
                 des={item.description}
                 SUrl={item.source}
                 PUrl={item.URL}
                 Stack={item.teck}
+
                 dt={item.date}
               />
+                : ""
             ))}
           </div>
 
@@ -724,8 +621,8 @@ function Home() {
 
             <span
               className={`text-[11px] uppercase tracking-[0.15em] ${isDarkMode
-                  ? "text-white/40"
-                  : "text-black/40"
+                ? "text-white/40"
+                : "text-black/40"
                 }`}
             >
               Tech Stack
@@ -774,6 +671,10 @@ function Home() {
         {/* ------------------------------------------------------------------ */}
 
         <Resume />
+
+        <div className="text-[13px] w-full h-12.5 flex justify-center items-center">
+          Developed by sharwan jung kunwar with 🩵
+        </div>
       </Container>
     </main>
   );

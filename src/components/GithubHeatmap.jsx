@@ -4,7 +4,7 @@ function GithubHeatmap() {
   return (
     <div className="md:flex flex-col items-center p-3">
       <GitHubCalendar
-        username="sharwanKunwar"
+        username="SharwanKunwar"
         colorScheme="light"
         blockSize={14.9}
         blockMargin={5}
