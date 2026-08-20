@@ -1,5 +1,17 @@
 export const ProjectDetails = [
   {
+    id: 36,
+    category: "frontend",
+    title: "PocketOracle",
+    priority: "main",
+    imgUrl: "/2026Projects/ScanMe.png",
+    URL: "https://pocket-oracle-one.vercel.app/",
+    source: "https://github.com/SharwanKunwar/PocketOracle",
+    description: "PocketOracle is a simple web app that delivers meaningful messages with a single click, offering motivational, inspirational, positive, and thoughtful words to brighten your mood, spark reflection, and inspire your next step.🔮",
+    teck: ["ReactJS", "Tailwindcss", "antd"],
+    date: "Aug 19, 2026, 6:40 PM",
+  },
+  {
     id: 35,
     category: "frontend",
     title: "Browser-Manager",
@@ -37,8 +49,7 @@ export const ProjectDetails = [
     id: 32,
     category: "frontend",
     title: "RoomFinder",
-    priority: "main",
-    imgUrl: "/2026Projects/roomFinder.png",
+    imgUrl: "/2026Projects/RoomFinder.png",
     URL: "https://room-finder-black.vercel.app/",
     source: "https://room-finder-black.vercel.app/",
     description: "A RoomFinder platform built with React & Tailwind CSS that connects tenants directly with room owners — no middlemen, no extra fees. Features P2P connection, expense tracking, and activity management. 🏠⚛️",
@@ -50,7 +61,7 @@ export const ProjectDetails = [
     category: "frontend",
     title: "Youtube Long Video Playlist Generator",
     priority: "main",
-    imgUrl: "/MainProjectImage/ShortPlaylist.png",
+    imgUrl: "/2026Projects/PlaylistGenerator.png",
     URL: "https://generate-playlist.vercel.app/",
     source: "https://github.com/SharwanKunwar/Generate-Playlist",
     description:
@@ -87,7 +98,7 @@ export const ProjectDetails = [
     category: "frontend",
     title: "Sharwan Jung Kunwar",
     imgUrl: "portfolio.png",
-    URL: "https://sharwanjungkunwar.vercel.app/",
+    URL: "https://sharwan-jung-kunwar.vercel.app/",
     source: "https://github.com/SharwanKunwar/SharwanJungKunwar",
     description:
       "Welcome to my portfolio. I turn ideas into projects, learn from mistakes, embrace challenges, and craft solutions that keep evolving.",
@@ -99,7 +110,7 @@ export const ProjectDetails = [
     category: "frontend",
     title: "Focus Planner",
     priority: "main",
-    imgUrl: "2026Projects/focusPlanner.png",
+    imgUrl: "2026Projects/FocusPlannerU.png",
     URL: "https://focus-planner-mu.vercel.app/",
     source: "https://github.com/SharwanKunwar/FocusPlanner",
     description:
