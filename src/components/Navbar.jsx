@@ -38,6 +38,7 @@ function Navbar() {
   const navItems = [
     { title: 'Home', url: '/home' },
     { title: 'Projects', url: '/projects' },
+    { title: 'Contact', url: '/contactPage' },
     { title: 'MySelf', url: '/mySelf' },
   ];
 

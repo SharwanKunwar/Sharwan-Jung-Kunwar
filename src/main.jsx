@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound.jsx'
 import MySelf from './pages/MySelf.jsx'
 import BlogDetails from './components/BlogDetails.jsx'
 import 'remixicon/fonts/remixicon.css'
+import ContactPage from './pages/ContactPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "blog/:id",
         element: <BlogDetails />
+      },
+      {
+        path: "/contactPage",
+        element: <ContactPage />
       },
 
 

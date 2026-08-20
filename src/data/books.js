@@ -1,27 +1,41 @@
 export const books = [
   {
     id: 1,
-    title: "The 48 Laws Of Power",
-    imgPath: "books/book01.jpg",
+    title: "The Pragmatic Programmer",
+    imgPath: "books/Book01.jpeg",
     description:
-      "A bold and controversial guide to understanding power, influence, and strategy. It breaks down human behavior and teaches how to navigate social dynamics, protect yourself, and rise in competitive environments.",
+      "A practical guide to becoming a better software developer. It focuses on writing flexible, maintainable code, improving problem-solving skills, managing complexity, and developing a professional mindset.",
     bookUrl:
-      "https://irp-cdn.multiscreensite.com/cb9165b2/files/uploaded/The+48+Laws+Of+Power.pdf",
+      "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/",
   },
+
   {
     id: 2,
-    title: "The Power Of Intentions",
-    imgPath: "books/ThePowerOfIntentions.jpg",
-    description:
-      "A guide to harnessing the power of intention and visualization to manifest your desires and create the life you want. It explores the science behind the law of attraction and provides practical techniques for setting and achieving goals.  ",
-    bookUrl: "",
-  },
-  {
-    id: 3,
     title: "Designing Data-Intensive Applications",
     imgPath: "books/DesigningApplication.jpg",
     description:
-      "A comprehensive guide to designing and building data-intensive applications. It covers the principles of database systems, distributed systems, and modern architecture patterns.",
-    bookUrl: "",
+      "A deep guide to designing reliable, scalable, and maintainable data-intensive systems. It explores databases, distributed systems, replication, partitioning, consistency, and the trade-offs behind modern data architectures.",
+    bookUrl:
+      "https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/",
+  },
+
+  {
+    id: 3,
+    title: "Cracking the Coding Interview",
+    imgPath: "books/Book02.jpeg",
+    description:
+      "A comprehensive preparation guide for technical programming interviews. It covers data structures, algorithms, problem-solving techniques, and hundreds of programming interview questions with detailed explanations.",
+    bookUrl:
+      "https://www.crackingthecodinginterview.com/",
+  },
+
+  {
+    id: 4,
+    title: "The Clean Coder",
+    imgPath: "books/Book03.jpeg",
+    description:
+      "A guide to professional software development written by Robert C. Martin. It focuses on professionalism, discipline, communication, time management, coding practices, and the mindset required to become a responsible software developer.",
+    bookUrl:
+      "https://www.pearson.com/en-us/subject-catalog/p/clean-coder-the-a-code-of-conduct-for-professional-programmers/P200000009045",
   },
 ];
