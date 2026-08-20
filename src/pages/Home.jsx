@@ -23,7 +23,7 @@ import { Button } from "antd";
 import ProjectCard from "../components/ProjectCard";
 import Resume from "../pages/Resume";
 import { DarkModeContext } from "../context/DarkModeContext.js";
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 import GithubHeatmap from "../components/GithubHeatmap";
 import { ProjectDetails } from '../data/ProjectDetails'
 import BigProjectCard from "../components/BigProjectCard.jsx";
@@ -525,33 +525,37 @@ function Home() {
                 Take a little detour into my world—my projects, interests, and the things that make me me.
               </motion.p>
 
-              <div className="grid  gap-1 md:mt-3 mt-2">
-                {/* GitHub */}
+              <div className="gap-1 md:mt-3 mt-2">
+                {/* mySelf page redirect when click me button is clicked */}
                 <section className="flex justify-start items-center">
-                  <motion.a
-                    initial={{
-                      opacity: 0,
-                      x: 300,
-                      filter: "blur(1px)",
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                      filter: "none",
-                    }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    href="https://github.com/SharwanKunwar"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
+                  <Link to="/mySelf"
                     className={`md:w-[6vw] w-[25vw] text-center py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
                       ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
                       : "text-neutral-800 bg-white/50 border-black/20"
                       }`}
                   >
-                    Click Me
-                  </motion.a>
+                    <motion.a
+                      initial={{
+                        opacity: 0,
+                        x: 300,
+                        filter: "blur(1px)",
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        x: 0,
+                        filter: "none",
+                      }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                      href="https://github.com/SharwanKunwar"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                    >
+                      Click Me
+                    </motion.a>
+                  </Link>
+
                 </section>
               </div>
             </section>

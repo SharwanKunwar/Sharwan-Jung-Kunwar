@@ -137,8 +137,8 @@ export default function MySelf({ username = "SharwanKunwar" }) {
 
           <div
             className={`relative h-[240px] md:h-[360px] overflow-hidden rounded-3xl border ${isDarkMode
-                ? "border-white/10 bg-white/[0.03]"
-                : "border-black/10 bg-white/40"
+              ? "border-white/10 bg-white/[0.03]"
+              : "border-black/10 bg-white/40"
               }`}
           >
             <video
@@ -330,7 +330,7 @@ export default function MySelf({ username = "SharwanKunwar" }) {
         </section>
 
         {/* =====================================================
-            BOOKS
+          BOOKS
         ====================================================== */}
 
         <SectionHeader
@@ -341,19 +341,49 @@ export default function MySelf({ username = "SharwanKunwar" }) {
         />
 
         <section className="mb-16">
-          <div className="flex flex-wrap gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {books.map((item, index) => (
-              <div
+              <a
                 key={index}
-                className="transition-transform duration-300 hover:-translate-y-1"
+                href={item.bookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex flex-col rounded-xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl animate-fade-in-up"
+                style={{ animationDelay: `${index * 60}ms` }}
               >
-                <BookCard
-                  imgPath={item.imgPath}
-                  title={item.title}
-                  description={item.description}
-                  bookUrl={item.bookUrl}
-                />
-              </div>
+                {/* Cover */}
+                <div className="relative aspect-[2/3] overflow-hidden rounded-xl shadow-md ring-1 ring-black/5">
+                  <img
+                    src={item.imgPath}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  />
+
+                  {/* Gradient overlay + description on hover */}
+                  <div className="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-xs text-white/90 leading-relaxed line-clamp-4">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Subtle corner icon on hover */}
+                  <div className="absolute top-3 right-3 h-7 w-7 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300">
+                    <svg
+                      className="h-3.5 w-3.5 text-gray-800"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </a>
             ))}
           </div>
         </section>

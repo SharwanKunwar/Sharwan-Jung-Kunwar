@@ -8,7 +8,7 @@ import BigProjectCard from '../components/BigProjectCard';
 const filters = [
   { id: 'all', label: 'All' },
   { id: 'full-stack', label: 'Full Stack' },
-  { id: 'ui-design', label: 'UI Designs' },
+  { id: 'ui-design', label: 'UI Designs Only' },
   { id: 'frontend', label: 'Frontend Only' },
 ];
 
