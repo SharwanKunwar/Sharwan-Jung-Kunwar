@@ -28,7 +28,7 @@ import GithubHeatmap from "../components/GithubHeatmap";
 import { ProjectDetails } from '../data/ProjectDetails'
 import BigProjectCard from "../components/BigProjectCard.jsx";
 
-
+const API_URL = "https://project-api-umber.vercel.app/api/projectDetails";
 
 /* -------------------------------------------------------------------------- */
 /* Skills Marquee Data                                                        */
@@ -243,6 +243,41 @@ function SkillChip({ icon: Icon, name, tag, color, isDarkMode }) {
 function Home() {
   const [more, setMore] = useState(false);
   const { isDarkMode } = useContext(DarkModeContext);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+
+  // feacthing main projects only 
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+
+        const result = await response.json();
+
+        const mainProjects = (result.data || []).filter(
+          (project) => project.priority === "main"
+        );
+
+        setProjects(mainProjects);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        setError("Failed to load projects.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   /* Scroll to top when page loads */
   useEffect(() => {
@@ -584,8 +619,8 @@ function Home() {
           </p>
 
           <div className="grid lg:grid-cols-2 lg:grid-rows-2 gap-5 py-5">
-            {ProjectDetails.map((item) => (
-              (item.priority === "main") ? <ProjectCard
+            {projects.map((item) => (
+              <ProjectCard
                 key={item.id}
                 title={item.title}
                 img={item.imgUrl}
@@ -596,7 +631,7 @@ function Home() {
 
                 dt={item.date}
               />
-                : ""
+
             ))}
           </div>
 
