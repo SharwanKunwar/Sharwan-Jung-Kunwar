@@ -9,6 +9,7 @@ import gallary01 from "../data/gallary01.js";
 import gallary02 from "../data/gallary02.js";
 import gallary03 from "../data/gallary03.js";
 import { DarkModeContext } from "../context/DarkModeContext.js";
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 export default function MySelf({ username = "SharwanKunwar" }) {
   const [profile, setProfile] = useState(null);
@@ -170,15 +171,15 @@ export default function MySelf({ username = "SharwanKunwar" }) {
             </button>
 
             <div className="absolute bottom-6 left-6 md:left-10">
-              <p className="text-indigo-300 text-xs md:text-sm tracking-[0.3em] uppercase font-semibold mb-2">
+              <p className="text-indigo-300 text-sm md:text-sm tracking-[0.3em] uppercase font-semibold mb-0">
                 Developer • Builder • Learner
               </p>
 
-              <h1 className="text-white text-3xl md:text-5xl font-bold tracking-tight">
+              <h1 className="text-white text-2xl md:text-5xl font-bold tracking-tight">
                 My Digital Journey
               </h1>
 
-              <p className="text-white/70 text-sm md:text-base mt-2 max-w-xl">
+              <p className="text-white/70 text-sm md:text-base mt-0 max-w-xl">
                 A collection of the things I build, read, write, and experience.
               </p>
             </div>
@@ -241,20 +242,52 @@ export default function MySelf({ username = "SharwanKunwar" }) {
                   "Software developer focused on building useful applications and learning new technologies."}
               </p>
 
-              {/* GitHub Link */}
+              {/* Social Media Links */}
+              <section className="flex justify-center md:justify-start pt-3 items-center gap-3">
 
-              <a
-                href={`https://github.com/${username}`}
-                target="_blank"
-                rel="noreferrer"
-                className={`inline-flex items-center gap-2 mt-5 w-fit px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
-                  ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
-                  : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
-                  }`}
-              >
-                <span>GitHub</span>
-                <span>↗</span>
-              </a>
+                {/* GitHub */}
+                <a
+                  href={`https://github.com/${username}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`inline-flex items-center gap-2 mt-0 w-fit px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
+                    ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
+                    : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
+                    }`}
+                >
+                  <FaGithub size={18} />
+                  <span>GitHub</span>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href={`https://linkedin.com`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`inline-flex items-center gap-2 mt-0 w-fit px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
+                    ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
+                    : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
+                    }`}
+                >
+                  <FaLinkedin size={18} />
+                  <span>LinkedIn</span>
+                </a>
+
+                {/* Facebook */}
+                <a
+                  href={`https://facebook.com`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`inline-flex items-center gap-2 mt-0 w-fit px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
+                    ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
+                    : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
+                    }`}
+                >
+                  <FaFacebook size={18} />
+                  <span>Facebook</span>
+                </a>
+
+              </section>
 
               {/* Stats */}
 
