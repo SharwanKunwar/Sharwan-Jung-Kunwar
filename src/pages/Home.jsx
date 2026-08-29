@@ -14,7 +14,7 @@ import {
   SiMongodb,
   SiFirebase,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiFramer,
   SiGithub,
   SiAntdesign,
@@ -117,7 +117,7 @@ const bottomRow = [
     color: "#e8734a",
   },
   {
-    icon: SiCss3,
+    icon: SiCss,
     name: "CSS3",
     tag: "Styling",
     color: "#4d90d6",
