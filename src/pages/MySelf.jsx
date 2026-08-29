@@ -364,6 +364,21 @@ export default function MySelf({ username = "SharwanKunwar" }) {
 
 
         {/* Books section ---------------------------------------------------- */}
+        <div className="mb-6">
+          <h2
+            className={`text-2xl md:text-3xl font-semibold tracking-tight text-shadow-sm ${isDarkMode ? "text-white" : "text-neutral-900"
+              }`}
+          >
+            Favorite Books
+          </h2>
+
+          <p
+            className={`mt-2 text-sm md:text-[15px] ${isDarkMode ? "text-neutral-400" : "text-neutral-600"
+              }`}
+          >
+            A few books that shaped the way I think, learn, and build.
+          </p>
+        </div>
 
         <section className="mb-16">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
