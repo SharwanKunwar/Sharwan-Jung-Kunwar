@@ -10,6 +10,7 @@ import gallary02 from "../data/gallary02.js";
 import gallary03 from "../data/gallary03.js";
 import { DarkModeContext } from "../context/DarkModeContext.js";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import GithubHeatmap from "../components/GithubHeatmap.jsx";
 
 export default function MySelf({ username = "SharwanKunwar" }) {
   const [profile, setProfile] = useState(null);
@@ -322,44 +323,8 @@ export default function MySelf({ username = "SharwanKunwar" }) {
           {/* =================================================
               GITHUB CONTRIBUTION
           ================================================== */}
+          <GithubHeatmap date={new Date().getFullYear()} />
 
-          <div
-            className={`mt-7 rounded-2xl border p-4 md:p-5 overflow-hidden ${isDarkMode
-              ? "bg-black/20 border-white/10"
-              : "bg-white/40 border-black/10"
-              }`}
-          >
-            <div className="flex justify-between items-center mb-4">
-              <div>
-                <p className="font-semibold">GitHub Activity</p>
-
-                <p
-                  className={`text-xs mt-1 ${isDarkMode
-                    ? "text-neutral-500"
-                    : "text-neutral-500"
-                    }`}
-                >
-                  My coding consistency throughout the year.
-                </p>
-              </div>
-
-              <span
-                className={`text-xs ${isDarkMode
-                  ? "text-neutral-500"
-                  : "text-neutral-500"
-                  }`}
-              >
-                {new Date().getFullYear()}
-              </span>
-            </div>
-
-            <div className="flex justify-center items-center overflow-x-auto pb-2">
-              <GitHubCalendar
-                username={username}
-                year={new Date().getFullYear()}
-              />
-            </div>
-          </div>
         </section>
 
 

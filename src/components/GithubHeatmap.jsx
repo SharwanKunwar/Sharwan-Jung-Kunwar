@@ -1,16 +1,50 @@
+import React from "react";
 import { GitHubCalendar } from "react-github-calendar";
+import { DarkModeContext } from "../context/DarkModeContext.js";
 
-function GithubHeatmap() {
+function GithubHeatmap({ date }) {
+  const { isDarkMode } = React.useContext(DarkModeContext);
   return (
-    <div className="md:flex flex-col items-center p-3">
-      <GitHubCalendar
-        username="SharwanKunwar"
-        colorScheme="light"
-        blockSize={14.9}
-        blockMargin={5}
-        fontSize={13}
-      />
-    </div>
+    <>
+      <div
+        className={`mt-7 md:flex flex-col hidden rounded-2xl border p-4 md:p-5 overflow-hidden ${isDarkMode
+          ? "bg-black/20 border-white/10"
+          : "bg-white/40 border-black/10"
+          }`}
+      >
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <p className="font-semibold">GitHub Activity</p>
+
+            <p
+              className={`text-xs mt-1 ${isDarkMode
+                ? "text-neutral-500"
+                : "text-neutral-500"
+                }`}
+            >
+              My coding consistency throughout the year.
+            </p>
+          </div>
+
+          <span
+            className={`text-xs ${isDarkMode
+              ? "text-neutral-500"
+              : "text-neutral-500"
+              }`}
+          >
+            {date}
+          </span>
+        </div>
+
+        <div className="flex justify-center items-center overflow-x-auto pb-2">
+          <GitHubCalendar
+            username={"SharwanKunwar"}
+            year={date}
+          />
+        </div>
+      </div>
+
+    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container } from "../components/Container";
 import { motion } from "motion/react";
+import { GitHubCalendar } from "react-github-calendar";
 import {
   SiNextdotjs,
   SiC,
@@ -438,7 +439,7 @@ function Home() {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/SharwanKunwar/Dev"
+            href="https://github.com/SharwanKunwar/Sharwan-Jung-Kunwar"
           >
             <motion.button
               initial={{
@@ -495,12 +496,9 @@ function Home() {
         {/* Github Heatmap                                                     */}
         {/* ------------------------------------------------------------------ */}
 
-        <div
-          className={`md:flex hidden my-10 bg-gray-50/30 backdrop-blur-2xl rounded-md shadow-sm ${isDarkMode && "bg-slate-800 mastWhiteShadow"
-            }`}
-        >
-          <GithubHeatmap />
-        </div>
+
+        <GithubHeatmap date={2025} />
+
 
         {/* ------------------------------------------------------------------ */}
         {/* My Story Expanded                                                  */}
@@ -508,91 +506,87 @@ function Home() {
 
         {more && (
           <motion.section
-            initial={{
-              opacity: 0,
-              y: 15,
-              filter: "blur(5px)",
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              filter: "none",
-            }}
+            initial={{ opacity: 0, y: 15, filter: "blur(5px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "none" }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
             className="md:mt-3 mt-5"
           >
-            <p
-              className={`text-sm md:text-[18px] font-medium max-w-full text-shadow-sm leading-relaxed ${isDarkMode
-                ? "text-neutral-400"
-                : "text-neutral-600"
-                }`}
-            >
-              C taught me pain first, logic second — self-taught, self-doubted,
-              self-improved. From full-stack chaos to Android, React, Spring
-              Boot, and PostgreSQL, I learned each one by breaking it first and
-              understanding it later. I don't fear bugs, I collect them like
-              badges of honor. Still building. Still breaking. Still leveling
-              up.
-            </p>
+            {/* bio paragraph, now with a diff-style accent rail */}
+            <div className="relative pl-4">
+              <span
+                aria-hidden="true"
+                className={`absolute left-0 top-1 bottom-1 w-[2px] rounded-full ${isDarkMode ? "bg-emerald-500/40" : "bg-emerald-600/50"
+                  }`}
+              />
+              <p
+                className={`text-sm md:text-[18px] font-medium max-w-full text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"
+                  }`}
+              >
+                C taught me pain first, logic second — self-taught, self-doubted,
+                self-improved. From full-stack chaos to Android, React, Spring
+                Boot, and PostgreSQL, I learned each one by breaking it first and
+                understanding it later. I don't fear bugs, I collect them like
+                badges of honor. Still building. Still breaking. Still leveling
+                up.
+              </p>
+            </div>
 
             <section
-              className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode
-                ? "text-neutral-400"
-                : "text-neutral-600"
+              className={`mt-10 w-full md:text-sm text-sm max-w-2xl ${isDarkMode ? "text-neutral-400" : "text-neutral-600"
                 }`}
             >
-              <motion.p
-                initial={{
-                  opacity: 0,
-                  y: 15,
-                  filter: "blur(5px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  filter: "none",
-                }}
+              <motion.div
+                initial={{ opacity: 0, y: 15, filter: "blur(5px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "none" }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="text-sm font-medium capitalize text-slate-500 text-shadow-sm">
-                <span className="text-lg text-shadow-sm font-medium line-clamp-1">Curious about the person behind the code?</span>
-                Take a little detour into my world—my projects, interests, and the things that make me me.
-              </motion.p>
+              >
+                <span
+                  className={`inline-block font-mono text-[11px] tracking-[0.2em] uppercase mb-2 ${isDarkMode ? "text-emerald-500/70" : "text-emerald-600/80"
+                    }`}
+                >
+          // about
+                </span>
+                <p className="text-sm font-medium capitalize text-slate-500 text-shadow-sm">
+                  <span className="block text-lg text-shadow-sm font-medium capitalize line-clamp-1 mb-1 normal-case">
+                    Curious about the person behind the code?
+                  </span>
+                  Take a little detour into my world—my projects, interests, and
+                  the things that make me me.
+                </p>
+              </motion.div>
 
-              <div className="gap-1 md:mt-3 mt-2">
-                {/* mySelf page redirect when click me button is clicked */}
-                <section className="flex justify-start items-center">
-                  <Link to="/mySelf"
-                    className={`md:w-[6vw] w-[25vw] text-center py-1 text-[13px] rounded border transition-all duration-300 mastShadow hover:text-white hover:bg-indigo-500 hover:border-indigo-500 ${isDarkMode
-                      ? "text-neutral-200 bg-white/5 border-white/20 hover:shadow-lg hover:shadow-indigo-500/20"
-                      : "text-neutral-800 bg-white/50 border-black/20"
+              <motion.div
+                initial={{ opacity: 0, x: 40, filter: "blur(1px)" }}
+                whileInView={{ opacity: 1, x: 0, filter: "none" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="mt-5"
+              >
+                <Link
+                  to="/mySelf"
+                  aria-label="More about me"
+                  className={`group relative inline-flex items-center gap-2 font-mono text-[13px] px-4 py-2 rounded-md border transition-all duration-300 mastShadow overflow-hidden ${isDarkMode
+                    ? "text-emerald-400 bg-white/5 border-emerald-500/25 hover:border-emerald-400/60 hover:shadow-lg hover:shadow-emerald-500/10"
+                    : "text-emerald-700 bg-white/60 border-emerald-600/20 hover:border-emerald-600/50 hover:bg-emerald-50"
+                    }`}
+                >
+                  <span className="opacity-60">sharwan@dev:~$</span>
+                  <span className="relative">
+                    cd ./mySelf
+                    <span
+                      aria-hidden="true"
+                      className="inline-block w-[7px] h-[1em] align-middle ml-1 bg-current animate-pulse"
+                    />
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`absolute inset-0 -z-10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ${isDarkMode ? "bg-emerald-500/5" : "bg-emerald-500/5"
                       }`}
-                  >
-                    <motion.a
-                      initial={{
-                        opacity: 0,
-                        x: 300,
-                        filter: "blur(1px)",
-                      }}
-                      whileInView={{
-                        opacity: 1,
-                        x: 0,
-                        filter: "none",
-                      }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                      href="https://github.com/SharwanKunwar"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub"
-                    >
-                      Click Me
-                    </motion.a>
-                  </Link>
-
-                </section>
-              </div>
+                  />
+                </Link>
+              </motion.div>
             </section>
           </motion.section>
         )}
@@ -714,6 +708,8 @@ function Home() {
         <div className="text-[13px] w-full h-12.5 flex justify-center items-center">
           Developed by sharwan jung kunwar with 🩵
         </div>
+
+
       </Container>
     </main>
   );
