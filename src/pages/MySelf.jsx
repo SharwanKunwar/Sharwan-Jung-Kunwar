@@ -93,7 +93,7 @@ export default function MySelf({ username = "SharwanKunwar" }) {
 
   return (
     <main
-      className={`relative min-h-screen overflow-hidden transition-colors duration-500 ${isDarkMode ? "bg-neutral-950 text-white" : "bg-neutral-100 text-neutral-900"
+      className={`relative min-h-screen overflow-hidden transition-colors duration-500 ${isDarkMode ? " text-white" : "bg-neutral-100 text-neutral-900"
         }`}
     >
       {/* =====================================================
