@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <div className={`min-h-screen flex justify-center items-start no-scrollbar relative ${isDarkMode ? 'bg-transparent text-white' : ' text-black'}`}>
-        <ShootingStarsAndStarsBackgroundDemo />        //{/* <RootLayout /> */}
+        <ShootingStarsAndStarsBackgroundDemo />        {/* <RootLayout /> */}
       </div>
     </>
   )
