@@ -635,7 +635,7 @@ function Home() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 40, filter: "blur(1px)" }}
+                initial={{ opacity: 0, x: 10, filter: "blur(1px)" }}
                 whileInView={{ opacity: 1, x: 0, filter: "none" }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.15 }}
