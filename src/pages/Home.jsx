@@ -623,7 +623,7 @@ function Home() {
                   className={`inline-block font-mono text-[11px] tracking-[0.2em] uppercase mb-2 ${isDarkMode ? "text-emerald-500/70" : "text-emerald-600/80"
                     }`}
                 >
-          // about
+                  {/* About Me */}
                 </span>
                 <p className="text-sm font-medium capitalize text-slate-500 text-shadow-sm">
                   <span className="block text-lg text-shadow-sm font-medium capitalize line-clamp-1 mb-1 normal-case">
