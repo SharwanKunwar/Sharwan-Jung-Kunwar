@@ -1,5 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Button } from "antd";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useSpring,
+} from "motion/react";
 
 import { Container } from "../components/Container";
 import { DarkModeContext } from "../context/DarkModeContext.js";
@@ -13,6 +19,55 @@ const filters = [
   { id: "ui-design", label: "UI Designs" },
   { id: "frontend", label: "Frontend Only" },
 ];
+
+// Wraps a card and tilts it in 3D space based on cursor position.
+function TiltCard({ children, isLeft }) {
+  const ref = useRef(null);
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [10, -10]), {
+    stiffness: 220,
+    damping: 22,
+  });
+  const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [-10, 10]), {
+    stiffness: 220,
+    damping: 22,
+  });
+  const translateZ = useSpring(0, { stiffness: 220, damping: 22 });
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    px.set((e.clientX - rect.left) / rect.width - 0.5);
+    py.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleEnter = () => translateZ.set(30);
+  const handleLeave = () => {
+    px.set(0);
+    py.set(0);
+    translateZ.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      style={{
+        rotateX,
+        rotateY,
+        z: translateZ,
+        transformStyle: "preserve-3d",
+        transformPerspective: 1200,
+      }}
+      className="will-change-transform"
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 function Projects() {
   const { isDarkMode } = useContext(DarkModeContext);
@@ -92,18 +147,6 @@ function Projects() {
         backgroundImage: !isDarkMode ? "url('/BG_Images/bg001.jpeg')" : "none",
       }}
     >
-      {/* Keyframes for the commit-node reveal */}
-      <style>{`
-        @keyframes timelinePop {
-          from { opacity: 0; transform: translateY(16px) scale(0.98); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .timeline-item {
-          animation: timelinePop 0.5s ease forwards;
-          opacity: 0;
-        }
-      `}</style>
-
       {/* Background overlay */}
       {!isDarkMode && (
         <div className="absolute inset-0 bg-white/50 pointer-events-none" />
@@ -160,13 +203,21 @@ function Projects() {
 
             {/* Timeline */}
             {!loading && !error && filteredProjects.length > 0 && (
-              <div className="relative py-8">
+              <div
+                className="relative py-8"
+                style={{ perspective: "1500px" }}
+              >
                 {/* Center line (desktop) / left line (mobile) */}
                 <div
                   className={`absolute top-0 bottom-0 w-px left-4 lg:left-1/2 lg:-translate-x-1/2 ${isDarkMode
                     ? "bg-gradient-to-b from-indigo-400/60 via-white/15 to-transparent"
                     : "bg-gradient-to-b from-indigo-400/70 via-neutral-300 to-transparent"
                     }`}
+                  style={{
+                    boxShadow: isDarkMode
+                      ? "0 0 12px rgba(129,140,248,0.35)"
+                      : "0 0 12px rgba(99,102,241,0.25)",
+                  }}
                 />
 
                 <div className="flex flex-col gap-10 lg:gap-14">
@@ -174,17 +225,31 @@ function Projects() {
                     const isLeft = index % 2 === 0;
 
                     return (
-                      <div
+                      <motion.div
                         key={item.id}
-                        className="timeline-item relative pl-12 lg:pl-0"
-                        style={{ animationDelay: `${(index % 4) * 90}ms` }}
+                        className="relative pl-12 lg:pl-0"
+                        style={{ transformStyle: "preserve-3d" }}
+                        initial={{ opacity: 0, rotateX: -50, y: 30, z: -60 }}
+                        whileInView={{ opacity: 1, rotateX: 0, y: 0, z: 0 }}
+                        viewport={{ once: true, margin: "-80px" }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 120,
+                          damping: 16,
+                          delay: (index % 4) * 0.08,
+                        }}
                       >
-                        {/* Node dot */}
+                        {/* Node dot — 3D sphere */}
                         <span
-                          className={`absolute top-2 left-4 -translate-x-1/2 lg:left-1/2 h-3 w-3 rounded-full border-2 z-10 ${isDarkMode
-                            ? "bg-neutral-950 border-indigo-400"
-                            : "bg-white border-indigo-500"
-                            }`}
+                          className="absolute top-2 left-4 -translate-x-1/2 lg:left-1/2 h-3 w-3 rounded-full z-10"
+                          style={{
+                            background: isDarkMode
+                              ? "radial-gradient(circle at 35% 30%, #a5b4fc, #4f46e5 70%)"
+                              : "radial-gradient(circle at 35% 30%, #ffffff, #6366f1 75%)",
+                            boxShadow: isDarkMode
+                              ? "0 0 8px rgba(129,140,248,0.7), inset -1px -1px 2px rgba(0,0,0,0.4)"
+                              : "0 2px 6px rgba(79,70,229,0.5), inset -1px -1px 2px rgba(0,0,0,0.15)",
+                          }}
                         />
 
                         {/* Date badge — sits on the line */}
@@ -204,23 +269,25 @@ function Projects() {
                           {formatDate(item.date)}
                         </div>
 
-                        {/* Card, offset to alternating side on desktop */}
+                        {/* Card, offset to alternating side on desktop, now tiltable */}
                         <div
-                          className={` mr-10 lg:w-[calc(50%-2.5rem)] ${isLeft ? "lg:mr-auto lg:pr-0" : "lg:ml-auto lg:pl-10"
+                          className={`mr-10 lg:w-[calc(50%-2.5rem)] ${isLeft ? "lg:mr-auto lg:pr-0" : "lg:ml-auto lg:pl-10"
                             }`}
                         >
-                          <BigProjectCard
-                            title={item.title}
-                            img={item.imgUrl}
-                            des={item.description}
-                            SUrl={item.source}
-                            PUrl={item.URL}
-                            Stack={item.teck}
-                            category={item.category}
-                            dt={item.date}
-                          />
+                          <TiltCard isLeft={isLeft}>
+                            <BigProjectCard
+                              title={item.title}
+                              img={item.imgUrl}
+                              des={item.description}
+                              SUrl={item.source}
+                              PUrl={item.URL}
+                              Stack={item.teck}
+                              category={item.category}
+                              dt={item.date}
+                            />
+                          </TiltCard>
                         </div>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>

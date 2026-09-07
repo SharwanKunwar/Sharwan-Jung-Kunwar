@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Container } from "../components/Container";
-import { motion } from "motion/react";
-import { GitHubCalendar } from "react-github-calendar";
+import { motion, useMotionValue, useTransform, useSpring } from "motion/react";
 import {
   SiNextdotjs,
   SiC,
@@ -24,10 +23,8 @@ import { Button } from "antd";
 import ProjectCard from "../components/ProjectCard";
 import Resume from "../pages/Resume";
 import { DarkModeContext } from "../context/DarkModeContext.js";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 import GithubHeatmap from "../components/GithubHeatmap";
-import { ProjectDetails } from '../data/ProjectDetails'
-import BigProjectCard from "../components/BigProjectCard.jsx";
 
 const API_URL = "https://project-api-umber.vercel.app/api/projectDetails";
 
@@ -169,13 +166,67 @@ const maskStyle = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* Skill Chip                                                                  */
+/* 3D Tilt Wrapper — mouse-tracking, used only on low-count elements          */
+/* (project cards). Marquee chips use a cheaper CSS-only tilt instead.        */
+/* -------------------------------------------------------------------------- */
+
+function TiltCard({ children, strength = 10 }) {
+  const ref = useRef(null);
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [strength, -strength]), {
+    stiffness: 220,
+    damping: 22,
+  });
+  const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [-strength, strength]), {
+    stiffness: 220,
+    damping: 22,
+  });
+  const translateZ = useSpring(0, { stiffness: 220, damping: 22 });
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    px.set((e.clientX - rect.left) / rect.width - 0.5);
+    py.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleEnter = () => translateZ.set(24);
+  const handleLeave = () => {
+    px.set(0);
+    py.set(0);
+    translateZ.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      style={{
+        rotateX,
+        rotateY,
+        z: translateZ,
+        transformStyle: "preserve-3d",
+        transformPerspective: 1000,
+      }}
+      className="will-change-transform h-full"
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Skill Chip — cheap CSS-only 3D tilt (marquee has ~30+ duplicated chips,    */
+/* so no per-chip JS mouse tracking here)                                    */
 /* -------------------------------------------------------------------------- */
 
 function SkillChip({ icon: Icon, name, tag, color, isDarkMode }) {
   return (
     <div
-      className="group relative flex shrink-0 items-center gap-3 rounded-xl border px-3.5 py-2.5 backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.035]"
+      className="group relative flex shrink-0 items-center gap-3 rounded-xl border px-3.5 py-2.5 backdrop-blur-md transition-transform duration-300 ease-out [transform-style:preserve-3d] [perspective:600px] hover:-translate-y-1 hover:scale-[1.035] hover:[transform:perspective(600px)_translateY(-4px)_scale(1.035)_rotateX(8deg)_rotateY(-6deg)]"
       style={{
         background: isDarkMode
           ? "rgba(255,255,255,0.035)"
@@ -185,7 +236,7 @@ function SkillChip({ icon: Icon, name, tag, color, isDarkMode }) {
           : "rgba(0,0,0,0.08)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = `0 12px 28px -12px ${hexToRgba(
+        e.currentTarget.style.boxShadow = `0 16px 30px -12px ${hexToRgba(
           color,
           0.55,
         )}`;
@@ -200,15 +251,15 @@ function SkillChip({ icon: Icon, name, tag, color, isDarkMode }) {
           : "rgba(0,0,0,0.08)";
       }}
     >
-      {/* Accent bar */}
+      {/* Accent bar — pulled slightly forward in Z on hover for depth */}
       <span
-        className="absolute bottom-2 left-0 top-2 w-[3px] rounded-full opacity-90"
+        className="absolute bottom-2 left-0 top-2 w-[3px] rounded-full opacity-90 transition-transform duration-300 group-hover:[transform:translateZ(14px)]"
         style={{ background: color }}
       />
 
-      {/* Icon */}
+      {/* Icon — pulled forward more than the text for a layered feel */}
       <div
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-transform duration-300 group-hover:[transform:translateZ(20px)]"
         style={{
           background: hexToRgba(color, 0.16),
           color,
@@ -218,7 +269,7 @@ function SkillChip({ icon: Icon, name, tag, color, isDarkMode }) {
       </div>
 
       {/* Text */}
-      <div className="flex flex-col leading-tight">
+      <div className="flex flex-col leading-tight transition-transform duration-300 group-hover:[transform:translateZ(10px)]">
         <span
           className={`text-xs font-semibold ${isDarkMode ? "text-white" : "text-black"
             }`}
@@ -249,35 +300,54 @@ function Home() {
   const [error, setError] = useState(null);
 
 
-  // feacthing main projects only 
+  // Fetch main projects only.
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchProjects = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL, {
+          signal: controller.signal,
+          headers: {
+            Accept: "application/json",
+          },
+        });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch projects");
+          throw new Error(`Failed to fetch projects (${response.status})`);
         }
 
         const result = await response.json();
+        const data = Array.isArray(result?.data)
+          ? result.data
+          : Array.isArray(result)
+            ? result
+            : [];
 
-        const mainProjects = (result.data || []).filter(
-          (project) => project.priority === "main"
+        const mainProjects = data.filter(
+          (project) => project?.priority?.toLowerCase() === "main"
         );
 
         setProjects(mainProjects);
       } catch (error) {
+        if (error?.name === "AbortError") return;
+
         console.error("Error fetching projects:", error);
+        setProjects([]);
         setError("Failed to load projects.");
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchProjects();
+
+    return () => controller.abort();
   }, []);
 
   /* Scroll to top when page loads */
@@ -290,7 +360,7 @@ function Home() {
   /* ------------------------------------------------------------------------ */
 
   const vibrate = (pattern) => {
-    if (navigator.vibrate) {
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
       navigator.vibrate(pattern);
     }
   };
@@ -408,10 +478,13 @@ function Home() {
         </motion.section>
 
         {/* ------------------------------------------------------------------ */}
-        {/* Hero Buttons                                                       */}
+        {/* Hero Buttons — 3D press/lift instead of flat hover                */}
         {/* ------------------------------------------------------------------ */}
 
-        <section className="w-full flex justify-start items-center flex-wrap gap-5 mt-4">
+        <section
+          className="w-full flex justify-start items-center flex-wrap gap-5 mt-4"
+          style={{ perspective: "800px" }}
+        >
           <motion.button
             initial={{
               opacity: 0,
@@ -425,6 +498,9 @@ function Home() {
             }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
+            whileHover={{ rotateX: -10, y: -3, z: 10 }}
+            whileTap={{ rotateX: 8, scale: 0.96 }}
+            style={{ transformStyle: "preserve-3d" }}
             onClick={() => {
               haptic.soft();
               setMore(!more);
@@ -454,6 +530,9 @@ function Home() {
               }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
+              whileHover={{ rotateX: -10, y: -3, z: 10 }}
+              whileTap={{ rotateX: 8, scale: 0.96 }}
+              style={{ transformStyle: "preserve-3d" }}
               onClick={haptic.tap}
               className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "WhiteShadow" : ""
                 }`}
@@ -461,12 +540,7 @@ function Home() {
               🌟 Give Star
             </motion.button>
           </a>
-
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/SharwanKunwar"
-          >
+          <a>
             <motion.button
               initial={{
                 opacity: 0,
@@ -480,6 +554,9 @@ function Home() {
               }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
+              whileHover={{ rotateX: -10, y: -3, z: 10 }}
+              whileTap={{ rotateX: 8, scale: 0.96 }}
+              style={{ transformStyle: "preserve-3d" }}
               onClick={haptic.tap}
               className={`border border-black/30 px-2 py-1 text-[13px] hover:text-white hover:bg-indigo-500 rounded mastShadow hover:border-indigo-500 ${isDarkMode ? "WhiteShadow" : ""
                 }`}
@@ -592,7 +669,7 @@ function Home() {
         )}
 
         {/* ------------------------------------------------------------------ */}
-        {/* Favorite Projects                                                  */}
+        {/* Favorite Projects — 3D flip-in + mouse-tracking tilt on cards      */}
         {/* ------------------------------------------------------------------ */}
 
         <section className="mt-16">
@@ -612,21 +689,51 @@ function Home() {
             Explore my coding journey through a mix of projects...
           </p>
 
-          <div className="grid lg:grid-cols-2 lg:grid-rows-2 gap-5 py-5">
-            {projects.map((item) => (
-              <ProjectCard
-                key={item.id}
-                title={item.title}
-                img={item.imgUrl}
-                des={item.description}
-                SUrl={item.source}
-                PUrl={item.URL}
-                Stack={item.teck}
-
-                dt={item.date}
-              />
-
-            ))}
+          <div
+            className="grid lg:grid-cols-2 lg:grid-rows-2 gap-5 py-5"
+            style={{ perspective: "1400px" }}
+          >
+            {loading ? (
+              <div className="lg:col-span-2 py-10 text-center text-sm text-neutral-500">
+                Loading projects...
+              </div>
+            ) : error ? (
+              <div className="lg:col-span-2 py-10 text-center text-sm text-red-500">
+                {error}
+              </div>
+            ) : projects.length === 0 ? (
+              <div className="lg:col-span-2 py-10 text-center text-sm text-neutral-500">
+                No main projects found.
+              </div>
+            ) : (
+              projects.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  style={{ transformStyle: "preserve-3d" }}
+                  initial={{ opacity: 0, rotateX: -40, y: 24, z: -50 }}
+                  whileInView={{ opacity: 1, rotateX: 0, y: 0, z: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 130,
+                    damping: 17,
+                    delay: (index % 4) * 0.08,
+                  }}
+                >
+                  <TiltCard strength={7}>
+                    <ProjectCard
+                      title={item.title}
+                      img={item.imgUrl}
+                      des={item.description}
+                      SUrl={item.source}
+                      PUrl={item.URL}
+                      Stack={item.teck}
+                      dt={item.date}
+                    />
+                  </TiltCard>
+                </motion.div>
+              ))
+            )}
           </div>
 
           <div className="text-center mt-8">
@@ -711,7 +818,7 @@ function Home() {
 
 
       </Container>
-    </main>
+    </main >
   );
 }
 
