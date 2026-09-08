@@ -232,16 +232,42 @@ function Navbar() {
                 <div className="flex items-center justify-between px-2 py-1">
                   <span className="text-sm font-semibold tracking-wide text-neutral-900 dark:text-white">Menu</span>
                   <div className="flex items-center gap-2">
-                    <button
-                      aria-label="Toggle dark mode"
+                    <motion.button
+                      type="button"
+                      aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                      aria-pressed={isDarkMode}
                       onClick={() => {
                         haptic.tap();
                         toggleDarkMode();
                       }}
-                      className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 focus-visible:outline-indigo-400 dark:bg-white/10"
+                      className="relative h-7 w-13 shrink-0 rounded-full transition-colors duration-500 focus-visible:outline-indigo-400"
+                      style={{
+                        background: isDarkMode ? 'rgba(255,255,255,0.12)' : 'rgba(15,23,42,0.08)',
+                        border: isDarkMode
+                          ? '1px solid rgba(255,255,255,0.2)'
+                          : '1px solid rgba(15,23,42,0.15)',
+                      }}
                     >
-                      {isDarkMode ? <FaSun color="gold" size={20} /> : <FaMoon color="black" size={18} />}
-                    </button>
+                      <motion.span
+                        layout
+                        transition={{
+                          type: 'spring',
+                          stiffness: 500,
+                          damping: 32,
+                        }}
+                        className="absolute top-0.5 flex h-5.5 w-5.5 items-center justify-center rounded-full"
+                        style={{
+                          left: isDarkMode ? 'calc(100% - 1.6rem)' : '0.15rem',
+                          background: isDarkMode ? '#f59e0b' : '#1e293b',
+                        }}
+                      >
+                        {isDarkMode ? (
+                          <FaMoon size={11} color="#171717" />
+                        ) : (
+                          <FaSun size={11} color="#fff" />
+                        )}
+                      </motion.span>
+                    </motion.button>
                     <button
                       aria-label="Close menu"
                       onClick={closeMobileMenu}
