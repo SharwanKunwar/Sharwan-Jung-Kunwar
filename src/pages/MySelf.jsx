@@ -360,7 +360,7 @@ export default function MySelf({
   return (
     <main
       className={`relative min-h-screen overflow-hidden transition-colors duration-500 ${isDarkMode
-        ? "bg-neutral-950 text-white"
+        ? "bg-transparent text-white"
         : "bg-neutral-100 text-neutral-900"
         }`}
       style={{
