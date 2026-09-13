@@ -26,6 +26,7 @@ import {
 } from "react-icons/fa";
 
 import GithubHeatmap from "../components/GithubHeatmap.jsx";
+import GithubIconField from "../components/GithubIconField.jsx";
 
 
 /* =========================================================
@@ -505,67 +506,82 @@ export default function MySelf({
 
 
 
+
         {/* =================================================
-            PROFILE
-            ================================================= */}
+    PROFILE
+    ================================================= */}
 
-        <Reveal
-          className="mb-12"
-          delay={0.1}
-        >
-          <TiltCard strength={4}>
+        <Reveal className="mb-12" delay={0.1}>
+          <section
+            className="relative"
+            style={{
+              perspective: "1600px",
+            }}
+          >
 
-            <section
-              className={`relative rounded-3xl border p-4 md:p-7 backdrop-blur-xl shadow-2xl overflow-hidden ${isDarkMode
-                ? "bg-white/[0.025] border-white/10 shadow-indigo-950/20"
-                : "bg-white/50 border-black/10 shadow-slate-300/40"
-                }`}
-              style={{
-                transformStyle: "preserve-3d",
-              }}
-            >
+            {/* Decorative Glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl"
+            />
 
-              {/* Decorative Glow */}
-
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl"
-                style={{
-                  transform:
-                    "translateZ(2px)",
-                }}
-              />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-32 top-1/2 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl"
+            />
 
 
-              <div className="grid md:grid-cols-[280px_1fr] gap-7">
+            {/* =================================================
+        PROFILE CONTENT
+        ================================================= */}
+
+            <div className="grid md:grid-cols-[280px_1fr] gap-7 items-start">
 
 
-                {/* Profile Image */}
+              {/* =================================================
+          PROFILE IMAGE
+          FLAT / NORMAL
+          ================================================= */}
 
-                <div className="relative group">
+              <div className="relative group">
 
-                  <div
-                    className={`absolute -inset-1 rounded-2xl blur-md opacity-30 group-hover:opacity-60 transition duration-500 ${isDarkMode
-                      ? "bg-indigo-500"
-                      : "bg-indigo-400"
-                      }`}
-                  />
+                {/* Image glow */}
+                <div
+                  className={`absolute -inset-2 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-all duration-700 ${isDarkMode
+                    ? "bg-indigo-500"
+                    : "bg-indigo-400"
+                    }`}
+                />
 
+                <div
+                  className={`relative overflow-hidden rounded-2xl border shadow-xl ${isDarkMode
+                    ? "border-white/10 bg-white/[0.025]"
+                    : "border-black/10 bg-white/40"
+                    }`}
+                >
                   <img
                     src={profile.avatar_url}
-                    alt={
-                      profile.name || username
-                    }
-                    className="relative w-full md:w-[280px] h-[330px] md:h-[350px] rounded-2xl border-2 border-indigo-500 object-cover"
+                    alt={profile.name || username}
+                    className="relative w-full md:w-[280px] h-[330px] md:h-[350px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                   />
-
                 </div>
 
+              </div>
 
-                {/* Profile Info */}
 
-                <div className="flex flex-col justify-center">
+              {/* =================================================
+          PROFILE INFORMATION
+          ================================================= */}
 
+              <div className="flex flex-col justify-center">
+
+
+                {/* =================================================
+            NAME + AVAILABILITY
+            NORMAL / FLAT
+            ================================================= */}
+
+                <Reveal delay={0.12}>
                   <div className="flex flex-wrap items-center gap-3">
 
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -582,8 +598,15 @@ export default function MySelf({
                     </span>
 
                   </div>
+                </Reveal>
 
 
+                {/* =================================================
+            BIO
+            NORMAL / FLAT
+            ================================================= */}
+
+                <Reveal delay={0.16}>
                   <p
                     className={`mt-3 leading-relaxed max-w-2xl ${isDarkMode
                       ? "text-neutral-400"
@@ -593,65 +616,139 @@ export default function MySelf({
                     {profile.bio ||
                       "Software developer focused on building useful applications and learning new technologies."}
                   </p>
+                </Reveal>
 
 
-                  {/* Social Links */}
+                {/* =================================================
+            SOCIAL LINKS
+            3D MOVEMENT
+            ================================================= */}
 
-                  <section className="flex flex-wrap justify-center md:justify-start pt-3 items-center gap-3">
+
+
+                <Reveal delay={0.2}>
+                  <section className="flex flex-wrap justify-center md:justify-start pt-4 items-center gap-3">
 
                     {/* GitHub */}
-
-                    <a
+                    <motion.a
                       href={`https://github.com/${username}`}
                       target="_blank"
                       rel="noreferrer"
-                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
+                      whileHover={{
+                        y: -5,
+                        rotateX: 5,
+                        rotateY: -4,
+                        z: 18,
+                        scale: 1.03,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 18,
+                      }}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformPerspective: 800,
+                      }}
+                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm border shadow-sm transition-colors duration-300 ${isDarkMode
                         ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
                         : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
                         }`}
                     >
                       <FaGithub size={18} />
                       <span>GitHub</span>
-                    </a>
+                    </motion.a>
 
 
                     {/* LinkedIn */}
-
-                    <a
+                    <motion.a
                       href="https://linkedin.com/"
                       target="_blank"
                       rel="noreferrer"
-                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
+                      whileHover={{
+                        y: -5,
+                        rotateX: 5,
+                        rotateY: 4,
+                        z: 18,
+                        scale: 1.03,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 18,
+                      }}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformPerspective: 800,
+                      }}
+                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm border shadow-sm transition-colors duration-300 ${isDarkMode
                         ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
                         : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
                         }`}
                     >
                       <FaLinkedin size={18} />
                       <span>LinkedIn</span>
-                    </a>
+                    </motion.a>
 
 
                     {/* Facebook */}
-
-                    <a
+                    <motion.a
                       href="https://facebook.com/"
                       target="_blank"
                       rel="noreferrer"
-                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm border transition-all duration-300 hover:-translate-y-0.5 ${isDarkMode
+                      whileHover={{
+                        y: -5,
+                        rotateX: 5,
+                        rotateY: -3,
+                        z: 18,
+                        scale: 1.03,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 18,
+                      }}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformPerspective: 800,
+                      }}
+                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm border shadow-sm transition-colors duration-300 ${isDarkMode
                         ? "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10"
                         : "border-black/10 bg-black/5 text-neutral-700 hover:bg-black/10"
                         }`}
                     >
                       <FaFacebook size={18} />
                       <span>Facebook</span>
-                    </a>
+                    </motion.a>
 
                   </section>
+                </Reveal>
 
 
-                  {/* Stats */}
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-7">
+
+                {/* =================================================
+            STATS
+            3D MOVEMENT
+            ================================================= */}
+
+                <Reveal delay={0.24} className="relative">
+
+
+                  <GithubIconField />
+
+
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
 
                     <StatCard
                       label="Public Repos"
@@ -678,21 +775,38 @@ export default function MySelf({
                     />
 
                   </div>
+                </Reveal>
 
-                </div>
               </div>
+            </div>
 
 
-              {/* GitHub Contribution */}
 
-              <GithubHeatmap
-                date={new Date().getFullYear()}
-              />
+            {/* ============================================================
+                 GITHUB CONTRIBUTION HEATMAP 3D MOVEMENT — NO OUTER CARD
+                ============================================================ */}
 
-            </section>
+            <Reveal delay={0.28} className="mt-8">
+              <TiltCard strength={2.5}>
+                <div
+                  className="relative"
+                  style={{
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  <GithubHeatmap
+                    date={new Date().getFullYear()}
+                  />
+                </div>
+              </TiltCard>
+            </Reveal>
 
-          </TiltCard>
+
+
+          </section>
         </Reveal>
+
+
 
 
 

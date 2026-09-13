@@ -470,10 +470,9 @@ function Home() {
             className={`pt-1 mb-5 md:text-[15px] text-sm max-w-full text-shadow-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"
               }`}
           >
-            I write code, chaos writes back. I treat bugs like unpaid mentors
-            — brutal, frequent, oddly educational. I break more than I build
-            some days, but every crash teaches me something new. Slowly,
-            painfully, beautifully — it becomes functional software. Mostly.
+            I build systems, and I’m a Full-Stack Developer.
+            I enjoy learning and experimenting with new technologies, tools, and different kinds of stuff.
+            I believe learning, consistency, and discipline are essential to keep growing and becoming better.
           </p>
         </motion.section>
 
