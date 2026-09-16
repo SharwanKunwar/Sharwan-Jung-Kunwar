@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Container } from "../components/Container";
 import { motion, useMotionValue, useTransform, useSpring } from "motion/react";
+import { ArrowRight, AlertCircle, FolderOpen } from "lucide-react";
 import {
   SiNextdotjs,
   SiC,
@@ -672,37 +673,111 @@ function Home() {
         {/* ------------------------------------------------------------------ */}
 
         <section className="mt-16">
-          <h2
-            className={`text-2xl text-shadow-sm md:text-3xl font-semibold mb-3 tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"
-              }`}
-          >
-            Recently Worked Projects
-          </h2>
+          <div className="mb-10 relative">
+            {/* Accent tag above heading */}
+            <div className="flex items-center gap-2 mb-3">
+              <span
+                className={`h-[2px] w-8 rounded-full ${isDarkMode ? "bg-neutral-500" : "bg-neutral-400"}`}
+              />
+              <span
+                className={`text-xs font-medium uppercase tracking-widest ${isDarkMode ? "text-neutral-500" : "text-neutral-500"}`}
+              >
+                Portfolio
+              </span>
+              {!loading && !error && projects.length > 0 && (
+                <span
+                  className={`ml-1 text-[11px] px-2 py-0.5 rounded-full border ${isDarkMode
+                    ? "border-neutral-700 text-neutral-400"
+                    : "border-neutral-300 text-neutral-500"
+                    }`}
+                >
+                  {projects.length} shipped
+                </span>
+              )}
+            </div>
 
-          <p
-            className={`mb-6 text-sm md:text-[15px] ${isDarkMode
-              ? "text-neutral-400"
-              : "text-neutral-600"
-              }`}
-          >
-            Explore my coding journey through a mix of projects...
-          </p>
+            <div className="flex items-end justify-between flex-wrap gap-4">
+              <div>
+                <h2
+                  className={`text-2xl text-shadow-sm md:text-3xl font-semibold mb-3 tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"}`}
+                >
+                  Recently Worked{" "}
+                  <span
+                    className={`bg-clip-text text-transparent bg-gradient-to-r ${isDarkMode
+                      ? "from-white via-neutral-300 to-neutral-500"
+                      : "from-neutral-900 via-neutral-700 to-neutral-500"
+                      }`}
+                  >
+                    Projects
+                  </span>
+                </h2>
+
+                <p
+                  className={`mb-2 text-sm md:text-[15px] max-w-xl leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}
+                >
+                  Explore my coding journey through a mix of projects...
+                </p>
+              </div>
+
+              {/* Desktop-only inline CTA, mirrors the bottom one for quick access */}
+              <Link to="/projects" className="hidden md:block shrink-0">
+                <button
+                  onClick={haptic.soft}
+                  className={`group flex items-center gap-1.5 text-sm font-medium transition-colors ${isDarkMode
+                    ? "text-neutral-400 hover:text-white"
+                    : "text-neutral-600 hover:text-neutral-900"
+                    }`}
+                >
+                  View all
+                  <ArrowRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </button>
+              </Link>
+            </div>
+
+            {/* Subtle divider under the whole block */}
+            <div
+              className={`absolute -bottom-5 left-0 w-full h-px ${isDarkMode
+                ? "bg-gradient-to-r from-neutral-700 via-neutral-800 to-transparent"
+                : "bg-gradient-to-r from-neutral-300 via-neutral-200 to-transparent"
+                }`}
+            />
+          </div>
 
           <div
             className="grid lg:grid-cols-2 lg:grid-rows-2 gap-5 py-5"
             style={{ perspective: "1400px" }}
           >
             {loading ? (
-              <div className="lg:col-span-2 py-10 text-center text-sm text-neutral-500">
-                Loading projects...
-              </div>
+              // Skeleton cards instead of a plain text line — keeps layout stable
+              Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-56 rounded-2xl animate-pulse ${isDarkMode ? "bg-neutral-800/60" : "bg-neutral-200/70"
+                    }`}
+                />
+              ))
             ) : error ? (
-              <div className="lg:col-span-2 py-10 text-center text-sm text-red-500">
-                {error}
+              <div className="lg:col-span-2 py-14 flex flex-col items-center gap-3 text-center">
+                <AlertCircle
+                  size={28}
+                  className={isDarkMode ? "text-neutral-600" : "text-neutral-400"}
+                />
+                <p className={`text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+                  {error}
+                </p>
               </div>
             ) : projects.length === 0 ? (
-              <div className="lg:col-span-2 py-10 text-center text-sm text-neutral-500">
-                No main projects found.
+              <div className="lg:col-span-2 py-14 flex flex-col items-center gap-3 text-center">
+                <FolderOpen
+                  size={28}
+                  className={isDarkMode ? "text-neutral-600" : "text-neutral-400"}
+                />
+                <p className={`text-sm ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+                  No main projects found — check back soon.
+                </p>
               </div>
             ) : (
               projects.map((item, index) => (
@@ -735,7 +810,8 @@ function Home() {
             )}
           </div>
 
-          <div className="text-center mt-8">
+          {/* Mobile CTA (desktop gets the inline one up top) */}
+          <div className="text-center mt-8 md:hidden">
             <Link to="/projects">
               <Button
                 size="large"
