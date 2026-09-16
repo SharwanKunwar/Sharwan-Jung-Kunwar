@@ -335,7 +335,7 @@ function Home() {
           (project) => project?.priority?.toLowerCase() === "main");
 
         const allProjects = data.filter(
-          (project) => project?.priority?.toLowerCase() === "all");
+          (project) => project?.developer?.toLowerCase() === "sharwan kunwar");
 
         setProjects(mainProjects);
         setAllProjects(allProjects);
