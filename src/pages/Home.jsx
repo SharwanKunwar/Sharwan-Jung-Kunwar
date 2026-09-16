@@ -297,8 +297,11 @@ function Home() {
   const [more, setMore] = useState(false);
   const { isDarkMode } = useContext(DarkModeContext);
   const [projects, setProjects] = useState([]);
+  const [allProjects, setAllProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+
 
 
   // Fetch main projects only.
@@ -329,15 +332,19 @@ function Home() {
             : [];
 
         const mainProjects = data.filter(
-          (project) => project?.priority?.toLowerCase() === "main"
-        );
+          (project) => project?.priority?.toLowerCase() === "main");
+
+        const allProjects = data.filter(
+          (project) => project?.priority?.toLowerCase() === "all");
 
         setProjects(mainProjects);
+        setAllProjects(allProjects);
       } catch (error) {
         if (error?.name === "AbortError") return;
 
         console.error("Error fetching projects:", error);
         setProjects([]);
+        setAllProjects([]);
         setError("Failed to load projects.");
       } finally {
         if (!controller.signal.aborted) {
@@ -691,7 +698,7 @@ function Home() {
                     : "border-neutral-300 text-neutral-500"
                     }`}
                 >
-                  {projects.length} shipped
+                  {allProjects.length} Projects. No Regrets.
                 </span>
               )}
             </div>
