@@ -1,16 +1,16 @@
 export const blogs = [
   {
     id: 1,
+    slug: "what-is-a-backend",
     img: "/blogImage/java.jpg",
     title: "What is a Backend? The Engine Behind Every App You Use",
-    des: `Every day, you use apps like Instagram, YouTube, Spotify, TikTok, and online banking services. You tap buttons, watch videos, send messages, and everything works almost instantly. But have you ever wondered what happens behind the screen?
-          \nThat hidden system is called the backend — the invisible engine
-          that powers modern applications.`
+    excerpt: "Every day, you use apps like Instagram, YouTube, and Spotify. Ever wonder what happens behind the screen?",
   },
   {
     id: 2,
+    slug: "my-second-blog",
     img: "/books/book01.jpg",
     title: "My Second Blog",
-    des: "This blog is about productivity..."
-  }
+    excerpt: "This blog is about productivity...",
+  },
 ];
