@@ -952,9 +952,9 @@ export default function MySelf({
                     <BlogPage
                       key={item.id}
                       img={item.img}
-                      id={item.id}
+                      slug={item.slug}
                       title={item.title}
-                      des={item.des}
+                      excerpt={item.excerpt}
                     />
 
                   ))}

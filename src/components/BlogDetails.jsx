@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { blogs } from "../data/blogs";
 import { getBlogContent } from "../utils/loadBlogContent";
 import { ArrowLeft } from "lucide-react";
+import { DarkModeContext } from "../context/DarkModeContext.js";
 
-function BlogDetails({ isDarkMode }) {
-  const { id } = useParams();
-  const blog = blogs.find((b) => b.id === Number(id));
+function BlogDetails() {
+  const { isDarkMode } = useContext(DarkModeContext);
+  const { slug } = useParams();
+  const blog = blogs.find((item) => item.slug === slug);
 
   if (!blog) {
     return (
@@ -27,12 +30,11 @@ function BlogDetails({ isDarkMode }) {
   return (
     <div className="max-w-3xl mx-auto mt-20 mb-24 px-5">
       <Link
-        to="/"
-        className={`inline-flex items-center gap-1.5 text-sm mb-6 transition-colors ${
-          isDarkMode
+        to="/mySelf"
+        className={`inline-flex items-center gap-1.5 text-sm mb-6 transition-colors ${isDarkMode
             ? "text-neutral-400 hover:text-white"
             : "text-neutral-500 hover:text-black"
-        }`}
+          }`}
       >
         <ArrowLeft size={14} />
         Back to blogs
@@ -47,17 +49,15 @@ function BlogDetails({ isDarkMode }) {
       </div>
 
       <h1
-        className={`text-2xl md:text-3xl font-bold tracking-tight mb-8 ${
-          isDarkMode ? "text-white" : "text-neutral-900"
-        }`}
+        className={`text-2xl md:text-3xl font-bold tracking-tight mb-8 ${isDarkMode ? "text-white" : "text-neutral-900"
+          }`}
       >
         {blog.title}
       </h1>
 
       <article
-        className={`prose max-w-none ${
-          isDarkMode ? "prose-invert" : ""
-        }`}
+        className={`prose max-w-none ${isDarkMode ? "prose-invert" : ""
+          }`}
       >
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {content ?? blog.excerpt}

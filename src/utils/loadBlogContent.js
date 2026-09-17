@@ -6,8 +6,5 @@ const modules = import.meta.glob("../content/blogs/*.md", {
 });
 
 export function getBlogContent(slug) {
-  const entry = Object.entries(modules).find(([path]) =>
-    path.endsWith(`${slug}.md`)
-  );
-  return entry ? entry[1] : null;
+  return modules[`../content/blogs/${slug}.md`] ?? null;
 }

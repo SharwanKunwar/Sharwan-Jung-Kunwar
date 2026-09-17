@@ -1,30 +1,28 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
-import { SiOpenaccess } from "react-icons/si";
-import { FaOpencart, FaOpenid } from "react-icons/fa";
-import { ArrowBigDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
-function BlogPage({ id, title, des }) {
-  const navigate = useNavigate();
-
+function BlogPage({ slug, img, title, excerpt }) {
   return (
-    <div className="bg-white/40  backdrop-blur-md rounded-lg p-4 shadow-md flex gap-4 items-center justify-between">
-
-      <div className="flex  h-full items-center w-full justify-between px-5 items-center">
-        <div className="bg-linear-to-br from-indigo-400 to-slate-800 shadow-md w-[50px] h-[50px] rounded-sm"></div>
-        <section className="w-[70%]">
-          <h2 className="font-medium text-shadow-sm text-md text-slate-800">{title}</h2>
-        </section>
-        <Button
-          onClick={() => navigate(`/blog/${id}`)}
-          className=" bg-black text-white px-5! py-1 rounded-md text-sm shadow-sm"
-        >
-          Read
-        </Button>
+    <article className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/45 p-3 shadow-sm backdrop-blur-md transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/5">
+      <img
+        src={img}
+        alt=""
+        className="h-16 w-16 shrink-0 rounded-xl object-cover"
+      />
+      <div className="min-w-0 flex-1">
+        <h2 className="font-semibold text-slate-800 dark:text-white">{title}</h2>
+        <p className="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-neutral-400">
+          {excerpt}
+        </p>
       </div>
-
-    </div>
+      <Link
+        to={`/blog/${slug}`}
+        aria-label={`Read ${title}`}
+        className="inline-flex shrink-0 items-center gap-1 rounded-lg bg-slate-900 px-3 py-2 text-sm font-medium text-white transition hover:bg-indigo-600 focus-visible:outline-indigo-400 dark:bg-white dark:text-slate-900"
+      >
+        Read <ArrowRight size={15} />
+      </Link>
+    </article>
   );
 }
 
