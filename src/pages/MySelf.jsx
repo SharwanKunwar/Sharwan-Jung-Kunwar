@@ -929,45 +929,31 @@ export default function MySelf({
         />
 
 
-        <Reveal
-          className="mb-16"
-          delay={0.08}
-        >
+        <section className="mb-16 grid gap-5 sm:grid-cols-2">
 
-          <TiltCard strength={3.5}>
+          {blogs.map((item, index) => (
 
-            <section
-              className={`rounded-3xl border overflow-hidden shadow-xl ${isDarkMode
-                ? "border-white/10 bg-white/[0.025] shadow-indigo-950/20"
-                : "border-black/10 bg-white/50 shadow-slate-300/30"
-                }`}
+            <Reveal
+              key={item.id}
+              delay={0.08 + index * 0.06}
             >
 
-              <div className="p-4 md:p-6">
+              <TiltCard strength={4}>
 
-                <section className="flex flex-col gap-3">
+                <BlogPage
+                  img={item.img}
+                  slug={item.slug}
+                  title={item.title}
+                  excerpt={item.excerpt}
+                />
 
-                  {blogs.map((item) => (
+              </TiltCard>
 
-                    <BlogPage
-                      key={item.id}
-                      img={item.img}
-                      slug={item.slug}
-                      title={item.title}
-                      excerpt={item.excerpt}
-                    />
+            </Reveal>
 
-                  ))}
+          ))}
 
-                </section>
-
-              </div>
-
-            </section>
-
-          </TiltCard>
-
-        </Reveal>
+        </section>
 
 
 

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -11,6 +11,10 @@ function BlogDetails() {
   const { isDarkMode } = useContext(DarkModeContext);
   const { slug } = useParams();
   const blog = blogs.find((item) => item.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!blog) {
     return (
@@ -28,12 +32,12 @@ function BlogDetails() {
   const content = getBlogContent(blog.slug);
 
   return (
-    <div className="max-w-3xl mx-auto mt-20 mb-24 px-5">
+    <div className="max-w-5xl mx-auto mt-30 mb-24 px-5">
       <Link
         to="/mySelf"
         className={`inline-flex items-center gap-1.5 text-sm mb-6 transition-colors ${isDarkMode
-            ? "text-neutral-400 hover:text-white"
-            : "text-neutral-500 hover:text-black"
+          ? "text-neutral-400 hover:text-white"
+          : "text-neutral-500 hover:text-black"
           }`}
       >
         <ArrowLeft size={14} />
@@ -56,7 +60,7 @@ function BlogDetails() {
       </h1>
 
       <article
-        className={`prose max-w-none ${isDarkMode ? "prose-invert" : ""
+        className={`prose  max-w-none ${isDarkMode ? "prose-invert" : ""
           }`}
       >
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
