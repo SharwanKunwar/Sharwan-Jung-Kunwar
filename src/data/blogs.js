@@ -8,9 +8,9 @@ export const blogs = [
   },
   {
     id: 2,
-    slug: "my-second-blog",
-    img: "/books/book01.jpg",
-    title: "My Second Blog",
-    excerpt: "This blog is about productivity...",
+    slug: "Ever-wondered-what-actually-happens-when-you-hit-POST-api-tasks-in-a-Spring-Boot-app",
+    img: "/blogImage/springConcept01.png",
+    title: "Ever wondered what actually happens when you hit POST /api/tasks in a Spring Boot app? 🤔",
+    excerpt: "This blog is about productivity and how a single post request can trigger a series of events...",
   },
 ];

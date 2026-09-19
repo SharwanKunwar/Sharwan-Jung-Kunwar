@@ -44,11 +44,11 @@ function BlogDetails() {
         Back to blogs
       </Link>
 
-      <div className="rounded-2xl overflow-hidden mb-8 aspect-video">
+      <div className="rounded-2xl overflow-hidden mb-8">
         <img
           src={blog.img}
           alt={blog.title}
-          className="w-full h-full object-cover"
+          className=""
         />
       </div>
 
