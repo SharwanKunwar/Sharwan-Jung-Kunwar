@@ -13,4 +13,11 @@ export const blogs = [
     title: "Ever wondered what actually happens when you hit POST /api/tasks in a Spring Boot app? 🤔",
     excerpt: "This blog is about productivity and how a single post request can trigger a series of events...",
   },
+  {
+    id: 3,
+    slug: "filtersVSinterceptor",
+    img: "/blogImage/filtersVSInterceptor.png",
+    title: "Filters vs Interceptors in Spring Boot",
+    excerpt: "Understanding the differences between filters and interceptors in Spring Boot applications...",
+  }
 ];
