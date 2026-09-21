@@ -32,7 +32,7 @@ function BlogDetails() {
   const content = getBlogContent(blog.slug);
 
   return (
-    <div className="max-w-5xl mx-auto mt-30 mb-24 px-5">
+    <div className="max-w-7xl mx-auto mt-30 mb-24 px-5">
       <Link
         to="/mySelf"
         className={`inline-flex items-center gap-1.5 text-sm mb-6 transition-colors ${isDarkMode

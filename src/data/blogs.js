@@ -19,5 +19,12 @@ export const blogs = [
     img: "/blogImage/filtersVSInterceptor.png",
     title: "Filters vs Interceptors in Spring Boot",
     excerpt: "Understanding the differences between filters and interceptors in Spring Boot applications...",
+  },
+  {
+    id: 4,
+    slug: "Slugs",
+    img: "/blogImage/slugs.jpg",
+    title: "What are Slugs and Why Use Them?",
+    excerpt: "Learn about slugs, their benefits, and how to implement them in your web applications...",
   }
 ];
