@@ -26,5 +26,19 @@ export const blogs = [
     img: "/blogImage/slugs.jpg",
     title: "What are Slugs and Why Use Them?",
     excerpt: "Learn about slugs, their benefits, and how to implement them in your web applications...",
+  },
+  {
+    id: 5,
+    slug: "Interceptors",
+    img: "/blogImage/interceptors.png",
+    title: "What are Interceptors and Why Use Them?",
+    excerpt: "Learn about interceptors, their benefits, and how to implement them in your web applications...",
+  },
+  {
+    id: 6,
+    slug: "decorator-pattern",
+    img: "/blogImage/decorator-pattern.png",
+    title: "What is the Decorator Pattern and Why Use It?",
+    excerpt: "Learn about the decorator pattern, its benefits, and how to implement it in your web applications...",
   }
 ];
