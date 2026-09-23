@@ -40,5 +40,12 @@ export const blogs = [
     img: "/blogImage/decorator-pattern.png",
     title: "What is the Decorator Pattern and Why Use It?",
     excerpt: "Learn about the decorator pattern, its benefits, and how to implement it in your web applications...",
+  },
+  {
+    id: 7,
+    slug: "wmActivation",
+    img: "/blogImage/wmActivation.png",
+    title: "Windows & Microsoft Office Activation Using MAS",
+    excerpt: "Learn about Windows and ms word activation, its benefits, risks, and how to implement ",
   }
 ];
