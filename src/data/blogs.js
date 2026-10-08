@@ -47,5 +47,12 @@ export const blogs = [
     img: "/blogImage/wmActivation.png",
     title: "Windows & Microsoft Office Activation Using MAS",
     excerpt: "Learn about Windows and ms word activation, its benefits, risks, and how to implement ",
+  },
+  {
+    id: 8,
+    slug: "AOP",
+    img: "/blogImage/aopCover.png",
+    title: "What is AOP and Why Use It?",
+    excerpt: "Learn about Aspect-Oriented Programming (AOP), its benefits, and how to implement it in your web applications...",
   }
 ];
