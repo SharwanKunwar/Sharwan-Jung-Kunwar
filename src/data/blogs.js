@@ -54,5 +54,12 @@ export const blogs = [
     img: "/blogImage/aopCover.png",
     title: "What is AOP and Why Use It?",
     excerpt: "Learn about Aspect-Oriented Programming (AOP), its benefits, and how to implement it in your web applications...",
+  },
+  {
+    id: 9,
+    slug: "jdbc",
+    img: "/blogImage/jdbc.png",
+    title: "What is JDBC and Why Use It?",
+    excerpt: "Learn about Java Database Connectivity (JDBC), its benefits, and how to implement it in your web applications...",
   }
 ];
